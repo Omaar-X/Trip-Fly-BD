@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Destinations | Trip Fly BD</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/destinations.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Trip Fly BD" class="logo-img"/><span class="logo-text">Trip Fly <span class="gold">BD</span></span></a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html"        class="nav-link">Home</a></li>
+      <li><a href="about.html"        class="nav-link">About</a></li>
+      <li><a href="services.html"     class="nav-link">Services</a></li>
+      <li><a href="destinations.html" class="nav-link active">Destinations</a></li>
+      <li><a href="gallery.html"      class="nav-link">Gallery</a></li>
+      <li><a href="management.html"   class="nav-link">Management</a></li>
+      <li><a href="contact.html"      class="nav-link nav-cta"><i class="fab fa-whatsapp"></i> Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <span class="section-tag">Explore</span>
+    <h1>Our <span class="gold">Destinations</span></h1>
+    <p>Discover amazing places we help you travel to</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right"></i><span>Destinations</span></div>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-tabs" id="filterTabs">
+      <button class="ftab active" data-f="all">All</button>
+      <button class="ftab" data-f="middle-east">Middle East</button>
+      <button class="ftab" data-f="sea">Southeast Asia</button>
+      <button class="ftab" data-f="south-asia">South Asia</button>
+      <button class="ftab" data-f="europe">Europe</button>
+    </div>
+  </div>
+</div>
+
+<section class="dest-full section-padding">
+  <div class="container">
+    <div class="dest-full-grid" id="destGrid">
+
+      <div class="dest-full-card reveal-up" data-cat="middle-east">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=700&q=80&fit=crop" alt="Dubai"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Dubai</h3>
+              <p><i class="fas fa-map-marker-alt"></i> United Arab Emirates</p>
+              <div class="dfc-tags"><span>Luxury</span><span>Desert Safari</span><span>Burj Khalifa</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Dubai trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Dubai, UAE</h4><p>City of Gold &amp; Dreams</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳89,999</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up delay-1" data-cat="sea">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=700&q=80&fit=crop" alt="Thailand"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Thailand</h3>
+              <p><i class="fas fa-map-marker-alt"></i> Southeast Asia</p>
+              <div class="dfc-tags"><span>Beaches</span><span>Temples</span><span>Street Food</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Thailand trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Thailand</h4><p>Land of Smiles</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳65,000</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up delay-2" data-cat="sea">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=700&q=80&fit=crop" alt="Malaysia"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Malaysia</h3>
+              <p><i class="fas fa-map-marker-alt"></i> Southeast Asia</p>
+              <div class="dfc-tags"><span>Petronas</span><span>Langkawi</span><span>Culture</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Malaysia trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Malaysia</h4><p>Truly Asia</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳55,000</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up delay-3" data-cat="south-asia">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=700&q=80&fit=crop" alt="Maldives"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Maldives</h3>
+              <p><i class="fas fa-map-marker-alt"></i> South Asia</p>
+              <div class="dfc-tags"><span>Water Villa</span><span>Snorkeling</span><span>Couples</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Maldives trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Maldives</h4><p>Paradise on Earth</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳1,20,000</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up" data-cat="south-asia">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=700&q=80&fit=crop" alt="India"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>India</h3>
+              <p><i class="fas fa-map-marker-alt"></i> South Asia</p>
+              <div class="dfc-tags"><span>Taj Mahal</span><span>Delhi</span><span>Kolkata</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=India trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>India</h4><p>Incredible India</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳25,000</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up delay-1" data-cat="sea">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=700&q=80&fit=crop" alt="Singapore"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Singapore</h3>
+              <p><i class="fas fa-map-marker-alt"></i> Southeast Asia</p>
+              <div class="dfc-tags"><span>Marina Bay</span><span>Shopping</span><span>Universal</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Singapore trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Singapore</h4><p>The Lion City</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳75,000</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up delay-2" data-cat="middle-east">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=700&q=80&fit=crop" alt="Turkey"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Turkey</h3>
+              <p><i class="fas fa-map-marker-alt"></i> Middle East/Europe</p>
+              <div class="dfc-tags"><span>Istanbul</span><span>Cappadocia</span><span>History</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Turkey trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Turkey</h4><p>Where East Meets West</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳95,000</strong></div>
+        </div>
+      </div>
+
+      <div class="dest-full-card reveal-up delay-3" data-cat="europe">
+        <div class="dfc-img">
+          <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=700&q=80&fit=crop" alt="Europe"/>
+          <div class="dfc-overlay">
+            <div class="dfc-detail">
+              <h3>Europe</h3>
+              <p><i class="fas fa-map-marker-alt"></i> Western Europe</p>
+              <div class="dfc-tags"><span>Paris</span><span>London</span><span>Rome</span></div>
+              <a href="https://wa.me/8801XXXXXXXXX?text=Europe trip info" target="_blank" class="btn btn-gold btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="dfc-bottom">
+          <div><h4>Europe</h4><p>The Dream Continent</p></div>
+          <div class="dfc-price"><span>From</span><strong class="gold">৳2,50,000</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <i class="fas fa-globe cta-icon"></i>
+      <h2>Found Your Dream <span class="gold">Destination?</span></h2>
+      <p>Book now with Trip Fly BD and get the best deal on your next adventure!</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="btn btn-gold btn-lg"><i class="fab fa-whatsapp"></i> Book Now</a>
+        <a href="contact.html" class="btn btn-outline btn-lg"><i class="fas fa-envelope"></i> Inquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo" style="display:inline-flex;"><img src="images/logo.png" alt="Logo" class="logo-img"/><span class="logo-text">Trip Fly <span class="gold">BD</span></span></a><p>Bangladesh's premier air travel agency.</p><div class="footer-socials"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-link"><i class="fab fa-instagram"></i></a><a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="#" class="social-link"><i class="fab fa-youtube"></i></a></div></div>
+      <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="destinations.html">Destinations</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-links"><h4>Services</h4><ul><li><a href="services.html">Tourist Visa</a></li><li><a href="services.html">Group Visa</a></li><li><a href="services.html">Couple Package</a></li><li><a href="services.html">Single Visa</a></li></ul></div>
+      <div class="footer-contact"><h4>Contact Us</h4><ul><li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li><li><i class="fas fa-phone"></i> +880 1XXXXXXXXX</li><li><i class="fab fa-whatsapp"></i> +880 1XXXXXXXXX</li><li><i class="fas fa-envelope"></i> info@tripflybd.com</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 <span class="gold">Trip Fly BD</span>. All Rights Reserved.</p></div>
+  </div>
+</footer>
+<script src="js/common.js"></script>
+<script src="js/destinations.js"></script>
+</body>
+</html>
