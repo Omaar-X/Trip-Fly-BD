@@ -1,380 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-  <meta name="description" content="Trip Fly BD Management — Meet our premium leadership team and travel experts." />
-  <meta name="theme-color" content="#D4AF37" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
+  <meta name="description" content="Trip Fly BD Management — Meet the expert team behind Bangladesh's premier travel agency. Experienced professionals dedicated to your journey."/>
+  <meta name="theme-color" content="#D4AF37"/>
   <title>Management | Trip Fly BD</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/common.css" />
-  <link rel="stylesheet" href="css/management.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/management.css"/>
 </head>
-
 <body>
 
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
-    <a href="index.html" class="nav-logo">
-      <img src="images/logo.png" alt="Trip Fly BD Logo" class="logo-img" />
+    <a href="index.html" class="nav-logo" aria-label="Trip Fly BD Home">
+      <img src="images/logo.png" alt="Trip Fly BD logo" class="logo-img"/>
       <span class="logo-text">Trip Fly <span class="gold">BD</span></span>
     </a>
-
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="services.html" class="nav-link">Services</a></li>
-      <li><a href="destinations.html" class="nav-link">Destinations</a></li>
-      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-      <li><a href="management.html" class="nav-link active">Management</a></li>
-      <li>
-        <a href="https://wa.me/88017XXXXXXXX?text=Hello%20Trip%20Fly%20BD!" target="_blank" class="nav-link nav-cta">
-          <i class="fab fa-whatsapp"></i> Book Now
+    <ul class="nav-menu" id="navMenu" role="menubar">
+      <li role="none"><a href="index.html"        class="nav-link"           role="menuitem">Home</a></li>
+      <li role="none"><a href="about.html"        class="nav-link"           role="menuitem">About</a></li>
+      <li role="none"><a href="services.html"     class="nav-link"           role="menuitem">Services</a></li>
+      <li role="none"><a href="destinations.html" class="nav-link"           role="menuitem">Destinations</a></li>
+      <li role="none"><a href="gallery.html"      class="nav-link "     role="menuitem">Gallery</a></li>
+      <li role="none"><a href="management.html"   class="nav-link active"    role="menuitem">Management</a></li>
+      <li role="none">
+        <a href="https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!" target="_blank" rel="noopener"
+           class="nav-link nav-cta" role="menuitem">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Book Now
         </a>
       </li>
     </ul>
-
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<section class="mgmt-hero">
-  <div class="mgmt-hero-glow"></div>
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section class="mgmt-hero" aria-labelledby="mgmt-hero-h1">
+  <div class="mgmt-hero-orb" aria-hidden="true"></div>
   <div class="mgmt-hero-content">
-    <span class="section-tag"><i class="fas fa-crown"></i> Executive Team</span>
-    <h1>Meet Our <span class="gold">Management</span></h1>
-    <p>
-      The leadership and expert team behind Trip Fly BD — serving travelers with trust,
-      premium guidance, visa support, ticketing and travel solutions since February 2023.
-    </p>
-
-    <div class="mgmt-hero-actions">
-      <a href="contact.html" class="btn btn-gold">
-        <i class="fas fa-envelope"></i> Contact Team
-      </a>
-      <a href="https://wa.me/88017XXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20talk%20with%20your%20team." target="_blank" class="btn btn-outline">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-      </a>
+    <span class="section-tag"><i class="fas fa-users" aria-hidden="true"></i> Our People</span>
+    <h1 id="mgmt-hero-h1">Meet Our <span class="gold">Management</span></h1>
+    <p>The dedicated professionals behind Trip Fly BD &mdash; committed to delivering world-class travel experiences since February&nbsp;2023.</p>
+    <div class="hero-badges">
+      <span class="hero-badge"><i class="fas fa-shield-alt"></i> Licensed &amp; Registered</span>
+      <span class="hero-badge"><i class="fas fa-star"></i> 7 Expert Members</span>
+      <span class="hero-badge"><i class="fas fa-headset"></i> 24/7 Support</span>
+      <span class="hero-badge"><i class="fas fa-calendar-check"></i> Est. Feb 2023</span>
     </div>
-
     <div class="breadcrumb">
       <a href="index.html">Home</a>
-      <i class="fas fa-chevron-right"></i>
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
       <span>Management</span>
     </div>
   </div>
 </section>
 
-<section class="leadership-section section-padding">
+<!-- ════════════════════════════════════
+     LEADERSHIP  (Proprietor + HOD)
+════════════════════════════════════ -->
+<section class="leadership-section section-padding" aria-labelledby="leadership-h2">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-star"></i> Leadership</span>
-      <h2 class="section-title">Founders & <span class="gold">Leadership</span></h2>
-      <p class="section-subtitle">
-        Visionary leaders guiding Trip Fly BD with professionalism, trust and customer-first service.
-      </p>
+      <span class="section-tag"><i class="fas fa-crown" aria-hidden="true"></i> Executive Leadership</span>
+      <h2 class="section-title" id="leadership-h2">Founders &amp; <span class="gold">Leadership</span></h2>
+      <p class="section-subtitle">Visionary leaders who built Trip Fly BD from the ground up, committed to delivering world-class travel experiences to every Bangladeshi client</p>
     </div>
 
-    <div class="leaders-grid">
+    <div class="leaders-row">
 
-      <article class="leader-card chairman-card reveal-left" data-person="chairman">
-        <div class="leader-premium-mark">Founder</div>
-
-        <div class="leader-avatar-wrap">
-          <div class="leader-ring"></div>
-          <div class="leader-avatar avatar-gold">
-            <i class="fas fa-crown"></i>
+      <!-- ── PROPRIETOR ──
+           Phone / WA / FB / LI: edit in js/management.js → TEAM array (id: 'tahmina')
+           Image: images/Propiter.png -->
+      <div class="leader-card proprietor-card reveal-left"
+           data-member-id="tahmina"
+           role="button" tabindex="0"
+           aria-label="View Tahmina Bashar Nishat profile">
+        <div class="photo-ring-wrap">
+          <div class="ring-outer" aria-hidden="true"></div>
+          <div class="ring-mid"   aria-hidden="true"></div>
+          <div class="ring-inner" aria-hidden="true"></div>
+          <div class="photo-circle">
+            <img src="images/Propiter.png" alt="Tahmina Bashar Nishat — Proprietor"
+                 loading="eager" data-member-img/>
+            <div class="photo-fallback" data-member-fallback style="display:none;">
+              <i class="fas fa-crown"></i>
+            </div>
           </div>
-          <div class="leader-badge">Chairman</div>
+          <div class="photo-badge">Proprietor</div>
         </div>
-
         <div class="leader-info">
-          <span class="leader-label">Founder & Chairperson</span>
-          <h3 class="leader-name">Thamina Bashar Nishat</h3>
-          <span class="leader-role">Chairman — Trip Fly BD</span>
-          <p class="leader-desc">
-            Leading Trip Fly BD with vision, trust and dedication since February 2023.
-            Her leadership focuses on transparent travel service, premium customer support
-            and reliable visa guidance for Bangladeshi travelers.
+          <span class="leader-label">Founder &amp; Owner</span>
+          <div class="leader-name">Tahmina Bashar Nishat</div>
+          <span class="leader-role">Proprietor &mdash; Trip Fly BD</span>
+          <p class="leader-bio">
+            Founder and Proprietor of Trip Fly BD. Tahmina Bashar Nishat leads with a clear vision of making quality
+            travel services accessible to every Bangladeshi. Her dedication to client trust, transparent pricing and
+            service excellence has driven the agency&rsquo;s remarkable growth since February 2023.
           </p>
-
-          <div class="leader-tags">
-            <span>Vision</span>
-            <span>Trust</span>
-            <span>Service</span>
-          </div>
-
-          <div class="leader-socials">
-            <a href="#" class="social-link small"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link small"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/88017XXXXXXXX" target="_blank" class="social-link small"><i class="fab fa-whatsapp"></i></a>
-          </div>
+                <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Tahmina Bashar Nishat"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Tahmina Bashar Nishat"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Tahmina Bashar Nishat"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Tahmina Bashar Nishat"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+          <button class="view-profile-btn" data-view-profile="tahmina" aria-label="Open full profile of Tahmina Bashar Nishat">
+            <i class="fas fa-id-card" aria-hidden="true"></i> View Full Profile
+          </button>
         </div>
-      </article>
+      </div>
 
-      <article class="leader-card reveal-right" data-person="md">
-        <div class="leader-premium-mark">Operations</div>
-
-        <div class="leader-avatar-wrap">
-          <div class="leader-ring"></div>
-          <div class="leader-avatar avatar-dark">
-            <i class="fas fa-user-tie"></i>
+      <!-- ── HEAD OF DEPARTMENT ──
+           Phone / WA / FB / LI: edit in js/management.js → TEAM array (id: 'samsuddin')
+           Image: images/Dept.png -->
+      <div class="leader-card reveal-right"
+           data-member-id="samsuddin"
+           role="button" tabindex="0"
+           aria-label="View Samsuddin Razib profile">
+        <div class="photo-ring-wrap">
+          <div class="ring-outer" aria-hidden="true"></div>
+          <div class="ring-mid"   aria-hidden="true"></div>
+          <div class="ring-inner" aria-hidden="true"></div>
+          <div class="photo-circle">
+            <img src="images/Dept.png" alt="Samsuddin Razib — Head of Department"
+                 loading="eager" data-member-img/>
+            <div class="photo-fallback" data-member-fallback style="display:none;">
+              <i class="fas fa-user-tie"></i>
+            </div>
           </div>
-          <div class="leader-badge">Managing Director</div>
+          <div class="photo-badge">HOD Operations</div>
         </div>
-
         <div class="leader-info">
           <span class="leader-label">Operations Leadership</span>
-          <h3 class="leader-name">Samshuddin Razib</h3>
-          <span class="leader-role">Managing Director — Trip Fly BD</span>
-          <p class="leader-desc">
-            Managing daily operations, client communication, visa processing coordination,
-            ticketing support and business development with speed, care and professionalism.
+          <div class="leader-name">Samsuddin Razib</div>
+          <span class="leader-role">Head of Department &mdash; Operations</span>
+          <p class="leader-bio">
+            Samsuddin Razib oversees all day-to-day operations at Trip Fly BD &mdash; visa applications, air ticketing,
+            client coordination and team management. His deep industry expertise ensures every service is delivered
+            with speed, precision and genuine professionalism.
           </p>
-
-          <div class="leader-tags">
-            <span>Operations</span>
-            <span>Consulting</span>
-            <span>Growth</span>
-          </div>
-
-          <div class="leader-socials">
-            <a href="#" class="social-link small"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link small"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://wa.me/88017XXXXXXXX" target="_blank" class="social-link small"><i class="fab fa-whatsapp"></i></a>
-          </div>
+                <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Samsuddin Razib"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Samsuddin Razib"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Samsuddin Razib"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Samsuddin Razib"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+          <button class="view-profile-btn" data-view-profile="samsuddin" aria-label="Open full profile of Samsuddin Razib">
+            <i class="fas fa-id-card" aria-hidden="true"></i> View Full Profile
+          </button>
         </div>
-      </article>
+      </div>
 
-    </div>
+    </div><!-- /.leaders-row -->
   </div>
 </section>
 
-<section class="team-section section-padding">
+<!-- ════════════════════════════════════
+     PROFESSIONAL TEAM  (5 members)
+════════════════════════════════════ -->
+<section class="team-section section-padding" aria-labelledby="team-h2">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-users"></i> Expert Team</span>
-      <h2 class="section-title">Our <span class="gold">Professional Team</span></h2>
-      <p class="section-subtitle">
-        Skilled team members working together to make your visa, ticketing and travel journey smooth.
-      </p>
+      <span class="section-tag"><i class="fas fa-users" aria-hidden="true"></i> Professional Team</span>
+      <h2 class="section-title" id="team-h2">Our <span class="gold">Expert Professionals</span></h2>
+      <p class="section-subtitle">Skilled specialists working together every day to make your travel dreams a perfect reality</p>
     </div>
 
     <div class="team-grid">
 
-      <article class="team-card reveal-up" data-person="nijhu">
-        <div class="team-card-shine"></div>
-        <div class="tc-avatar"><i class="fas fa-calculator"></i></div>
-        <span class="tc-role-tag">Accounts</span>
-        <h3 class="tc-name">Nijhu Dey</h3>
-        <span class="tc-role">Accounting Manager</span>
-        <p class="tc-desc">
-          Handles billing records, payment tracking, accounts and financial documentation with transparency.
-        </p>
-        <button class="profile-btn">View Profile</button>
-      </article>
+      <!-- ── ACCOUNTANT & MANAGER ──
+           Edit contacts: js/management.js → TEAM array (id: 'nijhu')
+           Image: images/Act.png -->
+      <div class="team-card reveal-up delay-1"
+           data-member-id="nijhu"
+           role="button" tabindex="0"
+           aria-label="View Nijhu Dey profile">
+        <div class="tc-shine" aria-hidden="true"></div>
+        <div class="tc-photo-wrap">
+          <div class="tc-ring-outer" aria-hidden="true"></div>
+          <div class="tc-ring-inner" aria-hidden="true"></div>
+          <div class="tc-photo">
+            <img src="images/Act.png" alt="Nijhu Dey — Accountant &amp; Manager" loading="lazy" data-member-img/>
+            <div class="tc-photo-fallback" data-member-fallback style="display:none;"><i class="fas fa-calculator"></i></div>
+          </div>
+          <div class="tc-badge">Accounts</div>
+        </div>
+        <div class="tc-name">Nijhu Dey</div>
+        <span class="tc-role">Accountant &amp; Manager</span>
+        <p class="tc-bio">Manages all financial operations, billing records, payment tracking and accounting with meticulous accuracy and complete transparency.</p>
+              <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Nijhu Dey"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Nijhu Dey"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Nijhu Dey"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Nijhu Dey"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+        <button class="view-profile-btn" data-view-profile="nijhu" style="font-size:.72rem;padding:.42rem 1rem;margin-top:.9rem;" aria-label="View Nijhu Dey profile">
+          <i class="fas fa-id-card"></i> Profile
+        </button>
+      </div>
 
-      <article class="team-card reveal-up delay-1" data-person="nazmul">
-        <div class="team-card-shine"></div>
-        <div class="tc-avatar"><i class="fas fa-bullhorn"></i></div>
-        <span class="tc-role-tag">Marketing</span>
-        <h3 class="tc-name">Nazmul Hasan</h3>
+      <!-- ── MARKETING COORDINATOR ──
+           Edit contacts: js/management.js → TEAM array (id: 'nazmul')
+           Image: images/Mkt.png -->
+      <div class="team-card reveal-up delay-2"
+           data-member-id="nazmul"
+           role="button" tabindex="0"
+           aria-label="View Nazmul Hasan profile">
+        <div class="tc-shine" aria-hidden="true"></div>
+        <div class="tc-photo-wrap">
+          <div class="tc-ring-outer" aria-hidden="true"></div>
+          <div class="tc-ring-inner" aria-hidden="true"></div>
+          <div class="tc-photo">
+            <img src="images/Mkt.png" alt="Nazmul Hasan — Marketing Coordinator" loading="lazy" data-member-img/>
+            <div class="tc-photo-fallback" data-member-fallback style="display:none;"><i class="fas fa-bullhorn"></i></div>
+          </div>
+          <div class="tc-badge">Marketing</div>
+        </div>
+        <div class="tc-name">Nazmul Hasan</div>
         <span class="tc-role">Marketing Coordinator</span>
-        <p class="tc-desc">
-          Coordinates customer outreach, travel package promotion and digital communication campaigns.
-        </p>
-        <button class="profile-btn">View Profile</button>
-      </article>
+        <p class="tc-bio">Coordinates marketing campaigns, customer outreach and travel package promotions, connecting clients with the right services through strategic communication.</p>
+              <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Nazmul Hasan"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Nazmul Hasan"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Nazmul Hasan"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Nazmul Hasan"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+        <button class="view-profile-btn" data-view-profile="nazmul" style="font-size:.72rem;padding:.42rem 1rem;margin-top:.9rem;" aria-label="View Nazmul Hasan profile">
+          <i class="fas fa-id-card"></i> Profile
+        </button>
+      </div>
 
-      <article class="team-card reveal-up delay-2" data-person="boorhan">
-        <div class="team-card-shine"></div>
-        <div class="tc-avatar"><i class="fas fa-passport"></i></div>
-        <span class="tc-role-tag">Consultant</span>
-        <h3 class="tc-name">Md Boorhan Uddin</h3>
-        <span class="tc-role">Travel & Visa Consultant</span>
-        <p class="tc-desc">
-          Provides visa document guidance, destination consultation and travel planning support.
-        </p>
-        <button class="profile-btn">View Profile</button>
-      </article>
+      <!-- ── WEB DEVELOPER & DIGITAL MARKETER ──
+           Edit contacts: js/management.js → TEAM array (id: 'omar')
+           Image: images/web.png -->
+      <div class="team-card reveal-up delay-3"
+           data-member-id="omar"
+           role="button" tabindex="0"
+           aria-label="View Omar Farque profile">
+        <div class="tc-shine" aria-hidden="true"></div>
+        <div class="tc-photo-wrap">
+          <div class="tc-ring-outer" aria-hidden="true"></div>
+          <div class="tc-ring-inner" aria-hidden="true"></div>
+          <div class="tc-photo">
+            <img src="images/web.png" alt="Omar Farque — Web Developer &amp; Digital Marketer" loading="lazy" data-member-img/>
+            <div class="tc-photo-fallback" data-member-fallback style="display:none;"><i class="fas fa-laptop-code"></i></div>
+          </div>
+          <div class="tc-badge">Digital</div>
+        </div>
+        <div class="tc-name">Omar Farque</div>
+        <span class="tc-role">Web Developer &amp; Digital Marketer</span>
+        <p class="tc-bio">Manages Trip Fly BD&rsquo;s complete digital presence &mdash; website development, online advertising and social media brand strategy for maximum digital growth.</p>
+              <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Omar Farque"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Omar Farque"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Omar Farque"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Omar Farque"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+        <button class="view-profile-btn" data-view-profile="omar" style="font-size:.72rem;padding:.42rem 1rem;margin-top:.9rem;" aria-label="View Omar Farque profile">
+          <i class="fas fa-id-card"></i> Profile
+        </button>
+      </div>
 
-      <article class="team-card reveal-up delay-3 featured-member" data-person="omar">
-        <div class="team-card-shine"></div>
-        <div class="tc-avatar"><i class="fas fa-laptop-code"></i></div>
-        <span class="tc-role-tag">Digital</span>
-        <h3 class="tc-name">Omar Farque</h3>
-        <span class="tc-role">Digital Marketing & Web Developer</span>
-        <p class="tc-desc">
-          Manages website development, social media branding, online marketing and digital strategy.
-        </p>
-        <button class="profile-btn">View Profile</button>
-      </article>
+      <!-- ── DIGITAL MARKETER ──
+           Edit contacts: js/management.js → TEAM array (id: 'shifat')
+           Image: images/DM.png -->
+      <div class="team-card reveal-up delay-1"
+           data-member-id="shifat"
+           role="button" tabindex="0"
+           aria-label="View Shahriar Mahmud Shifat profile">
+        <div class="tc-shine" aria-hidden="true"></div>
+        <div class="tc-photo-wrap">
+          <div class="tc-ring-outer" aria-hidden="true"></div>
+          <div class="tc-ring-inner" aria-hidden="true"></div>
+          <div class="tc-photo">
+            <img src="images/DM.png" alt="Shahriar Mahmud Shifat — Digital Marketer" loading="lazy" data-member-img/>
+            <div class="tc-photo-fallback" data-member-fallback style="display:none;"><i class="fas fa-chart-line"></i></div>
+          </div>
+          <div class="tc-badge">Digital Mkt</div>
+        </div>
+        <div class="tc-name">Shahriar Mahmud Shifat</div>
+        <span class="tc-role">Digital Marketer</span>
+        <p class="tc-bio">Manages performance marketing campaigns across social media platforms, growing Trip Fly BD&rsquo;s online reach and generating quality travel inquiries every day.</p>
+              <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Shahriar Mahmud Shifat"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Shahriar Mahmud Shifat"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Shahriar Mahmud Shifat"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Shahriar Mahmud Shifat"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+        <button class="view-profile-btn" data-view-profile="shifat" style="font-size:.72rem;padding:.42rem 1rem;margin-top:.9rem;" aria-label="View Shahriar Mahmud Shifat profile">
+          <i class="fas fa-id-card"></i> Profile
+        </button>
+      </div>
 
-    </div>
+      <!-- ── CONSULTANT ──
+           Edit contacts: js/management.js → TEAM array (id: 'burhan')
+           Image: images/con.png -->
+      <div class="team-card reveal-up delay-2"
+           data-member-id="burhan"
+           role="button" tabindex="0"
+           aria-label="View Md Burhan Uddin profile">
+        <div class="tc-shine" aria-hidden="true"></div>
+        <div class="tc-photo-wrap">
+          <div class="tc-ring-outer" aria-hidden="true"></div>
+          <div class="tc-ring-inner" aria-hidden="true"></div>
+          <div class="tc-photo">
+            <img src="images/con.png" alt="Md Burhan Uddin — Consultant" loading="lazy" data-member-img/>
+            <div class="tc-photo-fallback" data-member-fallback style="display:none;"><i class="fas fa-passport"></i></div>
+          </div>
+          <div class="tc-badge">Consultant</div>
+        </div>
+        <div class="tc-name">Md Burhan Uddin</div>
+        <span class="tc-role">Consultant</span>
+        <p class="tc-bio">Provides expert visa and travel consultation, guiding clients through document requirements, embassy procedures and destination planning with professional expertise.</p>
+              <div class="member-socials">
+        <a href="tel:+8801XXXXXXXXX" class="soc-btn call" aria-label="Call Md Burhan Uddin"><i class="fas fa-phone"></i><span>Call</span></a>
+        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="soc-btn wa" aria-label="WhatsApp Md Burhan Uddin"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn fb" aria-label="Facebook Md Burhan Uddin"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        <a href="#" target="_blank" rel="noopener" class="soc-btn li" aria-label="LinkedIn Md Burhan Uddin"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      </div>
+        <button class="view-profile-btn" data-view-profile="burhan" style="font-size:.72rem;padding:.42rem 1rem;margin-top:.9rem;" aria-label="View Md Burhan Uddin profile">
+          <i class="fas fa-id-card"></i> Profile
+        </button>
+      </div>
+
+    </div><!-- /.team-grid -->
   </div>
 </section>
 
-<section class="mgmt-stats">
-  <div class="container">
-    <div class="mgmt-stats-row">
-      <div class="mgmt-stat reveal-up">
-        <i class="fas fa-users"></i>
-        <span class="mgmt-stat-num" data-count="6" data-suffix="+">0</span>
-        <span class="mgmt-stat-lbl">Team Members</span>
-      </div>
-
-      <div class="mgmt-stat reveal-up delay-1">
-        <i class="fas fa-passport"></i>
-        <span class="mgmt-stat-num" data-count="2000" data-suffix="+">0</span>
-        <span class="mgmt-stat-lbl">Clients Served</span>
-      </div>
-
-      <div class="mgmt-stat reveal-up delay-2">
-        <i class="fas fa-handshake"></i>
-        <span class="mgmt-stat-num" data-count="100" data-suffix="%">0</span>
-        <span class="mgmt-stat-lbl">Client Focus</span>
-      </div>
-
-      <div class="mgmt-stat reveal-up delay-3">
-        <i class="fas fa-calendar-check"></i>
-        <span class="mgmt-stat-num" data-count="2" data-suffix="+ Yrs">0</span>
-        <span class="mgmt-stat-lbl">Experience</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="management-process section-padding">
+<!-- ════════════════════════════════════
+     STATS SECTION
+════════════════════════════════════ -->
+<section class="mgmt-stats-section section-padding" aria-labelledby="stats-h2">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-route"></i> How We Work</span>
-      <h2 class="section-title">Our Premium <span class="gold">Service Flow</span></h2>
-      <p class="section-subtitle">Simple, transparent and professional process for every client.</p>
+      <span class="section-tag"><i class="fas fa-chart-bar" aria-hidden="true"></i> Our Strength</span>
+      <h2 class="section-title" id="stats-h2">Team <span class="gold">by the Numbers</span></h2>
+      <p class="section-subtitle">The numbers that define our commitment to excellence in travel services</p>
+    </div>
+
+    <div class="stats-grid" role="list">
+      <div class="stat-card reveal-up delay-1" role="listitem">
+        <i class="fas fa-users stat-icon" aria-hidden="true"></i>
+        <span class="stat-num" data-stat="7" data-suffix="+" aria-label="7 or more team members">7+</span>
+        <span class="stat-lbl">Team Members</span>
+      </div>
+      <div class="stat-card reveal-up delay-2" role="listitem">
+        <i class="fas fa-passport stat-icon" aria-hidden="true"></i>
+        <span class="stat-num" data-stat="2000" data-suffix="+" aria-label="2000 or more clients served">2000+</span>
+        <span class="stat-lbl">Clients Served</span>
+      </div>
+      <div class="stat-card reveal-up delay-3" role="listitem">
+        <i class="fas fa-globe-asia stat-icon" aria-hidden="true"></i>
+        <span class="stat-num" data-stat="25" data-suffix="+" aria-label="25 or more destinations">25+</span>
+        <span class="stat-lbl">Destinations</span>
+      </div>
+      <div class="stat-card reveal-up delay-4" role="listitem">
+        <i class="fas fa-calendar-check stat-icon" aria-hidden="true"></i>
+        <span class="stat-num" data-stat="2023" data-suffix="" aria-label="Established in 2023">2023</span>
+        <span class="stat-lbl">Est. February</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     WORK PROCESS
+════════════════════════════════════ -->
+<section class="process-section section-padding" aria-labelledby="process-h2">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-tasks" aria-hidden="true"></i> How We Work</span>
+      <h2 class="section-title" id="process-h2">Our <span class="gold">Work Process</span></h2>
+      <p class="section-subtitle">A proven, client-first process that gets your visa approved and your trip planned smoothly</p>
     </div>
 
     <div class="process-grid">
-      <div class="process-card reveal-up">
-        <span>01</span>
-        <i class="fas fa-comments"></i>
-        <h3>Consultation</h3>
-        <p>We understand your destination, visa type and travel plan clearly.</p>
-      </div>
-
       <div class="process-card reveal-up delay-1">
-        <span>02</span>
-        <i class="fas fa-file-signature"></i>
-        <h3>Documentation</h3>
-        <p>Our team guides you with proper documents and application preparation.</p>
+        <div class="ps-step-badge">Step 01</div>
+        <div class="ps-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+        <h3>Consultation</h3>
+        <p>Our expert consultants understand your travel needs, destination, budget and timeline through a personalised WhatsApp consultation.</p>
       </div>
-
       <div class="process-card reveal-up delay-2">
-        <span>03</span>
-        <i class="fas fa-paper-plane"></i>
-        <h3>Processing</h3>
-        <p>We support visa processing, ticketing, hotel and travel package arrangement.</p>
+        <div class="ps-step-badge">Step 02</div>
+        <div class="ps-icon"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
+        <h3>Documentation</h3>
+        <p>We provide a complete, destination-specific document checklist and guide you step by step through preparing every required document.</p>
       </div>
-
       <div class="process-card reveal-up delay-3">
-        <span>04</span>
-        <i class="fas fa-plane-departure"></i>
+        <div class="ps-step-badge">Step 03</div>
+        <div class="ps-icon"><i class="fas fa-cogs" aria-hidden="true"></i></div>
+        <h3>Processing</h3>
+        <p>We submit your application, coordinate with embassies and airlines, and keep you updated in real time throughout the entire process.</p>
+      </div>
+      <div class="process-card reveal-up delay-4">
+        <div class="ps-step-badge">Step 04</div>
+        <div class="ps-icon"><i class="fas fa-plane-departure" aria-hidden="true"></i></div>
         <h3>Travel Ready</h3>
-        <p>We keep you updated until your journey is fully ready.</p>
+        <p>Visa approved, ticket booked, hotel confirmed &mdash; you are ready to travel! Our support continues even after you depart.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
+<!-- ════════════════════════════════════
+     CTA
+════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="cta-h2">
   <div class="container">
     <div class="cta-content">
-      <i class="fas fa-headset cta-icon"></i>
-      <h2>Talk to Our <span class="gold">Expert Team</span></h2>
-      <p>
-        Need tourist visa, group package, air ticket, date change or travel consultation?
-        Our team is ready to support you.
-      </p>
-
+      <i class="fas fa-headset cta-icon" aria-hidden="true"></i>
+      <h2 id="cta-h2">Talk to Our <span class="gold">Expert Team</span></h2>
+      <p>Our consultants are ready to help you with tourist visa, group packages, air ticketing and full tour arrangements. Get in touch today!</p>
       <div class="cta-buttons">
-        <a href="https://wa.me/88017XXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20speak%20with%20your%20team." target="_blank" class="btn btn-gold btn-lg">
-          <i class="fab fa-whatsapp"></i> Chat With Team
+        <a href="https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20speak%20with%20your%20team."
+           target="_blank" rel="noopener" class="btn btn-gold btn-lg">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat With Our Team
         </a>
         <a href="contact.html" class="btn btn-outline btn-lg">
-          <i class="fas fa-envelope"></i> Send Message
+          <i class="fas fa-envelope" aria-hidden="true"></i> Send a Message
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="display:inline-flex;">
-          <img src="images/logo.png" alt="Trip Fly BD Logo" class="logo-img" />
-          <span class="logo-text">Trip Fly <span class="gold">BD</span></span>
-        </a>
-        <p>
-          Bangladesh’s premium air travel agency for visa processing, air ticketing,
-          domestic ticketing, group visa and travel packages.
-        </p>
-
+        <a href="index.html" class="nav-logo" style="display:inline-flex;"><img src="images/logo.png" alt="Trip Fly BD Logo" class="logo-img"/><span class="logo-text">Trip Fly <span class="gold">BD</span></span></a>
+        <p>Bangladesh&rsquo;s premier air travel agency &mdash; tourist visa, group packages, couple tours &amp; premium travel experiences worldwide. Est. February 2023.</p>
         <div class="footer-socials">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/88017XXXXXXXX" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/8801XXXXXXXXX" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
-          <li><a href="destinations.html"><i class="fas fa-chevron-right"></i> Destinations</a></li>
-          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Air Ticketing</a></li>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Domestic Ticketing</a></li>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Tourist Visa</a></li>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Student Visa</a></li>
-          <li><a href="services.html"><i class="fas fa-chevron-right"></i> Medical Visa</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-contact">
-        <h4>Contact Info</h4>
-        <ul>
-          <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
-          <li><i class="fas fa-phone"></i> +880 17XXXXXXXX</li>
-          <li><i class="fab fa-whatsapp"></i> +880 17XXXXXXXX</li>
-          <li><i class="fas fa-envelope"></i> info@tripflybd.com</li>
-          <li><i class="fas fa-clock"></i> Sat–Thu: 9AM–9PM</li>
-        </ul>
-      </div>
+      <div class="footer-links"><h4>Quick Links</h4><ul>
+        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+        <li><a href="destinations.html"><i class="fas fa-chevron-right"></i> Destinations</a></li>
+        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+        <li><a href="management.html"><i class="fas fa-chevron-right"></i> Management</a></li>
+        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+      </ul></div>
+      <div class="footer-links"><h4>Our Services</h4><ul>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Air Ticketing</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Domestic Flights</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Tourist Visa</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Group Visa</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Medical Visa</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Hotel Booking</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Tour Package</a></li>
+      </ul></div>
+      <div class="footer-contact"><h4>Contact Info</h4><ul>
+        <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
+        <li><i class="fas fa-phone"></i> +880 1XXXXXXXXX</li>
+        <li><i class="fab fa-whatsapp"></i> +880 1XXXXXXXXX (24/7)</li>
+        <li><i class="fas fa-envelope"></i> info@tripflybd.com</li>
+        <li><i class="fas fa-clock"></i> Sat&ndash;Thu: 9AM &ndash; 9PM</li>
+      </ul></div>
     </div>
-
     <div class="footer-bottom">
-      <p>&copy; 2025 <span class="gold">Trip Fly BD</span>. All Rights Reserved.</p>
+      <p>&copy; 2025 <span class="gold" style="font-weight:700;">Trip Fly BD</span>. All Rights Reserved. Crafted with <i class="fas fa-heart" style="color:var(--gold);"></i> for Bangladeshi Dreamers.</p>
     </div>
   </div>
 </footer>
 
+<!-- ════════════════════════════════════
+     PROFILE MODAL
+════════════════════════════════════ -->
+<div class="profile-modal-overlay" id="profileModalOverlay"
+     role="dialog" aria-modal="true" aria-labelledby="pmName">
+  <div class="profile-modal" id="profileModal">
+    <div class="pm-header">
+      <button class="pm-close-btn" id="pmCloseBtn" aria-label="Close profile">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+
+      <!-- Photo ring -->
+      <div class="pm-photo-wrap">
+        <div class="pm-ring-outer" aria-hidden="true"></div>
+        <div class="pm-ring-inner" aria-hidden="true"></div>
+        <div class="pm-photo">
+          <img id="pmPhoto" src="" alt="" loading="lazy"/>
+          <div id="pmFallback" class="pm-photo-fallback" style="display:none;">
+            <i id="pmFallbackIcon" class="fas fa-user"></i>
+          </div>
+        </div>
+        <div class="pm-badge" id="pmBadge">Member</div>
+      </div>
+
+      <div id="pmName" class="pm-name">Name</div>
+      <span class="pm-role" id="pmRole">Role</span>
+      <p class="pm-bio" id="pmBio">Bio</p>
+    </div>
+
+    <div class="pm-body">
+      <div class="pm-contact-title"><i class="fas fa-address-card" aria-hidden="true"></i> Contact</div>
+      <div class="pm-contact-row">
+        <!-- Call -->
+        <a id="pmCall" href="tel:+8801XXXXXXXXX" class="pm-social-btn call" aria-label="Call member">
+          <i class="fas fa-phone" aria-hidden="true"></i>
+          <span>+880 1XXXXXXXXX</span>
+        </a>
+        <!-- WhatsApp -->
+        <a id="pmWA" href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="pm-social-btn wa" aria-label="WhatsApp member">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+      <div class="pm-contact-row">
+        <!-- Facebook -->
+        <a id="pmFB" href="#" target="_blank" rel="noopener" class="pm-social-btn fb" aria-label="Facebook profile">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          <span>Facebook</span>
+        </a>
+        <!-- LinkedIn -->
+        <a id="pmLI" href="#" target="_blank" rel="noopener" class="pm-social-btn li" aria-label="LinkedIn profile">
+          <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="pm-footer">
+      <a href="https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20speak%20with%20your%20team."
+         target="_blank" rel="noopener" class="btn btn-gold">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> Book a Consultation
+      </a>
+    </div>
+  </div>
+</div>
+
 <script src="js/common.js"></script>
 <script src="js/management.js"></script>
-
 </body>
 </html>

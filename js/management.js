@@ -1,515 +1,291 @@
-<<<<<<< HEAD
 /* ============================================================
-   TRIP FLY BD — MANAGEMENT.JS
-   Premium Executive Management Interactions
+   TRIP FLY BD — MANAGEMENT.JS  (Premium Edition)
+   Profile Modal | 3D Tilt | Counters | Scroll Reveal
 ============================================================ */
 'use strict';
 
+/* ══════════════════════════════════════════════
+   TEAM MEMBER DATA
+   ⚠️  EDIT EACH MEMBER'S PHONE, WHATSAPP, FACEBOOK, LINKEDIN HERE
+══════════════════════════════════════════════ */
+const TEAM = [
+  {
+    id:        'tahmina',
+    name:      'Tahmina Bashar Nishat',
+    role:      'Proprietor — Trip Fly BD',
+    badge:     'Proprietor',
+    img:       'images/Propiter.png',
+    fallback:  'fas fa-crown',
+    bio:       'Founder and Proprietor of Trip Fly BD. Tahmina Bashar Nishat leads the agency with a clear vision of making quality travel services accessible to every Bangladeshi. Her dedication to client trust, transparent pricing and service excellence has driven the agency\'s growth since February 2023.',
+    // ── EDIT CONTACT DETAILS BELOW ──
+    phone:    '+880 1XXXXXXXXX',          // Replace with actual phone
+    whatsapp: 'https://wa.me/8801XXXXXXXXX', // Replace with actual WA link
+    facebook: '#',                           // Replace with actual FB URL
+    linkedin: '#',                           // Replace with actual LI URL
+  },
+  {
+    id:        'samsuddin',
+    name:      'Samsuddin Razib',
+    role:      'Head of Department — Operations',
+    badge:     'HOD Operations',
+    img:       'images/Dept.png',
+    fallback:  'fas fa-user-tie',
+    bio:       'Samsuddin Razib oversees all operational activities at Trip Fly BD — from visa applications and air ticketing to client coordination and team management. His deep industry expertise ensures every service is delivered with speed, precision and professionalism.',
+    phone:    '+880 1XXXXXXXXX',
+    whatsapp: 'https://wa.me/8801XXXXXXXXX',
+    facebook: '#',
+    linkedin: '#',
+  },
+  {
+    id:        'nijhu',
+    name:      'Nijhu Dey',
+    role:      'Accountant & Manager',
+    badge:     'Accounts',
+    img:       'images/Act.png',
+    fallback:  'fas fa-calculator',
+    bio:       'Nijhu Dey manages all financial operations, billing records, payment tracking and accounting for Trip Fly BD. Her meticulous approach ensures complete transparency and accuracy in every financial transaction.',
+    phone:    '+880 1XXXXXXXXX',
+    whatsapp: 'https://wa.me/8801XXXXXXXXX',
+    facebook: '#',
+    linkedin: '#',
+  },
+  {
+    id:        'nazmul',
+    name:      'Nazmul Hasan',
+    role:      'Marketing Coordinator',
+    badge:     'Marketing',
+    img:       'images/Mkt.png',
+    fallback:  'fas fa-bullhorn',
+    bio:       'Nazmul Hasan drives marketing campaigns, customer outreach and travel package promotions for Trip Fly BD. He connects clients with the right services through strategic digital and offline marketing communication.',
+    phone:    '+880 1XXXXXXXXX',
+    whatsapp: 'https://wa.me/8801XXXXXXXXX',
+    facebook: '#',
+    linkedin: '#',
+  },
+  {
+    id:        'omar',
+    name:      'Omar Farque',
+    role:      'Web Developer & Digital Marketer',
+    badge:     'Digital',
+    img:       'images/web.png',
+    fallback:  'fas fa-laptop-code',
+    bio:       'Omar Farque manages Trip Fly BD\'s complete digital presence — website development, search engine marketing, social media branding and online advertising strategy. He is the technology and digital growth engine behind the brand.',
+    phone:    '+880 1XXXXXXXXX',
+    whatsapp: 'https://wa.me/8801XXXXXXXXX',
+    facebook: '#',
+    linkedin: '#',
+  },
+  {
+    id:        'shifat',
+    name:      'Shahriar Mahmud Shifat',
+    role:      'Digital Marketer',
+    badge:     'Digital Mkt',
+    img:       'images/DM.png',
+    fallback:  'fas fa-chart-line',
+    bio:       'Shahriar Mahmud Shifat manages digital marketing campaigns across social media platforms and performance advertising channels, growing Trip Fly BD\'s online reach and generating quality travel inquiries.',
+    phone:    '+880 1XXXXXXXXX',
+    whatsapp: 'https://wa.me/8801XXXXXXXXX',
+    facebook: '#',
+    linkedin: '#',
+  },
+  {
+    id:        'burhan',
+    name:      'Md Burhan Uddin',
+    role:      'Consultant',
+    badge:     'Consultant',
+    img:       'images/con.png',
+    fallback:  'fas fa-passport',
+    bio:       'Md Burhan Uddin provides expert visa and travel consultation to Trip Fly BD clients. He guides travelers through document requirements, embassy procedures and destination planning with professional precision.',
+    phone:    '+880 1XXXXXXXXX',
+    whatsapp: 'https://wa.me/8801XXXXXXXXX',
+    facebook: '#',
+    linkedin: '#',
+  },
+];
+
+/* ══════════════════════════════════════
+   IMAGE FALLBACK
+   Shows icon if image fails to load
+══════════════════════════════════════ */
+function applyImgFallback(imgEl, iconClass, fallbackEl) {
+  imgEl.addEventListener('error', () => {
+    imgEl.style.display = 'none';
+    if (fallbackEl) fallbackEl.style.display = 'flex';
+  });
+  // If already broken (cached error)
+  if (imgEl.complete && imgEl.naturalHeight === 0) {
+    imgEl.style.display = 'none';
+    if (fallbackEl) fallbackEl.style.display = 'flex';
+  }
+}
+
+// Apply fallbacks to all member images on page load
 document.addEventListener('DOMContentLoaded', () => {
-  initManagementSpotlight();
-  initCardTilt();
-  initProfileModal();
-  initCounters();
-  initRevealAnimations();
+  document.querySelectorAll('[data-member-id]').forEach(card => {
+    const id  = card.dataset.memberId;
+    const mem = TEAM.find(m => m.id === id);
+    if (!mem) return;
+    const img = card.querySelector('[data-member-img]');
+    const fb  = card.querySelector('[data-member-fallback]');
+    if (img && fb) applyImgFallback(img, mem.fallback, fb);
+  });
 });
 
-/* ============================================================
-   TEAM DATA
-============================================================ */
-const TEAM_DATA = {
-  chairman: {
-    name: 'Thamina Bashar Nishat',
-    role: 'Chairman — Trip Fly BD',
-    icon: 'fas fa-crown',
-    tag: 'Founder & Chairperson',
-    bio: 'Founder and Chairperson of Trip Fly BD. She leads the company with vision, trust, transparent service and customer-first support since February 2023. Her leadership focuses on premium travel experiences, visa consultancy and trusted customer relationships.'
-  },
+/* ══════════════════════════════════════
+   3D CARD TILT (desktop hover only)
+══════════════════════════════════════ */
+(function initTilt() {
+  if (window.matchMedia('(hover: none)').matches) return;
+  const CARDS = '.leader-card, .team-card';
+  const MAX = 10;
 
-  md: {
-    name: 'Samshuddin Razib',
-    role: 'Managing Director — Trip Fly BD',
-    icon: 'fas fa-user-tie',
-    tag: 'Operations Leadership',
-    bio: 'Responsible for company operations, client communication, ticketing support, visa processing coordination and business development. He ensures fast, professional and reliable service for every client.'
-  },
-
-  nijhu: {
-    name: 'Nijhu Dey',
-    role: 'Accounting Manager',
-    icon: 'fas fa-calculator',
-    tag: 'Accounts Department',
-    bio: 'Handles payment records, billing management, financial tracking and accounting documentation with transparency and accuracy.'
-  },
-
-  nazmul: {
-    name: 'Nazmul Hasan',
-    role: 'Marketing Coordinator',
-    icon: 'fas fa-bullhorn',
-    tag: 'Marketing Department',
-    bio: 'Coordinates customer outreach, package promotions, digital communication and social engagement campaigns for Trip Fly BD.'
-  },
-
-  boorhan: {
-    name: 'Md Boorhan Uddin',
-    role: 'Travel & Visa Consultant',
-    icon: 'fas fa-passport',
-    tag: 'Visa Consultation',
-    bio: 'Provides tourist visa guidance, travel consultation, destination support and travel planning assistance for clients.'
-  },
-
-  omar: {
-    name: 'Omar Farque',
-    role: 'Digital Marketing & Web Developer',
-    icon: 'fas fa-laptop-code',
-    tag: 'Digital & Web',
-    bio: 'Manages website development, online branding, digital marketing strategy, customer acquisition and social media growth for Trip Fly BD.'
-  }
-};
-
-/* ============================================================
-   HERO SPOTLIGHT EFFECT
-============================================================ */
-function initManagementSpotlight() {
-
-  const hero = document.querySelector('.mgmt-hero');
-
-  if (!hero) return;
-
-  const glow = document.createElement('div');
-
-  glow.className = 'mgmt-cursor-glow';
-
-  hero.appendChild(glow);
-
-  hero.addEventListener('mousemove', (event) => {
-
-    if (window.innerWidth < 768) return;
-
-    const rect = hero.getBoundingClientRect();
-
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    glow.style.left = `${x}px`;
-    glow.style.top = `${y}px`;
-
-    glow.style.opacity = '1';
-  });
-
-  hero.addEventListener('mouseleave', () => {
-    glow.style.opacity = '0';
-  });
-}
-
-/* ============================================================
-   PREMIUM CARD TILT EFFECT
-============================================================ */
-function initCardTilt() {
-
-  const cards = document.querySelectorAll(
-    '.leader-card, .team-card, .process-card'
-  );
-
-  cards.forEach((card) => {
-
-    card.addEventListener('mousemove', (event) => {
-
-      if (window.innerWidth < 900) return;
-
+  document.querySelectorAll(CARDS).forEach(card => {
+    card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
-
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      const rotateX = ((y / rect.height) - 0.5) * -8;
-      const rotateY = ((x / rect.width) - 0.5) * 8;
-
-      card.style.transform =
-        `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-      card.style.transition = 'transform .08s ease';
+      const x = (e.clientX - rect.left) / rect.width  - .5;
+      const y = (e.clientY - rect.top)  / rect.height - .5;
+      card.style.transform = `translateY(-10px) rotateX(${-y * MAX}deg) rotateY(${x * MAX}deg) scale(1.01)`;
     });
-
     card.addEventListener('mouseleave', () => {
-
       card.style.transform = '';
-      card.style.transition = '';
     });
   });
-}
+})();
 
-/* ============================================================
+/* ══════════════════════════════════════
    PROFILE MODAL
-============================================================ */
-function initProfileModal() {
-
-  createProfileModal();
-
-  const profileCards = document.querySelectorAll('[data-person]');
-
-  profileCards.forEach((card) => {
-
-    const personKey = card.dataset.person;
-    const person = TEAM_DATA[personKey];
-
-    if (!person) return;
-
-    card.addEventListener('click', (event) => {
-
-      if (event.target.closest('a')) return;
-
-      openProfileModal(person);
-    });
-
-    const btn = card.querySelector('.profile-btn');
-
-    if (btn) {
-
-      btn.addEventListener('click', (event) => {
-
-        event.stopPropagation();
-
-        openProfileModal(person);
-      });
-    }
-  });
-}
-
-/* ============================================================
-   CREATE MODAL
-============================================================ */
-function createProfileModal() {
-
-  if (document.getElementById('mgmtProfileModal')) return;
-
-  const modal = document.createElement('div');
-
-  modal.id = 'mgmtProfileModal';
-  modal.className = 'mgmt-profile-modal';
-
-  modal.innerHTML = `
-    <div class="mgmt-profile-overlay"></div>
-
-    <div class="mgmt-profile-box" role="dialog" aria-modal="true">
-
-      <button class="mgmt-profile-close" type="button" aria-label="Close profile">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <div class="mgmt-profile-icon">
-        <i id="mgmtProfileIcon" class="fas fa-user"></i>
-      </div>
-
-      <span id="mgmtProfileTag" class="mgmt-profile-tag">
-        Team Member
-      </span>
-
-      <h3 id="mgmtProfileName">
-        Team Member
-      </h3>
-
-      <span id="mgmtProfileRole">
-        Role
-      </span>
-
-      <p id="mgmtProfileBio">
-        Bio
-      </p>
-
-      <div class="mgmt-profile-actions">
-
-        <a href="contact.html" class="mgmt-profile-btn">
-          <i class="fas fa-envelope"></i>
-          Contact Team
-        </a>
-
-        <a
-          href="https://wa.me/88017XXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20talk%20with%20your%20team."
-          target="_blank"
-          class="mgmt-profile-btn outline"
-        >
-          <i class="fab fa-whatsapp"></i>
-          WhatsApp
-        </a>
-
-      </div>
-
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  const closeBtn = modal.querySelector('.mgmt-profile-close');
-
-  const overlay = modal.querySelector('.mgmt-profile-overlay');
-
-  closeBtn.addEventListener('click', closeProfileModal);
-
-  overlay.addEventListener('click', closeProfileModal);
-
-  document.addEventListener('keydown', (event) => {
-
-    if (event.key === 'Escape') {
-      closeProfileModal();
-    }
-  });
-}
-
-/* ============================================================
-   OPEN MODAL
-============================================================ */
-function openProfileModal(person) {
-
-  const modal = document.getElementById('mgmtProfileModal');
-
-  if (!modal) return;
-
-  document.getElementById('mgmtProfileIcon').className = person.icon;
-
-  document.getElementById('mgmtProfileTag').textContent =
-    person.tag;
-
-  document.getElementById('mgmtProfileName').textContent =
-    person.name;
-
-  document.getElementById('mgmtProfileRole').textContent =
-    person.role;
-
-  document.getElementById('mgmtProfileBio').textContent =
-    person.bio;
-
-  modal.classList.add('show');
-
-  document.body.style.overflow = 'hidden';
-}
-
-/* ============================================================
-   CLOSE MODAL
-============================================================ */
-function closeProfileModal() {
-
-  const modal = document.getElementById('mgmtProfileModal');
-
-  if (!modal) return;
-
-  modal.classList.remove('show');
-
-  document.body.style.overflow = '';
-}
-
-/* ============================================================
-   COUNTER ANIMATION
-============================================================ */
-function initCounters() {
-
-  const counters = document.querySelectorAll(
-    '.mgmt-stat-num[data-count]'
-  );
-
-  if (!counters.length) return;
-
-  const startCounter = (counter) => {
-
-    if (counter.dataset.done === 'true') return;
-
-    const target =
-      Number(counter.dataset.count || 0);
-
-    const suffix =
-      counter.dataset.suffix || '';
-
-    const duration = 1500;
-
-    const startTime = performance.now();
-
-    counter.dataset.done = 'true';
-
-    function updateCounter(now) {
-
-      const progress =
-        Math.min((now - startTime) / duration, 1);
-
-      const value =
-        Math.floor(progress * target);
-
-      counter.textContent =
-        value + suffix;
-
-      if (progress < 1) {
-
-        requestAnimationFrame(updateCounter);
-
-      } else {
-
-        counter.textContent =
-          target + suffix;
-      }
-    }
-
-    requestAnimationFrame(updateCounter);
+══════════════════════════════════════ */
+(function initModal() {
+  const overlay = document.getElementById('profileModalOverlay');
+  const modal   = document.getElementById('profileModal');
+  if (!overlay || !modal) return;
+
+  // Elements inside modal
+  const els = {
+    photo:    modal.querySelector('#pmPhoto'),
+    fallback: modal.querySelector('#pmFallback'),
+    fallIcon: modal.querySelector('#pmFallbackIcon'),
+    badge:    modal.querySelector('#pmBadge'),
+    name:     modal.querySelector('#pmName'),
+    role:     modal.querySelector('#pmRole'),
+    bio:      modal.querySelector('#pmBio'),
+    call:     modal.querySelector('#pmCall'),
+    wa:       modal.querySelector('#pmWA'),
+    fb:       modal.querySelector('#pmFB'),
+    li:       modal.querySelector('#pmLI'),
   };
 
-  const observer = new IntersectionObserver(
+  function openModal(memberId) {
+    const m = TEAM.find(t => t.id === memberId);
+    if (!m) return;
 
-    (entries) => {
-
-      entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-          startCounter(entry.target);
-        }
-      });
-    },
-
-    {
-      threshold: 0.45
+    // Photo
+    if (els.photo) {
+      els.photo.src = m.img;
+      els.photo.alt = m.name;
+      els.photo.style.display = 'block';
+      if (els.fallback) els.fallback.style.display = 'none';
+      if (els.fallIcon) els.fallIcon.className = m.fallback;
+      // Fallback on error
+      els.photo.onerror = () => {
+        els.photo.style.display = 'none';
+        if (els.fallback) els.fallback.style.display = 'flex';
+      };
     }
-  );
+    if (els.badge)    els.badge.textContent    = m.badge;
+    if (els.name)     els.name.textContent     = m.name;
+    if (els.role)     els.role.textContent     = m.role;
+    if (els.bio)      els.bio.textContent      = m.bio;
 
-  counters.forEach((counter) =>
-    observer.observe(counter)
-  );
-}
+    // Contact links
+    if (els.call) { els.call.href = 'tel:' + m.phone.replace(/\s+/g,''); els.call.querySelector('span').textContent = m.phone; }
+    if (els.wa)   els.wa.href   = m.whatsapp;
+    if (els.fb)   els.fb.href   = m.facebook;
+    if (els.li)   els.li.href   = m.linkedin;
 
-/* ============================================================
-   REVEAL ANIMATION
-============================================================ */
-function initRevealAnimations() {
+    // Show
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modal.scrollTop = 0;
+  }
 
-  const revealItems = document.querySelectorAll(
-    '.reveal-up, .reveal-left, .reveal-right'
-  );
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-  if (!revealItems.length) return;
-
-  const observer = new IntersectionObserver(
-
-    (entries) => {
-
-      entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add('active-reveal');
-
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-
-    {
-      threshold: 0.15
-    }
-  );
-
-  revealItems.forEach((item) => {
-    observer.observe(item);
+  // Open on card click
+  document.querySelectorAll('[data-member-id]').forEach(card => {
+    card.addEventListener('click', e => {
+      // Don't open if clicking a social button/link
+      if (e.target.closest('.soc-btn') || e.target.closest('a')) return;
+      openModal(card.dataset.memberId);
+    });
   });
-}
-=======
-/* MANAGEMENT JS */
-
-const cards = document.querySelectorAll(".team-card");
-const leaders = document.querySelectorAll(".mgmt-featured");
-
-cards.forEach((card, index) => {
-  card.style.transitionDelay = `${index * 0.08}s`;
-});
-
-leaders.forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    if (window.innerWidth <= 900) return;
-
-    const rect = card.getBoundingClientRect();
-    const rotateX = ((e.clientY - rect.top - rect.height / 2) / rect.height) * -6;
-    const rotateY = ((e.clientX - rect.left - rect.width / 2) / rect.width) * 6;
-
-    card.style.transform = `translateY(-7px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  // Open on View Profile button
+  document.querySelectorAll('[data-view-profile]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openModal(btn.dataset.viewProfile);
+    });
   });
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
-    card.style.transition = "transform .5s ease";
+  // Close
+  document.getElementById('pmCloseBtn')?.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  modal.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
+})();
 
-    setTimeout(() => {
-      card.style.transition = "";
-    }, 500);
-  });
-});
+/* ══════════════════════════════════════
+   ANIMATED STAT COUNTERS
+══════════════════════════════════════ */
+(function initCounters() {
+  const counters = document.querySelectorAll('[data-stat]');
+  if (!counters.length) return;
 
-cards.forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    if (window.innerWidth <= 768) return;
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
 
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  function animateCounter(el) {
+    const target   = parseFloat(el.dataset.stat) || 0;
+    const suffix   = el.dataset.suffix || '';
+    const prefix   = el.dataset.prefix || '';
+    const duration = 1800;
+    const fps      = 60;
+    const steps    = Math.round(duration / (1000 / fps));
+    let frame = 0;
 
-    card.style.setProperty("--mouse-x", `${x}px`);
-    card.style.setProperty("--mouse-y", `${y}px`);
-  });
-});
+    const tick = () => {
+      frame++;
+      const progress = Math.min(frame / steps, 1);
+      const value    = Math.floor(target * easeOut(progress));
+      el.textContent = prefix + (value >= 1000 ? value.toLocaleString() : value) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
 
-const revealItems = document.querySelectorAll(
-  ".reveal-up, .reveal-left, .reveal-right, .mgmt-featured, .team-card, .stat-item"
-);
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
       }
     });
-  },
-  {
-    threshold: 0.16,
-  }
-);
+  }, { threshold: 0.5 });
 
-revealItems.forEach((item) => {
-  revealObserver.observe(item);
-});
+  counters.forEach(el => obs.observe(el));
+})();
 
-const statNumbers = document.querySelectorAll(".stat-item h3");
-
-const animateNumber = (el) => {
-  const text = el.innerText;
-  const target = parseInt(text.replace(/\D/g, ""), 10);
-  const suffix = text.replace(/[0-9]/g, "");
-
-  if (!target) return;
-
-  let current = 0;
-  const speed = Math.max(18, Math.floor(900 / target));
-
-  const counter = setInterval(() => {
-    current++;
-    el.innerText = current + suffix;
-
-    if (current >= target) {
-      el.innerText = text;
-      clearInterval(counter);
-    }
-  }, speed);
-};
-
-const statObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !entry.target.dataset.done) {
-        entry.target.dataset.done = "true";
-        animateNumber(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.5,
-  }
-);
-
-statNumbers.forEach((num) => {
-  statObserver.observe(num);
-});
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
+/* ══════════════════════════════════════
+   SCROLL REVEAL (supplement common.js)
+══════════════════════════════════════ */
+(function supplementReveal() {
+  // common.js handles .reveal-up etc.
+  // This ensures newly-added elements also animate
+  const additional = document.querySelectorAll('.leader-card:not(.reveal-up), .team-card:not(.reveal-up), .stat-card:not(.reveal-up), .process-card:not(.reveal-up)');
+  additional.forEach((el, i) => {
+    el.classList.add('reveal-up');
+    el.style.transitionDelay = (i % 4 * 0.1) + 's';
+  });
+})();
