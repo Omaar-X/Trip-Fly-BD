@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* ============================================================
    TRIP FLY BD — DESTINATIONS.CSS
    Premium Destination Page | Visa Modal | Mobile Responsive
@@ -981,70 +980,3 @@
     height:38px;
   }
 }
-=======
-/* DESTINATIONS CSS */
-.filter-bar {
-  background:var(--bg-alt); padding:1.4rem 0;
-  border-bottom:1px solid rgba(245,197,24,.08);
-  position:sticky; top:68px; z-index:100; backdrop-filter:blur(20px);
-}
-.filter-tabs { display:flex; gap:.65rem; flex-wrap:wrap; }
-.ftab {
-  background:var(--glass); border:1px solid var(--bdr-gold);
-  color:var(--txt-mid); padding:.48rem 1.2rem; border-radius:50px;
-  font-size:.82rem; font-weight:600; cursor:pointer;
-  font-family:var(--font); transition:var(--tx);
-}
-.ftab.active, .ftab:hover {
-  background:var(--gold); color:#000; border-color:var(--gold);
-  box-shadow:0 4px 14px rgba(245,197,24,.35);
-}
-
-.dest-full { background:var(--bg-body); }
-.dest-full-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;
-}
-
-.dest-full-card {
-  border-radius:var(--radius-lg); overflow:hidden;
-  background:var(--bg-card); border:1px solid var(--bdr-gold);
-  transition:var(--tx);
-}
-.dest-full-card:hover { border-color:var(--bdr-gold2); transform:translateY(-8px); box-shadow:var(--shadow),var(--glow-md); }
-
-.dfc-img { position:relative; height:240px; overflow:hidden; }
-.dfc-img img { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
-.dest-full-card:hover .dfc-img img { transform:scale(1.1); }
-
-.dfc-overlay {
-  position:absolute; inset:0;
-  background:linear-gradient(to top,rgba(8,20,34,.97) 0%,rgba(8,20,34,.25) 60%);
-  display:flex; align-items:flex-end; padding:1.2rem;
-  opacity:0; transition:opacity .4s ease;
-}
-.dest-full-card:hover .dfc-overlay { opacity:1; }
-
-.dfc-detail h3 { font-size:1.25rem; font-weight:800; color:var(--txt-white); margin-bottom:.28rem; }
-.dfc-detail p  { font-size:.78rem; color:var(--gold); font-weight:600; margin-bottom:.65rem; }
-.dfc-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:.9rem; }
-.dfc-tags span {
-  background:rgba(245,197,24,.14); border:1px solid rgba(245,197,24,.3);
-  color:var(--gold); padding:.18rem .55rem; border-radius:20px;
-  font-size:.68rem; font-weight:600;
-}
-
-.dfc-bottom {
-  padding:1.1rem 1.2rem;
-  display:flex; justify-content:space-between; align-items:center;
-}
-.dfc-bottom h4 { font-size:.96rem; font-weight:700; color:var(--txt-white); margin-bottom:.18rem; }
-.dfc-bottom p  { font-size:.75rem; color:var(--txt-dim); }
-.dfc-price span  { display:block; font-size:.68rem; color:var(--txt-dim); }
-.dfc-price strong{ font-size:.98rem; font-weight:800; }
-
-.dest-full-card.hidden { display:none; }
-
-@media(max-width:1024px){ .dest-full-grid{ grid-template-columns:repeat(3,1fr); } }
-@media(max-width:768px) { .dest-full-grid{ grid-template-columns:repeat(2,1fr); } }
-@media(max-width:480px) { .dest-full-grid{ grid-template-columns:1fr; } }
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565

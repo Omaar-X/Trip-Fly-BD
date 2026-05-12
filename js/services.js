@@ -1,128 +1,287 @@
 /* ============================================================
    TRIP FLY BD — SERVICES.JS
-<<<<<<< HEAD
-   Tab scroll spy | Card glow | Route stagger animation
-=======
-   Tab navigation | Scroll spy | Card glow | Route animation
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
+   Service Inquiry Modal | Google Sheet Submit | WhatsApp
 ============================================================ */
 'use strict';
 
-/* SERVICES NAV TABS + SCROLL SPY */
-(function initServicesTabs() {
-  const tabs = document.querySelectorAll('.svc-tab');
-  if (!tabs.length) return;
+const APPS_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbxNNt8_3RtKAAHf2X4QjCrlfgSqPJCX1UmDNmT_u0ltneXI4sRhirNRzq9j2k4l4gwinQ/exec';
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', e => {
-      e.preventDefault();
-      const id = tab.getAttribute('data-target') || (tab.getAttribute('href') || '').replace('#','');
-      if (!id) return;
-      const section = document.getElementById(id);
-      if (!section) return;
-      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '70');
-<<<<<<< HEAD
-      const top = section.getBoundingClientRect().top + window.pageYOffset - navH - 50 - 12;
-=======
-      const top = section.getBoundingClientRect().top + window.pageYOffset - navH - 53 - 16;
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
-      window.scrollTo({ top, behavior: 'smooth' });
+const WHATSAPP_NUMBER = '88017XXXXXXXX';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initServiceTabs();
+  initServiceModal();
+  initRevealAnimations();
+  initBrokenImageFallback();
+});
+
+/* =========================
+   Sticky tabs smooth scroll
+========================= */
+function initServiceTabs() {
+  const tabs = document.querySelectorAll('.svc-tab');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.dataset.target;
+      const target = document.getElementById(targetId);
+
+      if (!target) return;
+
+      tabs.forEach((item) => item.classList.remove('active'));
+      tab.classList.add('active');
+
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  });
+}
+
+/* =========================
+   Modal open/close
+========================= */
+function initServiceModal() {
+  const overlay = document.getElementById('serviceModalOverlay');
+  const closeBtn = document.getElementById('svcModalClose');
+  const form = document.getElementById('serviceInquiryForm');
+
+  if (!overlay || !form) return;
+
+  document.querySelectorAll('.svc-inquiry-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const service = btn.dataset.service || 'General Service Inquiry';
+      openServiceModal(service);
     });
   });
 
-  const sections = Array.from(tabs).map(tab => {
-    const id = tab.getAttribute('data-target') || (tab.getAttribute('href') || '').replace('#','');
-    return id ? document.getElementById(id) : null;
-  }).filter(Boolean);
+  closeBtn?.addEventListener('click', closeServiceModal);
 
-  if (!sections.length) return;
-  const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '70');
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) closeServiceModal();
+  });
 
-  const onScroll = () => {
-    let current = '';
-    sections.forEach(sec => {
-<<<<<<< HEAD
-      if (sec.getBoundingClientRect().top <= navH + 140) current = sec.id;
-=======
-      if (sec.getBoundingClientRect().top <= navH + 130) current = sec.id;
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
-    });
-    tabs.forEach(tab => {
-      const id = tab.getAttribute('data-target') || (tab.getAttribute('href') || '').replace('#','');
-      tab.classList.toggle('active', id === current);
-    });
-<<<<<<< HEAD
-    const navEl = document.querySelector('.services-nav');
-    const activeTab = document.querySelector('.svc-tab.active');
-    if (activeTab && navEl) {
-      navEl.scrollTo({ left: activeTab.offsetLeft - (navEl.offsetWidth / 2) + (activeTab.offsetWidth / 2), behavior: 'smooth' });
-=======
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeServiceModal();
+  });
 
-    // auto-scroll active tab into view
-    const navEl = document.querySelector('.services-nav');
-    const activeTab = document.querySelector('.svc-tab.active');
-    if (activeTab && navEl) {
-      const tabLeft  = activeTab.offsetLeft;
-      const tabWidth = activeTab.offsetWidth;
-      const navWidth = navEl.offsetWidth;
-      navEl.scrollTo({ left: tabLeft - (navWidth / 2) + (tabWidth / 2), behavior: 'smooth' });
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
-    }
+  form.addEventListener('submit', handleServiceSubmit);
+}
+
+function openServiceModal(serviceName) {
+  const overlay = document.getElementById('serviceModalOverlay');
+  const serviceInput = document.getElementById('svcService');
+  const title = document.getElementById('svcModalTitle');
+  const whatsappBtn = document.getElementById('svcModalWhatsApp');
+  const status = document.getElementById('svcStatus');
+
+  if (!overlay) return;
+
+  if (serviceInput) serviceInput.value = serviceName;
+  if (title) title.textContent = `${serviceName} Inquiry`;
+
+  if (status) {
+    status.className = 'svc-status';
+    status.innerHTML = '';
+  }
+
+  if (whatsappBtn) {
+    const msg = encodeURIComponent(
+      `Hello Trip Fly BD! I need help with ${serviceName}.`
+    );
+
+    whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  }
+
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+  setTimeout(() => {
+    document.getElementById('svcName')?.focus();
+  }, 250);
+}
+
+function closeServiceModal() {
+  const overlay = document.getElementById('serviceModalOverlay');
+
+  if (!overlay) return;
+
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+/* =========================
+   Submit to Google Sheet
+========================= */
+async function handleServiceSubmit(event) {
+  event.preventDefault();
+
+  const honeypot = document.getElementById('svcHoneypot');
+  if (honeypot && honeypot.value) return;
+
+  const submitBtn = document.getElementById('svcSubmitBtn');
+  const status = document.getElementById('svcStatus');
+
+  const name = document.getElementById('svcName')?.value.trim();
+  const phone = document.getElementById('svcPhone')?.value.trim();
+  const email = document.getElementById('svcEmail')?.value.trim();
+  const service = document.getElementById('svcService')?.value.trim();
+  const destination = document.getElementById('svcDestination')?.value.trim();
+  const travelDate = document.getElementById('svcTravelDate')?.value;
+  const message = document.getElementById('svcMessage')?.value.trim();
+
+  if (!name || !phone) {
+    showServiceStatus(
+      'error',
+      '<i class="fas fa-exclamation-circle"></i> Please enter your name and phone number.'
+    );
+    return;
+  }
+
+  setSubmitLoading(true);
+
+  const payload = {
+    sheet: 'Service Inquiries',
+    timestamp: new Date().toLocaleString('en-BD', {
+      timeZone: 'Asia/Dhaka'
+    }),
+    name,
+    phone,
+    email,
+    service,
+    destination,
+    travelDate,
+    message,
+    source: 'Services Page — Trip Fly BD Website'
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
-<<<<<<< HEAD
-/* CARD GLOW CURSOR */
-=======
-/* SERVICE CARD GLOW ON HOVER */
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
-(function initCardGlow() {
-  if (window.matchMedia('(hover: none)').matches) return;
-  document.querySelectorAll('.svc-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-<<<<<<< HEAD
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.background = 'radial-gradient(circle at ' + x + '% ' + y + '%, rgba(212,175,55,.09) 0%, rgba(17,24,32,.98) 65%)';
-=======
-      const x = ((e.clientX - rect.left) / rect.width)  * 100;
-      const y = ((e.clientY - rect.top)  / rect.height) * 100;
-      card.style.background = 'radial-gradient(circle at ' + x + '% ' + y + '%, rgba(212,175,55,.08) 0%, var(--bg-card) 60%)';
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain'
+      },
+      body: JSON.stringify(payload)
     });
-    card.addEventListener('mouseleave', () => { card.style.background = ''; });
+
+    const result = await response.json();
+
+    if (result.status === 'success') {
+      showServiceStatus(
+        'success',
+        '<i class="fas fa-check-circle"></i> Inquiry sent successfully! Our team will contact you shortly.'
+      );
+
+      const form = document.getElementById('serviceInquiryForm');
+      form?.reset();
+
+      if (document.getElementById('svcService')) {
+        document.getElementById('svcService').value = service;
+      }
+
+      setTimeout(() => {
+        const msg = encodeURIComponent(
+          `Hello Trip Fly BD! I submitted a service inquiry.\nName: ${name}\nPhone: ${phone}\nService: ${service || 'General Inquiry'}\nDestination/Route: ${destination || 'Not mentioned'}`
+        );
+
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+      }, 900);
+    } else {
+      throw new Error(result.message || 'Submission failed');
+    }
+  } catch (error) {
+    console.error('Service inquiry error:', error);
+
+    showServiceStatus(
+      'error',
+      '<i class="fas fa-times-circle"></i> Something went wrong. Please contact us on WhatsApp.'
+    );
+
+    setTimeout(() => {
+      const msg = encodeURIComponent(
+        `Hello Trip Fly BD! I need help with ${service || 'a service'}.\nName: ${name}\nPhone: ${phone}`
+      );
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+    }, 1000);
+  } finally {
+    setSubmitLoading(false);
+  }
+
+  function setSubmitLoading(isLoading) {
+    if (!submitBtn) return;
+
+    submitBtn.disabled = isLoading;
+
+    if (isLoading) {
+      submitBtn.innerHTML =
+        '<span class="svc-spinner"></span> Sending...';
+    } else {
+      submitBtn.innerHTML =
+        '<i class="fas fa-paper-plane"></i> Submit Inquiry';
+    }
+  }
+
+  function showServiceStatus(type, html) {
+    if (!status) return;
+
+    status.className = `svc-status show ${type}`;
+    status.innerHTML = html;
+  }
+}
+
+/* =========================
+   Status helper
+========================= */
+function showServiceStatus(type, html) {
+  const status = document.getElementById('svcStatus');
+
+  if (!status) return;
+
+  status.className = `svc-status show ${type}`;
+  status.innerHTML = html;
+}
+
+/* =========================
+   Reveal animation fallback
+========================= */
+function initRevealAnimations() {
+  const revealItems = document.querySelectorAll(
+    '.reveal-up, .reveal-left, .reveal-right'
+  );
+
+  if (!revealItems.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active-reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
+/* =========================
+   Broken image fallback
+========================= */
+function initBrokenImageFallback() {
+  const fallback =
+    'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80&fit=crop';
+
+  document.querySelectorAll('.svc-card-img img').forEach((img) => {
+    img.addEventListener('error', () => {
+      img.src = fallback;
+      img.alt = 'Trip Fly BD Service';
+    });
   });
-})();
-
-<<<<<<< HEAD
-/* DOMESTIC ROUTES STAGGER */
-(function initRouteAnimation() {
-  const routes = document.querySelectorAll('.domestic-route');
-  if (!routes.length) return;
-  routes.forEach(r => { r.style.opacity = '0'; r.style.transform = 'translateY(10px)'; r.style.transition = 'opacity .4s ease, transform .4s ease'; });
-=======
-/* DOMESTIC ROUTES — ANIMATE IN */
-(function initRouteAnimation() {
-  const routes = document.querySelectorAll('.domestic-route');
-  if (!routes.length) return;
-  routes.forEach(r => { r.style.opacity = '0'; r.style.transform = 'translateY(12px)'; r.style.transition = 'opacity .4s ease, transform .4s ease'; });
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
-  const container = document.querySelector('.domestic-routes');
-  if (!container) return;
-  const obs = new IntersectionObserver(entries => {
-    if (!entries[0].isIntersecting) return;
-<<<<<<< HEAD
-    routes.forEach((r, i) => { setTimeout(() => { r.style.opacity = '1'; r.style.transform = 'translateY(0)'; }, i * 60); });
-=======
-    routes.forEach((route, i) => {
-      setTimeout(() => { route.style.opacity = '1'; route.style.transform = 'translateY(0)'; }, i * 65);
-    });
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
-    obs.disconnect();
-  }, { threshold: 0.2 });
-  obs.observe(container);
-})();
+}
