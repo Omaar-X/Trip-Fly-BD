@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ============================================================
    TRIP FLY BD — DESTINATIONS.JS
    Premium Visa Modal | Filter | Broken Image Fallback
@@ -574,3 +575,19 @@ async function submitVisaInquiry(country, flag, region) {
     }, 1000);
   }
 }
+=======
+/* DESTINATIONS JS */
+document.querySelectorAll('.ftab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.f;
+    document.querySelectorAll('.dest-full-card').forEach(card=>{
+      if(f==='all'||card.dataset.cat===f){
+        card.classList.remove('hidden');
+        card.style.animation='none'; card.offsetHeight; card.style.animation='';
+      } else { card.classList.add('hidden'); }
+    });
+  });
+});
+>>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
