@@ -1,0 +1,758 @@
+/* ============================================================
+   TRIP FLY BD — MANAGEMENT.CSS
+   Premium Executive Management Page
+============================================================ */
+
+/* HERO SECTION */
+.mgmt-hero{
+  position:relative;
+  min-height:clamp(450px,72vh,780px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  padding:calc(var(--nav-h) + 4rem) 1rem 5rem;
+  background:
+    linear-gradient(rgba(5,8,12,.82),rgba(5,8,12,.92)),
+    url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+}
+
+.mgmt-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(212,175,55,.16),transparent 35%),
+    radial-gradient(circle at 85% 80%,rgba(212,175,55,.12),transparent 35%);
+  animation:heroPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroPulse{
+  0%,100%{opacity:.7;}
+  50%{opacity:1;}
+}
+
+.mgmt-hero-glow{
+  position:absolute;
+  width:650px;
+  height:650px;
+  background:radial-gradient(circle,rgba(212,175,55,.15),transparent 70%);
+  filter:blur(65px);
+  animation:floatGlow 8s ease-in-out infinite;
+}
+
+@keyframes floatGlow{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
+}
+
+.mgmt-hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+}
+
+.mgmt-hero-content h1{
+  font-family:var(--font-serif);
+  font-size:clamp(2.8rem,7vw,5.4rem);
+  line-height:1.05;
+  font-weight:900;
+  color:var(--txt-white);
+  margin:1rem 0;
+}
+
+.mgmt-hero-content p{
+  max-width:720px;
+  margin:0 auto 2rem;
+  color:var(--txt-mid);
+  font-size:clamp(.95rem,2vw,1.08rem);
+  line-height:1.9;
+}
+
+.mgmt-hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-bottom:2rem;
+}
+
+/* LEADERSHIP */
+.leadership-section{
+  position:relative;
+  overflow:hidden;
+  background:var(--bg-body);
+}
+
+.leadership-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(212,175,55,.05),transparent 30%),
+    radial-gradient(circle at 90% 90%,rgba(212,175,55,.05),transparent 30%);
+  pointer-events:none;
+}
+
+.leaders-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:2rem;
+  margin-top:3rem;
+}
+
+.leader-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:32px;
+  padding:2.5rem;
+  background:
+    linear-gradient(145deg,rgba(18,24,32,.98),rgba(8,12,18,.98));
+  border:1px solid rgba(212,175,55,.16);
+  transition:
+    transform .45s cubic-bezier(.23,1,.32,1),
+    box-shadow .45s ease,
+    border-color .45s ease;
+  cursor:pointer;
+}
+
+.leader-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(212,175,55,.08),transparent 45%);
+  opacity:0;
+  transition:.4s ease;
+}
+
+.leader-card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(212,175,55,.4);
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.55),
+    0 0 40px rgba(212,175,55,.16);
+}
+
+.leader-card:hover::before{
+  opacity:1;
+}
+
+.chairman-card{
+  border-color:rgba(212,175,55,.3);
+  box-shadow:0 0 35px rgba(212,175,55,.12);
+}
+
+.leader-premium-mark{
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  padding:.45rem .9rem;
+  border-radius:999px;
+  background:rgba(212,175,55,.1);
+  border:1px solid rgba(212,175,55,.2);
+  color:var(--gold);
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.leader-avatar-wrap{
+  position:relative;
+  width:160px;
+  height:160px;
+  margin:0 auto 2rem;
+}
+
+.leader-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:2px dashed rgba(212,175,55,.35);
+  animation:spinRing 18s linear infinite;
+}
+
+@keyframes spinRing{
+  to{transform:rotate(360deg);}
+}
+
+.leader-avatar{
+  position:absolute;
+  inset:14px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3.5rem;
+  color:#000;
+}
+
+.avatar-gold{
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold),var(--gold-dk));
+  box-shadow:0 0 45px rgba(212,175,55,.35);
+}
+
+.avatar-dark{
+  background:linear-gradient(135deg,#f6d77b,var(--gold),#9a7420);
+  box-shadow:0 0 35px rgba(212,175,55,.25);
+}
+
+.leader-badge{
+  position:absolute;
+  left:50%;
+  bottom:-8px;
+  transform:translateX(-50%);
+  background:#000;
+  border:1px solid rgba(212,175,55,.25);
+  color:var(--gold);
+  padding:.45rem .9rem;
+  border-radius:999px;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.leader-info{
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.leader-label{
+  display:inline-flex;
+  margin-bottom:.6rem;
+  color:var(--gold);
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.leader-name{
+  font-family:var(--font-serif);
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  color:var(--txt-white);
+  margin-bottom:.4rem;
+  font-weight:900;
+}
+
+.leader-role{
+  display:block;
+  color:var(--txt-mid);
+  font-size:.88rem;
+  margin-bottom:1.2rem;
+  font-weight:700;
+}
+
+.leader-desc{
+  color:var(--txt-mid);
+  line-height:1.9;
+  font-size:.92rem;
+  margin-bottom:1.5rem;
+}
+
+.leader-tags{
+  display:flex;
+  justify-content:center;
+  gap:.6rem;
+  flex-wrap:wrap;
+  margin-bottom:1.5rem;
+}
+
+.leader-tags span{
+  padding:.4rem .85rem;
+  border-radius:999px;
+  background:rgba(212,175,55,.08);
+  border:1px solid rgba(212,175,55,.14);
+  color:var(--gold);
+  font-size:.7rem;
+  font-weight:800;
+}
+
+.leader-socials{
+  display:flex;
+  justify-content:center;
+  gap:.7rem;
+}
+
+/* TEAM SECTION */
+.team-section{
+  background:var(--bg-section);
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+}
+
+.team-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:2rem 1.5rem;
+  text-align:center;
+  background:
+    linear-gradient(145deg,rgba(18,24,32,.98),rgba(8,12,18,.98));
+  border:1px solid rgba(212,175,55,.14);
+  transition:var(--tx);
+}
+
+.team-card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(212,175,55,.35);
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.5),
+    0 0 35px rgba(212,175,55,.12);
+}
+
+.team-card-shine{
+  position:absolute;
+  inset:-120%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.08),transparent);
+  transform:rotate(18deg);
+  transition:1.2s ease;
+}
+
+.team-card:hover .team-card-shine{
+  inset:120%;
+}
+
+.featured-member{
+  border-color:rgba(212,175,55,.28);
+  box-shadow:0 0 25px rgba(212,175,55,.08);
+}
+
+.tc-avatar{
+  width:100px;
+  height:100px;
+  margin:0 auto 1.2rem;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold),var(--gold-dk));
+  color:#000;
+  font-size:2.4rem;
+  box-shadow:0 0 30px rgba(212,175,55,.28);
+}
+
+.tc-role-tag{
+  display:inline-flex;
+  margin-bottom:.7rem;
+  padding:.35rem .8rem;
+  border-radius:999px;
+  background:rgba(212,175,55,.08);
+  border:1px solid rgba(212,175,55,.15);
+  color:var(--gold);
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.tc-name{
+  font-family:var(--font-serif);
+  font-size:1.35rem;
+  color:var(--txt-white);
+  margin-bottom:.35rem;
+  font-weight:900;
+}
+
+.tc-role{
+  display:block;
+  color:var(--gold);
+  font-size:.82rem;
+  font-weight:700;
+  margin-bottom:1rem;
+}
+
+.tc-desc{
+  color:var(--txt-mid);
+  font-size:.88rem;
+  line-height:1.8;
+  margin-bottom:1.3rem;
+}
+
+.profile-btn{
+  border:none;
+  padding:.85rem 1.3rem;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dk));
+  color:#000;
+  font-weight:900;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.profile-btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(212,175,55,.28);
+}
+
+/* STATS */
+.mgmt-stats{
+  padding:4rem 0;
+  background:
+    linear-gradient(rgba(5,8,12,.9),rgba(5,8,12,.92)),
+    url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop') center/cover fixed;
+}
+
+.mgmt-stats-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+}
+
+.mgmt-stat{
+  text-align:center;
+  border-radius:26px;
+  padding:2rem 1rem;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,175,55,.15);
+  backdrop-filter:blur(12px);
+}
+
+.mgmt-stat i{
+  font-size:2rem;
+  color:var(--gold);
+  margin-bottom:1rem;
+}
+
+.mgmt-stat-num{
+  display:block;
+  font-family:var(--font-serif);
+  font-size:2.5rem;
+  font-weight:900;
+  color:var(--txt-white);
+  margin-bottom:.4rem;
+}
+
+.mgmt-stat-lbl{
+  color:var(--txt-mid);
+  font-size:.84rem;
+  font-weight:700;
+}
+
+/* PROCESS */
+.management-process{
+  background:var(--bg-body);
+}
+
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+  margin-top:3rem;
+}
+
+.process-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  padding:2rem 1.4rem;
+  text-align:center;
+  background:
+    linear-gradient(145deg,rgba(18,24,32,.98),rgba(8,12,18,.98));
+  border:1px solid rgba(212,175,55,.14);
+  transition:var(--tx);
+}
+
+.process-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(212,175,55,.3);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.45),
+    0 0 28px rgba(212,175,55,.1);
+}
+
+.process-card span{
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  font-size:3rem;
+  font-weight:900;
+  color:rgba(212,175,55,.08);
+}
+
+.process-card i{
+  font-size:2.2rem;
+  color:var(--gold);
+  margin-bottom:1.2rem;
+}
+
+.process-card h3{
+  color:var(--txt-white);
+  margin-bottom:.8rem;
+  font-size:1.1rem;
+  font-weight:900;
+}
+
+.process-card p{
+  color:var(--txt-mid);
+  font-size:.88rem;
+  line-height:1.8;
+}
+
+/* PROFILE MODAL */
+.mgmt-profile-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.35s ease;
+  padding:1rem;
+}
+
+.mgmt-profile-modal.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.mgmt-profile-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(10px);
+}
+
+.mgmt-profile-box{
+  position:relative;
+  width:min(100%,540px);
+  background:linear-gradient(145deg,rgba(18,24,32,.98),rgba(7,10,15,.98));
+  border:1px solid rgba(212,175,55,.28);
+  border-radius:30px;
+  padding:2.5rem 2rem;
+  text-align:center;
+  z-index:2;
+  overflow:hidden;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.6),
+    0 0 50px rgba(212,175,55,.15);
+  transform:translateY(30px) scale(.96);
+  transition:.4s ease;
+}
+
+.mgmt-profile-modal.show .mgmt-profile-box{
+  transform:translateY(0) scale(1);
+}
+
+.mgmt-profile-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),var(--gold-lt),var(--gold),transparent);
+}
+
+.mgmt-profile-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  color:var(--gold);
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+.mgmt-profile-close:hover{
+  background:rgba(212,175,55,.14);
+  transform:rotate(90deg);
+}
+
+.mgmt-profile-icon{
+  width:110px;
+  height:110px;
+  margin:0 auto 1.3rem;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.7rem;
+  color:#000;
+  background:linear-gradient(135deg,var(--gold-lt),var(--gold),var(--gold-dk));
+  box-shadow:0 0 40px rgba(212,175,55,.42);
+}
+
+.mgmt-profile-tag{
+  display:inline-flex;
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  margin-bottom:.7rem;
+}
+
+.mgmt-profile-box h3{
+  font-family:var(--font-serif);
+  color:var(--txt-white);
+  font-size:clamp(1.5rem,4vw,2rem);
+  margin-bottom:.35rem;
+  font-weight:900;
+}
+
+#mgmtProfileRole{
+  display:block;
+  color:var(--gold);
+  font-size:.9rem;
+  font-weight:700;
+  margin-bottom:1.1rem;
+}
+
+#mgmtProfileBio{
+  color:var(--txt-mid);
+  font-size:.92rem;
+  line-height:1.9;
+  margin-bottom:1.6rem;
+}
+
+.mgmt-profile-actions{
+  display:flex;
+  justify-content:center;
+  gap:.8rem;
+  flex-wrap:wrap;
+}
+
+.mgmt-profile-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.9rem 1.25rem;
+  border-radius:999px;
+  text-decoration:none;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dk));
+  color:#000;
+  font-weight:900;
+  transition:.3s ease;
+}
+
+.mgmt-profile-btn.outline{
+  background:rgba(37,211,102,.08);
+  color:#25D366;
+  border:1px solid rgba(37,211,102,.3);
+}
+
+.mgmt-profile-btn:hover{
+  transform:translateY(-4px);
+}
+
+/* SPOTLIGHT */
+.mgmt-cursor-glow{
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.18),transparent 70%);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  opacity:0;
+  filter:blur(18px);
+  transition:opacity .3s ease;
+  z-index:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+
+  .leaders-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .mgmt-stats-row{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:768px){
+
+  .mgmt-hero{
+    min-height:560px;
+    padding:calc(var(--nav-h) + 3rem) 1rem 4rem;
+  }
+
+  .leader-card{
+    padding:2rem 1.3rem;
+  }
+
+  .leader-avatar-wrap{
+    width:135px;
+    height:135px;
+  }
+
+  .leader-avatar{
+    inset:12px;
+    font-size:3rem;
+  }
+
+  .team-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process-grid{
+    grid-template-columns:1fr;
+  }
+
+  .mgmt-stats-row{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:560px){
+
+  .mgmt-hero-content h1{
+    font-size:2.4rem;
+  }
+
+  .mgmt-hero-actions{
+    flex-direction:column;
+  }
+
+  .mgmt-hero-actions .btn{
+    width:100%;
+  }
+
+  .leader-card,
+  .team-card,
+  .process-card,
+  .mgmt-stat{
+    border-radius:24px;
+  }
+
+  .mgmt-profile-box{
+    padding:2rem 1.3rem;
+    border-radius:24px;
+  }
+
+  .mgmt-profile-icon{
+    width:90px;
+    height:90px;
+    font-size:2.2rem;
+  }
+
+  .mgmt-profile-actions{
+    flex-direction:column;
+  }
+
+  .mgmt-profile-btn{
+    width:100%;
+    justify-content:center;
+  }
+}
