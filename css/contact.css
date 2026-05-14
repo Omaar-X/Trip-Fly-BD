@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* ============================================================
    TRIP FLY BD — CONTACT.CSS
    Premium glassmorphism contact page | Dark Gold
@@ -207,8 +206,6 @@
   background:rgba(212,175,55,.05);
   box-shadow:0 0 0 3px rgba(212,175,55,.12);
 }
-.cf-input:focus ~ .cf-input-icon,
-.cf-select:focus ~ .cf-input-icon { color:var(--gold-lt); }
 .cf-select { cursor:pointer; }
 .cf-select option { background:var(--bg-card); color:var(--txt-light); }
 .cf-textarea { padding-top:1rem; min-height:110px; resize:vertical; }
@@ -318,92 +315,3 @@
   .contact-socials-row { justify-content:center; }
   .location-badges { flex-direction:column; align-items:center; }
 }
-=======
-/* CONTACT CSS */
-.contact-section { background:var(--bg-body); }
-.contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:3.5rem; align-items:start; }
-
-.contact-info h2 { font-size:clamp(1.5rem,3vw,2.2rem); font-weight:900; color:var(--txt-white); margin-bottom:.85rem; }
-.contact-info>p  { color:var(--txt-mid); font-size:.94rem; line-height:1.75; margin-bottom:2rem; }
-
-.info-cards { display:flex; flex-direction:column; gap:.9rem; margin-bottom:2rem; }
-.info-card {
-  display:flex; align-items:center; gap:1rem;
-  background:var(--glass); border:1px solid var(--bdr-gold);
-  border-radius:var(--radius); padding:1rem 1.2rem; transition:var(--tx);
-}
-.info-card:hover { border-color:var(--bdr-gold2); transform:translateX(5px); }
-.info-icon {
-  width:44px; height:44px; border-radius:50%;
-  background:rgba(245,197,24,.09); border:1px solid rgba(245,197,24,.22);
-  display:flex; align-items:center; justify-content:center;
-  color:var(--gold); font-size:.95rem; flex-shrink:0;
-}
-.wa-icon { background:rgba(37,211,102,.09); border-color:rgba(37,211,102,.22); color:#25D366; }
-.info-card strong { display:block; color:var(--txt-white); font-size:.86rem; font-weight:700; margin-bottom:.18rem; }
-.info-card span   { color:var(--txt-mid); font-size:.83rem; }
-
-/* FORM */
-.contact-form-wrap {
-  background:var(--glass); border:1px solid var(--bdr-gold);
-  border-radius:var(--radius-xl); padding:2.5rem; position:relative; overflow:hidden;
-}
-.contact-form-wrap::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:3px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-.form-header { margin-bottom:2rem; }
-.form-header h3 { font-size:1.4rem; font-weight:800; color:var(--txt-white); margin-bottom:.38rem; }
-.form-header p  { color:var(--txt-mid); font-size:.87rem; }
-
-.cf-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.cf-group { margin-bottom:1.15rem; }
-.cf-group label { display:block; font-size:.83rem; font-weight:600; color:var(--txt-light); margin-bottom:.48rem; }
-.req { color:var(--gold); }
-
-.cf-input-wrap { position:relative; display:flex; align-items:center; }
-.cf-input-wrap i { position:absolute; left:.95rem; color:var(--gold); font-size:.88rem; pointer-events:none; z-index:1; }
-.cf-input-wrap input,
-.cf-input-wrap select,
-.cf-input-wrap textarea {
-  width:100%;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(245,197,24,.2);
-  border-radius:var(--radius-sm);
-  color:var(--txt-white); font-family:var(--font); font-size:.88rem;
-  padding:.84rem 1rem .84rem 2.75rem;
-  transition:var(--tx); outline:none; appearance:none; -webkit-appearance:none;
-}
-.cf-input-wrap input::placeholder,
-.cf-input-wrap textarea::placeholder { color:var(--txt-dim); }
-.cf-input-wrap select option { background:var(--bg-card2); color:var(--txt-white); }
-.cf-input-wrap input:focus,
-.cf-input-wrap select:focus,
-.cf-input-wrap textarea:focus {
-  border-color:var(--gold); background:rgba(245,197,24,.04);
-  box-shadow:0 0 0 3px rgba(245,197,24,.1);
-}
-.cf-textarea-wrap { align-items:flex-start; }
-.cf-textarea-wrap i { top:.9rem; }
-.cf-textarea-wrap textarea { resize:vertical; min-height:120px; }
-
-/* MAP */
-.map-section {
-  height:340px; background:var(--bg-alt);
-  display:flex; align-items:center; justify-content:center;
-  text-align:center; position:relative; overflow:hidden;
-  background-image:
-    repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(245,197,24,.025) 60px,rgba(245,197,24,.025) 61px),
-    repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(245,197,24,.025) 60px,rgba(245,197,24,.025) 61px);
-}
-.map-inner {
-  background:rgba(13,27,42,.88); backdrop-filter:blur(20px);
-  border:1px solid var(--bdr-gold); border-radius:var(--radius-lg);
-  padding:2.5rem; max-width:440px;
-}
-.map-inner i { font-size:2.5rem; color:var(--gold); margin-bottom:1rem; }
-.map-inner h3 { font-size:1.28rem; font-weight:700; color:var(--txt-white); margin-bottom:.5rem; }
-.map-inner p  { color:var(--txt-mid); font-size:.87rem; margin-bottom:1.2rem; }
-
-@media(max-width:900px){ .contact-grid{ grid-template-columns:1fr; } .cf-row{ grid-template-columns:1fr; } }
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
