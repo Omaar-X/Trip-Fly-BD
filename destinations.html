@@ -29,11 +29,11 @@
       <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="services.html" class="nav-link">Services</a></li>
       <li><a href="destinations.html" class="nav-link active">Destinations</a></li>
-      <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li><a href="gallery.html" class="nav-link">Success Story</a></li>
       <li><a href="management.html" class="nav-link">Management</a></li>
       <li>
-        <a href="https://wa.me/88017XXXXXXXX?text=Hello%20Trip%20Fly%20BD!" target="_blank" rel="noopener" class="nav-link nav-cta">
-          <i class="fab fa-whatsapp"></i> Book Now
+        <a href="contact.html" class="nav-link nav-cta" aria-label="Contact Trip Fly BD">
+          <i class="fas fa-headset" aria-hidden="true"></i> Contact Us
         </a>
       </li>
     </ul>
@@ -49,7 +49,20 @@
   <div class="dest-hero-content">
     <span class="section-tag"><i class="fas fa-globe-asia"></i> Premium Destinations</span>
     <h1>Explore The <span class="gold">World</span></h1>
-    <p>Touch any destination card to view tourist visa requirements, documents, processing time and travel tips.</p>
+    <p>Choose a destination, check tourist visa requirements, review official portals and start a premium consultation with Trip Fly BD.</p>
+
+    <div class="dest-hero-actions">
+      <a href="#destGrid" class="btn btn-gold btn-lg"><i class="fas fa-passport"></i> Check Requirements</a>
+      <a href="https://wa.me/8801630840405?text=Hello%20Trip%20Fly%20BD!%20I%20need%20help%20choosing%20a%20destination." class="btn btn-outline btn-lg" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Talk To Expert
+      </a>
+    </div>
+
+    <div class="dest-hero-trust" role="list" aria-label="Destination support highlights">
+      <span role="listitem"><i class="fas fa-shield-alt"></i> Visa Support Available</span>
+      <span role="listitem"><i class="fas fa-bolt"></i> Fast Consultation</span>
+      <span role="listitem"><i class="fas fa-gem"></i> Premium Travel Planning</span>
+    </div>
 
     <div class="breadcrumb">
       <a href="index.html">Home</a>
@@ -59,17 +72,17 @@
   </div>
 </section>
 
-<div class="filter-bar">
-  <div class="filter-inner">
-    <button class="filter-btn active" data-filter="all"><i class="fas fa-globe"></i> All</button>
-    <button class="filter-btn" data-filter="south-asia"><i class="fas fa-flag"></i> South Asia</button>
-    <button class="filter-btn" data-filter="sea"><i class="fas fa-water"></i> Southeast Asia</button>
-    <button class="filter-btn" data-filter="east-asia"><i class="fas fa-torii-gate"></i> East Asia</button>
-    <button class="filter-btn" data-filter="middle-east"><i class="fas fa-mosque"></i> Middle East</button>
-    <button class="filter-btn" data-filter="europe"><i class="fas fa-landmark"></i> Europe</button>
-    <button class="filter-btn" data-filter="americas"><i class="fas fa-mountain"></i> Americas</button>
-    <button class="filter-btn" data-filter="oceania"><i class="fas fa-compass"></i> Oceania</button>
-    <button class="filter-btn" data-filter="africa"><i class="fas fa-paw"></i> Africa</button>
+<div class="filter-bar" aria-label="Destination category filters">
+  <div class="filter-inner" role="tablist">
+    <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true"><i class="fas fa-globe"></i> All</button>
+    <button type="button" class="filter-btn" data-filter="south-asia" role="tab" aria-selected="false"><i class="fas fa-flag"></i> South Asia</button>
+    <button type="button" class="filter-btn" data-filter="sea" role="tab" aria-selected="false"><i class="fas fa-water"></i> Southeast Asia</button>
+    <button type="button" class="filter-btn" data-filter="east-asia" role="tab" aria-selected="false"><i class="fas fa-torii-gate"></i> East Asia</button>
+    <button type="button" class="filter-btn" data-filter="middle-east" role="tab" aria-selected="false"><i class="fas fa-mosque"></i> Middle East</button>
+    <button type="button" class="filter-btn" data-filter="europe" role="tab" aria-selected="false"><i class="fas fa-landmark"></i> Europe</button>
+    <button type="button" class="filter-btn" data-filter="americas" role="tab" aria-selected="false"><i class="fas fa-mountain"></i> Americas</button>
+    <button type="button" class="filter-btn" data-filter="oceania" role="tab" aria-selected="false"><i class="fas fa-compass"></i> Oceania</button>
+    <button type="button" class="filter-btn" data-filter="africa" role="tab" aria-selected="false"><i class="fas fa-map"></i> Africa</button>
   </div>
 </div>
 
@@ -77,8 +90,8 @@
   <div class="container">
 
     <div class="dest-count-bar">
-      <div class="dest-count-text">Showing <span id="destCount">25</span> destinations</div>
-      <div class="dest-tip"><i class="fas fa-hand-pointer"></i> Click card for visa requirements</div>
+      <div class="dest-count-text">Showing <span id="destCount">25</span> premium destinations</div>
+      <div class="dest-tip"><i class="fas fa-passport"></i> Select a card to view requirements</div>
     </div>
 
     <div class="dest-grid" id="destGrid">
@@ -98,7 +111,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Travel Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -117,7 +130,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -136,7 +149,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Assistance</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -155,7 +168,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Package</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -174,7 +187,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Tour Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -193,7 +206,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Holiday</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -212,7 +225,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Package</div><div class="dest-price-val">Premium</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -231,7 +244,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Guidance</div><div class="dest-price-val">Contact</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -250,7 +263,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Popular</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -269,7 +282,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Package</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -288,7 +301,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Help</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -307,7 +320,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Tour</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -326,7 +339,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -345,7 +358,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -364,7 +377,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Guidance</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -383,7 +396,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -402,7 +415,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Package</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -421,7 +434,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Guidance</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -440,7 +453,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -459,7 +472,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Support</div><div class="dest-price-val">Premium</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -478,7 +491,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Schengen</div><div class="dest-price-val">Support</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -497,7 +510,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Consultation</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -516,7 +529,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Help</div><div class="dest-price-val">Premium</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -535,7 +548,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Visa Support</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -554,7 +567,7 @@
         </div>
         <div class="dest-card-footer">
           <div><div class="dest-price-lbl">Package</div><div class="dest-price-val">Available</div></div>
-          <button class="dest-visa-btn"><i class="fas fa-passport"></i> Details</button>
+          <button class="dest-visa-btn"><i class="fas fa-passport"></i> View Checklist</button>
         </div>
       </article>
 
@@ -580,10 +593,11 @@
     <div class="vm-body">
       <div id="vm-reqs"></div>
       <div id="vm-tips"></div>
+      <div id="vm-official-links" style="display:none;"></div>
 
       <div class="vm-apply-box">
         <div class="vm-section-title">
-          <i class="fas fa-paper-plane"></i> Apply Now
+          <i class="fas fa-paper-plane"></i> Start Inquiry
         </div>
 
         <div class="vm-form-grid">
@@ -593,7 +607,7 @@
 
         <div class="vm-action-row">
           <button id="vmApplyBtn" class="vm-apply-btn">
-            <i class="fab fa-whatsapp"></i> Apply Now
+            <i class="fas fa-paper-plane"></i> Start Inquiry
           </button>
 
           <a href="#" id="vm-wa-btn" class="vm-whatsapp-btn" target="_blank" rel="noopener">
@@ -614,7 +628,7 @@
       <h2>Need Visa Guidance?</h2>
       <p>Our expert team is ready to help you choose the right destination, prepare documents and plan your full trip.</p>
       <div class="cta-buttons">
-        <a href="https://wa.me/88017XXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20need%20visa%20guidance." class="btn btn-gold btn-lg" target="_blank" rel="noopener">
+        <a href="https://wa.me/8801630840405?text=Hello%20Trip%20Fly%20BD!%20I%20need%20visa%20guidance." class="btn btn-gold btn-lg" target="_blank" rel="noopener">
           <i class="fab fa-whatsapp"></i> WhatsApp Now
         </a>
         <a href="contact.html" class="btn btn-outline btn-lg">
@@ -637,7 +651,7 @@
         <div class="footer-socials">
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/88017XXXXXXXX" class="social-link" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/8801630840405" class="social-link" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
           <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
@@ -649,7 +663,7 @@
           <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
           <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
           <li><a href="destinations.html"><i class="fas fa-chevron-right"></i> Destinations</a></li>
-          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Success Story</a></li>
           <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
         </ul>
       </div>
@@ -669,8 +683,8 @@
         <h4>Contact Info</h4>
         <ul>
           <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
-          <li><i class="fas fa-phone"></i> +880 17XXXXXXXX</li>
-          <li><i class="fab fa-whatsapp"></i> +880 17XXXXXXXX</li>
+          <li><i class="fas fa-phone"></i> +880 1630-840405</li>
+          <li><i class="fab fa-whatsapp"></i> +880 1630-840405</li>
           <li><i class="fas fa-envelope"></i> info@tripflybd.com</li>
           <li><i class="fas fa-clock"></i> Sat–Thu: 9AM–9PM</li>
         </ul>
@@ -688,3 +702,4 @@
 <script src="js/chatbot.js"></script>
 </body>
 </html>
+

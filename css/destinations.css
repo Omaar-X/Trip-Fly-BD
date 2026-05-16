@@ -980,3 +980,480 @@
     height:38px;
   }
 }
+/* ============================================================
+   OFFICIAL VISA PORTALS SECTION — vm-official-links
+   Premium dark-gold glassmorphism cards | Trip Fly BD
+============================================================ */
+
+#vm-official-links {
+  margin-top: .6rem;
+}
+
+.vm-official-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  margin-top: .3rem;
+}
+
+/* Individual official link card */
+.vm-official-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .85rem;
+  padding: .85rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(212,175,55,.07), rgba(212,175,55,.03));
+  border: 1px solid rgba(212,175,55,.18);
+  text-decoration: none;
+  transition: var(--tx);
+  position: relative;
+  overflow: hidden;
+}
+
+.vm-official-link-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  transform: scaleY(0);
+  transition: transform .35s ease;
+}
+
+.vm-official-link-card:hover {
+  border-color: rgba(212,175,55,.42);
+  background: linear-gradient(135deg, rgba(212,175,55,.12), rgba(212,175,55,.05));
+  box-shadow: 0 8px 28px rgba(212,175,55,.18);
+  transform: translateX(4px);
+}
+
+.vm-official-link-card:hover::before {
+  transform: scaleY(1);
+}
+
+.vm-official-link-left {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.vm-official-link-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold-lt), var(--gold));
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  box-shadow: 0 0 16px rgba(212,175,55,.25);
+  transition: var(--tx);
+}
+
+.vm-official-link-card:hover .vm-official-link-icon {
+  box-shadow: 0 0 22px rgba(212,175,55,.45);
+}
+
+.vm-official-link-label {
+  color: var(--txt-white);
+  font-size: .84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: .18rem;
+}
+
+.vm-official-link-note {
+  color: var(--txt-mid);
+  font-size: .74rem;
+  line-height: 1.5;
+}
+
+.vm-official-link-arrow {
+  flex-shrink: 0;
+  color: rgba(212,175,55,.45);
+  font-size: .78rem;
+  transition: color .3s ease, transform .3s ease;
+}
+
+.vm-official-link-card:hover .vm-official-link-arrow {
+  color: var(--gold);
+  transform: translate(2px, -2px);
+}
+
+/* Disclaimer bar */
+.vm-official-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  margin-top: .75rem;
+  padding: .7rem .9rem;
+  border-radius: 14px;
+  background: rgba(212,175,55,.05);
+  border: 1px solid rgba(212,175,55,.14);
+  color: var(--txt-dim);
+  font-size: .72rem;
+  line-height: 1.65;
+}
+
+.vm-official-disclaimer i {
+  color: var(--gold);
+  font-size: .72rem;
+  margin-top: .18rem;
+  flex-shrink: 0;
+}
+
+/* Mobile adjustment */
+@media(max-width: 420px) {
+  .vm-official-link-card { padding: .75rem .85rem; }
+  .vm-official-link-icon { width: 34px; height: 34px; font-size: .78rem; }
+  .vm-official-link-label { font-size: .8rem; }
+  .vm-official-link-note  { font-size: .7rem; }
+}
+
+/* ============================================================
+   PREMIUM DESTINATION ENHANCEMENTS
+   Centered filters | Luxury cards | Mobile-safe polish
+============================================================ */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.dest-hero {
+  min-height: clamp(430px, 62vh, 660px);
+  background:
+    linear-gradient(rgba(5,8,12,.78), rgba(5,8,12,.94)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=85&w=1800&auto=format&fit=crop") center/cover no-repeat;
+}
+
+.dest-hero::before {
+  background:
+    radial-gradient(ellipse at 50% 4%, rgba(212,175,55,.24), transparent 58%),
+    radial-gradient(ellipse at 12% 86%, rgba(37,99,235,.12), transparent 46%),
+    linear-gradient(90deg, rgba(5,8,12,.86), rgba(5,8,12,.35), rgba(5,8,12,.86));
+}
+
+.dest-hero-content {
+  max-width: 880px;
+}
+
+.dest-hero-content h1 {
+  line-height: 1.06;
+  margin-bottom: 1rem;
+}
+
+.dest-hero-content p {
+  max-width: 680px;
+  color: rgba(200,216,232,.8);
+}
+
+.dest-hero-actions,
+.dest-hero-trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .8rem;
+  max-width: 100%;
+}
+
+.dest-hero-actions {
+  margin: 0 auto 1.4rem;
+}
+
+.dest-hero-trust span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .42rem;
+  min-height: 38px;
+  padding: .42rem .9rem;
+  border-radius: 999px;
+  color: var(--txt-light);
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(212,175,55,.17);
+  backdrop-filter: blur(12px);
+  font-size: .74rem;
+  font-weight: 850;
+}
+
+.dest-hero-trust i {
+  color: var(--gold);
+}
+
+.filter-bar {
+  max-width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-inner {
+  width: max-content;
+  min-width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .7rem;
+  padding: .9rem clamp(1rem, 4vw, 2rem);
+}
+
+.filter-btn {
+  position: relative;
+  min-height: 42px;
+  font-weight: 900;
+  overflow: hidden;
+}
+
+.filter-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.18) 35%, transparent 68%);
+  transform: translateX(-120%);
+  transition: transform .55s ease;
+  pointer-events: none;
+}
+
+.filter-btn:hover::after,
+.filter-btn.active::after {
+  transform: translateX(120%);
+}
+
+.dest-count-bar {
+  padding: .95rem 1rem;
+  border: 1px solid rgba(212,175,55,.13);
+  border-radius: 20px;
+  background: rgba(255,255,255,.025);
+  backdrop-filter: blur(10px);
+}
+
+.dest-grid {
+  align-items: stretch;
+}
+
+.dest-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100%;
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgba(22,30,40,.98), rgba(9,13,20,.98));
+  box-shadow: 0 16px 44px rgba(0,0,0,.25);
+}
+
+.dest-card::before {
+  background:
+    linear-gradient(135deg, rgba(212,175,55,.1), transparent 38%, rgba(255,255,255,.035)),
+    linear-gradient(120deg, transparent 0%, rgba(255,255,255,.09) 24%, transparent 48%);
+  transform: translateX(-120%);
+  opacity: 1;
+}
+
+.dest-card:hover::before,
+.dest-card.active-card::before {
+  transform: translateX(120%);
+}
+
+.dest-card-img {
+  height: clamp(190px, 22vw, 235px);
+}
+
+.dest-card-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(212,175,55,.12), transparent 34%),
+    linear-gradient(to top, rgba(5,8,12,.96), rgba(5,8,12,.18), transparent);
+}
+
+.dest-card-body {
+  flex: 1;
+  min-width: 0;
+  padding: 1.1rem 1.15rem .95rem;
+}
+
+.dest-card-name {
+  letter-spacing: 0;
+}
+
+.dest-card-sub {
+  color: rgba(212,175,55,.9);
+  font-weight: 750;
+}
+
+.dest-card-meta {
+  gap: .42rem;
+}
+
+.dest-meta-tag {
+  min-height: 26px;
+  font-weight: 800;
+}
+
+.dest-premium-badge {
+  position: absolute;
+  left: .9rem;
+  bottom: .85rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  max-width: calc(100% - 1.8rem);
+  min-height: 30px;
+  padding: .32rem .7rem;
+  border-radius: 999px;
+  color: var(--txt-white);
+  background: rgba(5,8,12,.74);
+  border: 1px solid rgba(212,175,55,.25);
+  backdrop-filter: blur(10px);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+.dest-premium-badge i {
+  color: var(--gold);
+}
+
+.dest-tap-hint {
+  left: auto;
+  right: .85rem;
+  bottom: .85rem;
+  max-width: calc(100% - 1.7rem);
+}
+
+.dest-card-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.dest-visa-btn {
+  min-width: 132px;
+  min-height: 42px;
+  color: #000;
+  background: linear-gradient(135deg, var(--gold-lt), var(--gold), var(--gold-dk));
+  border-color: transparent;
+  box-shadow: 0 8px 22px rgba(212,175,55,.2);
+}
+
+.dest-visa-btn:hover,
+.dest-visa-btn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(212,175,55,.34);
+  outline: none;
+}
+
+.vm-apply-box .vm-section-title {
+  color: var(--gold);
+}
+
+.vm-apply-btn {
+  min-width: 150px;
+}
+
+.cta-section .btn[href*="wa.me"] {
+  white-space: normal;
+}
+
+@media (min-width: 769px) {
+  .filter-bar {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-inner {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    min-width: max-content;
+    width: max-content;
+    margin: 0;
+    padding-inline: 1rem;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+  }
+
+  .dest-hero-actions .btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 560px) {
+  .dest-hero {
+    min-height: 560px;
+    padding-top: calc(var(--nav-h) + 3rem);
+  }
+
+  .dest-hero-trust span {
+    width: 100%;
+  }
+
+  .dest-count-bar {
+    align-items: stretch;
+  }
+
+  .dest-tip {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dest-card-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .dest-visa-btn {
+    width: 100%;
+  }
+
+  .dest-premium-badge,
+  .dest-tap-hint {
+    position: absolute;
+    bottom: .75rem;
+    font-size: .58rem;
+  }
+
+  .dest-premium-badge {
+    left: .75rem;
+    right: auto;
+    max-width: calc(58% - .75rem);
+  }
+
+  .dest-tap-hint {
+    right: .75rem;
+    max-width: calc(42% - .75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dest-card,
+  .dest-card::before,
+  .dest-card::after,
+  .dest-card-img img,
+  .filter-btn,
+  .filter-btn::after,
+  .visa-modal,
+  .visa-modal-overlay,
+  .dest-hero-orb {
+    transition: none !important;
+    animation: none !important;
+  }
+}

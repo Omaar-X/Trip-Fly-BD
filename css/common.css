@@ -860,3 +860,41 @@ footer,
     display:none !important;
   }
 }
+
+/* ============================================================
+   MOBILE NAVBAR HAMBURGER FIX
+============================================================ */
+
+.navbar{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  z-index:9999 !important;
+}
+
+.hamburger{
+  position:relative !important;
+  z-index:10001 !important;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+
+.nav-container{
+  position:relative;
+  z-index:10000;
+}
+
+@media(max-width:900px){
+  .hamburger{
+    display:flex !important;
+  }
+
+  .nav-menu{
+    z-index:9998 !important;
+  }
+}

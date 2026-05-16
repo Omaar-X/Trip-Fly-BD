@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5"/>
-  <meta name="description" content="Trip Fly BD Gallery — Real travel moments from our clients across Thailand, Dubai, Maldives, Malaysia and more."/>
+  <meta name="description" content="Trip Fly BD Success Stories - real client journeys, successful trips and trusted travel memories from Malaysia, Singapore and beyond."/>
   <meta name="theme-color" content="#D4AF37"/>
-  <title>Gallery | Trip Fly BD</title>
+  <title>Success Story | Trip Fly BD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -25,12 +25,11 @@
       <li role="none"><a href="about.html"        class="nav-link"           role="menuitem">About</a></li>
       <li role="none"><a href="services.html"     class="nav-link"           role="menuitem">Services</a></li>
       <li role="none"><a href="destinations.html" class="nav-link"           role="menuitem">Destinations</a></li>
-      <li role="none"><a href="gallery.html"      class="nav-link active"    role="menuitem">Gallery</a></li>
+      <li role="none"><a href="gallery.html"      class="nav-link active"    role="menuitem">Success Story</a></li>
       <li role="none"><a href="management.html"   class="nav-link"           role="menuitem">Management</a></li>
       <li role="none">
-        <a href="https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!" target="_blank" rel="noopener"
-           class="nav-link nav-cta" role="menuitem">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i> Book Now
+        <a href="contact.html" class="nav-link nav-cta" role="menuitem" aria-label="Contact Trip Fly BD">
+          <i class="fas fa-headset" aria-hidden="true"></i> Contact Us
         </a>
       </li>
     </ul>
@@ -40,213 +39,216 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="gallery-hero">
-  <div class="gallery-hero-orb" aria-hidden="true"></div>
-  <div class="gallery-hero-content">
-    <span class="section-tag"><i class="fas fa-camera"></i> Our Travel Moments</span>
-    <h1>Travel <span class="gold">Gallery</span></h1>
-    <p>Real moments captured from our clients&rsquo; journeys &mdash; Thailand, Dubai, Maldives, Malaysia and beyond.</p>
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <i class="fas fa-chevron-right"></i>
-      <span>Gallery</span>
+<main>
+  <section class="gallery-hero">
+    <div class="gallery-hero-orb" aria-hidden="true"></div>
+    <div class="gallery-hero-content">
+      <span class="section-tag"><i class="fas fa-award" aria-hidden="true"></i> Visa & Travel Success Stories</span>
+      <h1>Trip Fly BD <span class="gold">Success Stories</span></h1>
+      <p>Real client journeys, successful trips and trusted travel memories with Trip Fly BD.</p>
+      <div class="success-proof-row" role="list" aria-label="Success story highlights">
+        <span role="listitem"><i class="fas fa-passport" aria-hidden="true"></i> Visa Support</span>
+        <span role="listitem"><i class="fas fa-users" aria-hidden="true"></i> Group Travel</span>
+        <span role="listitem"><i class="fas fa-plane-departure" aria-hidden="true"></i> Client Memories</span>
+      </div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <span>Success Story</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="gallery-filter" role="navigation" aria-label="Success story filter">
+    <div class="gallery-filter-inner" role="tablist">
+      <button type="button" class="gf-btn active" data-filter="all" role="tab" aria-selected="true"><i class="fas fa-globe" aria-hidden="true"></i> All</button>
+      <button type="button" class="gf-btn" data-filter="malaysia" role="tab" aria-selected="false"><i class="fas fa-landmark" aria-hidden="true"></i> Malaysia</button>
+      <button type="button" class="gf-btn" data-filter="singapore" role="tab" aria-selected="false"><i class="fas fa-building" aria-hidden="true"></i> Singapore</button>
+      <button type="button" class="gf-btn" data-filter="visa-success" role="tab" aria-selected="false"><i class="fas fa-passport" aria-hidden="true"></i> Visa Success</button>
+      <button type="button" class="gf-btn" data-filter="group-travel" role="tab" aria-selected="false"><i class="fas fa-users" aria-hidden="true"></i> Group Travel</button>
+      <button type="button" class="gf-btn" data-filter="client-memories" role="tab" aria-selected="false"><i class="fas fa-heart" aria-hidden="true"></i> Client Memories</button>
     </div>
   </div>
-</section>
 
-<!-- FILTER -->
-<div class="gallery-filter" role="navigation" aria-label="Gallery filter">
-  <div class="gallery-filter-inner">
-    <button class="gf-btn active" data-filter="all"><i class="fas fa-globe"></i> All Photos</button>
-    <button class="gf-btn" data-filter="thailand"><i class="fas fa-umbrella-beach"></i> Thailand</button>
-    <button class="gf-btn" data-filter="dubai"><i class="fas fa-city"></i> Dubai</button>
-    <button class="gf-btn" data-filter="maldives"><i class="fas fa-water"></i> Maldives</button>
-    <button class="gf-btn" data-filter="malaysia"><i class="fas fa-landmark"></i> Malaysia</button>
-    <button class="gf-btn" data-filter="india"><i class="fas fa-monument"></i> India</button>
-    <button class="gf-btn" data-filter="singapore"><i class="fas fa-building"></i> Singapore</button>
-    <button class="gf-btn" data-filter="turkey"><i class="fas fa-mosque"></i> Turkey</button>
-    <button class="gf-btn" data-filter="japan"><i class="fas fa-torii-gate"></i> Japan</button>
-  </div>
-</div>
+  <section class="gallery-main">
+    <div class="container">
+      <div class="gallery-stats-bar">
+        <div class="gs-count">Showing <span id="galleryCount">13</span> success stories</div>
+        <div class="gs-tip"><i class="fas fa-mouse-pointer" aria-hidden="true"></i> Click any story to preview</div>
+      </div>
 
-<!-- GALLERY MAIN -->
-<section class="gallery-main">
-  <div class="container">
-    <div class="gallery-stats-bar">
-      <div class="gs-count">Showing <span id="galleryCount">18</span> photos</div>
-      <div class="gs-tip"><i class="fas fa-mouse-pointer"></i> Click any photo to view full size</div>
-    </div>
-    <div class="gallery-grid" id="galleryGrid" role="list">
-      <div class="gallery-item reveal-up" data-cat="thailand" data-src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1400&q=90" data-caption="Phuket Beach, Thailand">
-        <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&q=80" alt="Phuket Beach, Thailand" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Phuket Beach, Thailand</span></div>
-        <div class="gi-badge">Thailand</div>
+      <div class="gallery-grid" id="galleryGrid" role="list">
+        <article class="gallery-item reveal-up" role="listitem" data-cat="malaysia visa-success group-travel client-memories" data-src="images/Malaysia/Mal1.jpg" data-title="Malaysia Success Story" data-caption="Malaysia group travel success with Trip Fly BD">
+          <img src="images/Malaysia/Mal1.jpg" alt="Malaysia group travel success with Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Success Story</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Success Story</h3><p>Malaysia group travel success with Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-1" role="listitem" data-cat="malaysia group-travel client-memories" data-src="images/Malaysia/Mal2.jpg" data-title="Happy Clients In Malaysia" data-caption="Happy clients exploring Malaysia">
+          <img src="images/Malaysia/Mal2.jpg" alt="Happy clients exploring Malaysia" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Success Story</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Happy Clients In Malaysia</h3><p>Happy clients exploring Malaysia</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-2" role="listitem" data-cat="malaysia visa-success client-memories" data-src="images/Malaysia/Mal3.jpg" data-title="Malaysia Visa Support" data-caption="Malaysia visa & tour support success">
+          <img src="images/Malaysia/Mal3.jpg" alt="Malaysia visa and tour support success" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-passport" aria-hidden="true"></i> Visa Success</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Visa Support</h3><p>Malaysia visa & tour support success</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up" role="listitem" data-cat="malaysia group-travel client-memories" data-src="images/Malaysia/Mal4.jpg" data-title="Malaysia Client Journey" data-caption="Client journey across Malaysia with Trip Fly BD">
+          <img src="images/Malaysia/Mal4.jpg" alt="Client journey across Malaysia with Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-users" aria-hidden="true"></i> Group Travel</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Client Journey</h3><p>Client journey across Malaysia with Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-1" role="listitem" data-cat="malaysia visa-success client-memories" data-src="images/Malaysia/Mal5.jpg" data-title="Malaysia Travel Memory" data-caption="Trusted Malaysia travel memory with Trip Fly BD">
+          <img src="images/Malaysia/Mal5.jpg" alt="Trusted Malaysia travel memory with Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Success Story</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Travel Memory</h3><p>Trusted Malaysia travel memory with Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-2" role="listitem" data-cat="malaysia group-travel client-memories" data-src="images/Malaysia/Mal6.jpg" data-title="Malaysia Group Tour" data-caption="Successful Malaysia group tour arranged by Trip Fly BD">
+          <img src="images/Malaysia/Mal6.jpg" alt="Successful Malaysia group tour arranged by Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-users" aria-hidden="true"></i> Group Travel</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Group Tour</h3><p>Successful Malaysia group tour arranged by Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up" role="listitem" data-cat="malaysia visa-success client-memories" data-src="images/Malaysia/Mal7.jpg" data-title="Malaysia Visa Success" data-caption="Malaysia visa success and travel support story">
+          <img src="images/Malaysia/Mal7.jpg" alt="Malaysia visa success and travel support story" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-passport" aria-hidden="true"></i> Visa Success</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Visa Success</h3><p>Malaysia visa success and travel support story</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-1" role="listitem" data-cat="malaysia group-travel client-memories" data-src="images/Malaysia/Mal8.jpg" data-title="Malaysia Travel Success" data-caption="Premium Malaysia travel success with Trip Fly BD">
+          <img src="images/Malaysia/Mal8.jpg" alt="Premium Malaysia travel success with Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Malaysia</div>
+          <div class="gi-success-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Success Story</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Malaysia Travel Success</h3><p>Premium Malaysia travel success with Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-2" role="listitem" data-cat="singapore visa-success client-memories" data-src="images/Singapore/Sing1.jpg" data-title="Singapore Travel Success" data-caption="Singapore travel success story">
+          <img src="images/Singapore/Sing1.jpg" alt="Singapore travel success story" loading="lazy"/>
+          <div class="gi-badge">Singapore</div>
+          <div class="gi-success-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> Success Story</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Singapore Travel Success</h3><p>Singapore travel success story</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up" role="listitem" data-cat="singapore group-travel client-memories" data-src="images/Singapore/Sing2.jpg" data-title="Singapore Client Journey" data-caption="Client journey with Trip Fly BD">
+          <img src="images/Singapore/Sing2.jpg" alt="Client journey with Trip Fly BD in Singapore" loading="lazy"/>
+          <div class="gi-badge">Singapore</div>
+          <div class="gi-success-badge"><i class="fas fa-users" aria-hidden="true"></i> Group Travel</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Singapore Client Journey</h3><p>Client journey with Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-1" role="listitem" data-cat="singapore group-travel client-memories" data-src="images/Singapore/Sing3.jpg" data-title="Singapore Group Tour" data-caption="Successful Singapore group tour">
+          <img src="images/Singapore/Sing3.jpg" alt="Successful Singapore group tour" loading="lazy"/>
+          <div class="gi-badge">Singapore</div>
+          <div class="gi-success-badge"><i class="fas fa-users" aria-hidden="true"></i> Group Travel</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Singapore Group Tour</h3><p>Successful Singapore group tour</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up delay-2" role="listitem" data-cat="singapore visa-success client-memories" data-src="images/Singapore/Sing5.jpg" data-title="Singapore Visa & Tour Support" data-caption="Singapore visa and tour support success with Trip Fly BD">
+          <img src="images/Singapore/Sing5.jpg" alt="Singapore visa and tour support success with Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Singapore</div>
+          <div class="gi-success-badge"><i class="fas fa-passport" aria-hidden="true"></i> Visa Success</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Singapore Visa & Tour Support</h3><p>Singapore visa and tour support success with Trip Fly BD</p></div>
+        </article>
+
+        <article class="gallery-item reveal-up" role="listitem" data-cat="singapore client-memories" data-src="images/Singapore/Sing6.jpg" data-title="Singapore Client Memory" data-caption="Trusted Singapore client memory with Trip Fly BD">
+          <img src="images/Singapore/Sing6.jpg" alt="Trusted Singapore client memory with Trip Fly BD" loading="lazy"/>
+          <div class="gi-badge">Singapore</div>
+          <div class="gi-success-badge"><i class="fas fa-heart" aria-hidden="true"></i> Client Memory</div>
+          <div class="gi-overlay"><i class="fas fa-search-plus" aria-hidden="true"></i><h3>Singapore Client Memory</h3><p>Trusted Singapore client memory with Trip Fly BD</p></div>
+        </article>
       </div>
-      <div class="gallery-item reveal-up delay-1" data-cat="dubai" data-src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=90" data-caption="Burj Khalifa, Dubai">
-        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=700&q=80" alt="Burj Khalifa, Dubai" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Burj Khalifa, Dubai</span></div>
-        <div class="gi-badge">Dubai</div>
-      </div>
-      <div class="gallery-item reveal-up delay-2" data-cat="maldives" data-src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1400&q=90" data-caption="Crystal Waters, Maldives">
-        <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=700&q=80" alt="Crystal Waters, Maldives" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Crystal Waters, Maldives</span></div>
-        <div class="gi-badge">Maldives</div>
-      </div>
-      <div class="gallery-item reveal-up" data-cat="malaysia" data-src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1200&q=90" data-caption="Petronas Towers, Malaysia">
-        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=700&q=80" alt="Petronas Towers, Malaysia" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Petronas Towers, Malaysia</span></div>
-        <div class="gi-badge">Malaysia</div>
-      </div>
-      <div class="gallery-item reveal-up delay-1" data-cat="india" data-src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200&q=90" data-caption="Taj Mahal, India">
-        <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=700&q=80" alt="Taj Mahal, India" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Taj Mahal, India</span></div>
-        <div class="gi-badge">India</div>
-      </div>
-      <div class="gallery-item reveal-up delay-2" data-cat="singapore" data-src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200&q=90" data-caption="Marina Bay, Singapore">
-        <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=700&q=80" alt="Marina Bay, Singapore" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Marina Bay, Singapore</span></div>
-        <div class="gi-badge">Singapore</div>
-      </div>
-      <div class="gallery-item reveal-up" data-cat="turkey" data-src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1200&q=90" data-caption="Cappadocia, Turkey">
-        <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=700&q=80" alt="Cappadocia, Turkey" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Cappadocia, Turkey</span></div>
-        <div class="gi-badge">Turkey</div>
-      </div>
-      <div class="gallery-item reveal-up delay-1" data-cat="thailand" data-src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1200&q=90" data-caption="Phi Phi Island, Thailand">
-        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=700&q=80" alt="Phi Phi Island, Thailand" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Phi Phi Island, Thailand</span></div>
-        <div class="gi-badge">Thailand</div>
-      </div>
-      <div class="gallery-item reveal-up delay-2" data-cat="srilanka" data-src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=90" data-caption="Sri Lanka Scenic">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Sri Lanka Scenic" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Sri Lanka Scenic</span></div>
-        <div class="gi-badge">Sri Lanka</div>
-      </div>
-      <div class="gallery-item reveal-up" data-cat="japan" data-src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1200&q=90" data-caption="Tokyo Night, Japan">
-        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=700&q=80" alt="Tokyo Night, Japan" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Tokyo Night, Japan</span></div>
-        <div class="gi-badge">Japan</div>
-      </div>
-      <div class="gallery-item reveal-up delay-1" data-cat="china" data-src="https://images.unsplash.com/photo-1508804052814-cd3ba865a116?w=1200&q=90" data-caption="Great Wall, China">
-        <img src="https://images.unsplash.com/photo-1508804052814-cd3ba865a116?w=700&q=80" alt="Great Wall, China" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Great Wall, China</span></div>
-        <div class="gi-badge">China</div>
-      </div>
-      <div class="gallery-item reveal-up delay-2" data-cat="indonesia" data-src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&q=90" data-caption="Bali Temple, Indonesia">
-        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=700&q=80" alt="Bali Temple, Indonesia" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Bali Temple, Indonesia</span></div>
-        <div class="gi-badge">Indonesia</div>
-      </div>
-      <div class="gallery-item reveal-up" data-cat="nepal" data-src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&q=90" data-caption="Himalaya, Nepal">
-        <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=700&q=80" alt="Himalaya, Nepal" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Himalaya, Nepal</span></div>
-        <div class="gi-badge">Nepal</div>
-      </div>
-      <div class="gallery-item reveal-up delay-1" data-cat="portugal" data-src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&q=90" data-caption="Lisbon, Portugal">
-        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=700&q=80" alt="Lisbon, Portugal" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Lisbon, Portugal</span></div>
-        <div class="gi-badge">Portugal</div>
-      </div>
-      <div class="gallery-item reveal-up delay-2" data-cat="uk" data-src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=90" data-caption="London Bridge, UK">
-        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=700&q=80" alt="London Bridge, UK" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>London Bridge, UK</span></div>
-        <div class="gi-badge">United Kingdom</div>
-      </div>
-      <div class="gallery-item reveal-up" data-cat="southafrica" data-src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=90" data-caption="Cape Town, South Africa">
-        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=700&q=80" alt="Cape Town, South Africa" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Cape Town, South Africa</span></div>
-        <div class="gi-badge">South Africa</div>
-      </div>
-      <div class="gallery-item reveal-up delay-1" data-cat="philippines" data-src="https://images.unsplash.com/photo-1559628376-f3fe5f782a2e?w=1200&q=90" data-caption="Boracay, Philippines">
-        <img src="https://images.unsplash.com/photo-1559628376-f3fe5f782a2e?w=700&q=80" alt="Boracay, Philippines" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>Boracay, Philippines</span></div>
-        <div class="gi-badge">Philippines</div>
-      </div>
-      <div class="gallery-item reveal-up delay-2" data-cat="usa" data-src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=1200&q=90" data-caption="New York City, USA">
-        <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=700&q=80" alt="New York City, USA" loading="lazy"/>
-        <div class="gi-overlay"><i class="fas fa-search-plus"></i><span>New York City, USA</span></div>
-        <div class="gi-badge">USA</div>
+
+      <div class="gallery-load-more">
+        <a href="contact.html" class="btn btn-outline btn-lg">
+          <i class="fas fa-envelope" aria-hidden="true"></i> Share Your Success Story
+        </a>
       </div>
     </div>
+  </section>
 
-    <div class="gallery-load-more">
-      <a href="https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20see%20more%20travel%20photos." target="_blank" rel="noopener" class="btn btn-outline btn-lg">
-        <i class="fab fa-whatsapp"></i> Share Your Travel Photos With Us
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-content">
-      <i class="fas fa-camera cta-icon"></i>
-      <h2>Ready for Your Own <span class="gold">Travel Story?</span></h2>
-      <p>Let Trip Fly BD plan your perfect trip. We handle visa, flights, hotels and tours &mdash; you just enjoy!</p>
-      <div class="cta-buttons">
-        <a href="https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20plan%20my%20trip." target="_blank" rel="noopener" class="btn btn-gold btn-lg"><i class="fab fa-whatsapp"></i> Start Planning Now</a>
-        <a href="destinations.html" class="btn btn-outline btn-lg"><i class="fas fa-globe"></i> View Destinations</a>
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <i class="fas fa-award cta-icon" aria-hidden="true"></i>
+        <h2>Ready For Your Own <span class="gold">Success Story?</span></h2>
+        <p>Let Trip Fly BD help with visa, flights, hotels and tour planning so your next journey becomes a trusted memory.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn btn-gold btn-lg"><i class="fas fa-headset" aria-hidden="true"></i> Contact Us</a>
+          <a href="destinations.html" class="btn btn-outline btn-lg"><i class="fas fa-globe" aria-hidden="true"></i> View Destinations</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="display:inline-flex;"><img src="images/logo.png" alt="Trip Fly BD Logo" class="logo-img"/><span class="logo-text">Trip Fly <span class="gold">BD</span></span></a>
-        <p>Bangladesh&rsquo;s premier air travel agency &mdash; tourist visa, group packages, couple tours &amp; premium travel experiences worldwide. Est. February 2023.</p>
+        <a href="index.html" class="nav-logo" style="display:inline-flex;" aria-label="Trip Fly BD Home">
+          <img src="images/logo.png" alt="Trip Fly BD Logo" class="logo-img"/>
+          <span class="logo-text">Trip Fly <span class="gold">BD</span></span>
+        </a>
+        <p>Bangladesh's premier air travel agency for visa processing, ticketing, date changing and complete travel packages.</p>
         <div class="footer-socials">
-          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/8801XXXXXXXXX" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://wa.me/8801630840405" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+          <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
         </div>
       </div>
       <div class="footer-links"><h4>Quick Links</h4><ul>
-        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
-        <li><a href="destinations.html"><i class="fas fa-chevron-right"></i> Destinations</a></li>
-        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-        <li><a href="management.html"><i class="fas fa-chevron-right"></i> Management</a></li>
-        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        <li><a href="index.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Services</a></li>
+        <li><a href="destinations.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Destinations</a></li>
+        <li><a href="gallery.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Success Story</a></li>
+        <li><a href="management.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Management</a></li>
+        <li><a href="contact.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact</a></li>
       </ul></div>
       <div class="footer-links"><h4>Our Services</h4><ul>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Air Ticketing</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Domestic Flights</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Tourist Visa</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Group Visa</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Medical Visa</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Hotel Booking</a></li>
-        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Tour Package</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Air Ticketing</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Domestic Flights</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tourist Visa</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Group Visa</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Medical Visa</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Hotel Booking</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tour Package</a></li>
       </ul></div>
       <div class="footer-contact"><h4>Contact Info</h4><ul>
-        <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
-        <li><i class="fas fa-phone"></i> +880 1XXXXXXXXX</li>
-        <li><i class="fab fa-whatsapp"></i> +880 1XXXXXXXXX (24/7)</li>
-        <li><i class="fas fa-envelope"></i> info@tripflybd.com</li>
-        <li><i class="fas fa-clock"></i> Sat&ndash;Thu: 9AM &ndash; 9PM</li>
+        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Dhaka, Bangladesh</li>
+        <li><i class="fas fa-phone" aria-hidden="true"></i> +880 1630-840405</li>
+        <li><i class="fab fa-whatsapp" aria-hidden="true"></i> +880 1630-840405 (24/7)</li>
+        <li><i class="fas fa-envelope" aria-hidden="true"></i> info@tripflybd.com</li>
+        <li><i class="fas fa-clock" aria-hidden="true"></i> Sat-Thu: 9AM - 9PM</li>
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 <span class="gold" style="font-weight:700;">Trip Fly BD</span>. All Rights Reserved. Crafted with <i class="fas fa-heart" style="color:var(--gold);"></i> for Bangladeshi Dreamers.</p>
+      <p>&copy; 2025 <span class="gold" style="font-weight:700;">Trip Fly BD</span>. All Rights Reserved.</p>
     </div>
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Success story lightbox" aria-hidden="true">
   <div class="lb-backdrop" id="lbBackdrop"></div>
   <div class="lb-wrap">
-    <button class="lb-close" id="lbClose" aria-label="Close lightbox"><i class="fas fa-times"></i></button>
-    <button class="lb-prev"  id="lbPrev"  aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
-    <button class="lb-next"  id="lbNext"  aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
-    <img id="lbImg" src="" alt="Full size travel photo" class="lb-img"/>
+    <button type="button" class="lb-close" id="lbClose" aria-label="Close lightbox"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <button type="button" class="lb-prev" id="lbPrev" aria-label="Previous story"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+    <button type="button" class="lb-next" id="lbNext" aria-label="Next story"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+    <img id="lbImg" src="" alt="Full size success story photo" class="lb-img"/>
+    <h3 class="lb-title" id="lbTitle"></h3>
     <p class="lb-caption" id="lbCaption"></p>
     <div class="lb-counter" id="lbCounter"></div>
   </div>
