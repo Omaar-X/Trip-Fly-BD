@@ -1274,3 +1274,129 @@ body {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   LIGHT MODE REFINEMENT - SERVICES
+============================================================ */
+body[data-theme="light"] .services-hero-bg {
+  opacity: .34;
+  background:
+    linear-gradient(180deg, rgba(247,240,226,.75), rgba(247,240,226,.95)),
+    url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=85&w=1800&auto=format&fit=crop") center/cover no-repeat;
+}
+
+body[data-theme="light"] .services-hero::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212,175,55,.18), transparent 34%),
+    radial-gradient(circle at 80% 74%, rgba(168,134,10,.10), transparent 38%),
+    linear-gradient(90deg, rgba(247,240,226,.86), rgba(247,240,226,.46), rgba(247,240,226,.86));
+}
+
+body[data-theme="light"] .services-hero p,
+body[data-theme="light"] .hero-proof-row span {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .services-nav {
+  background: rgba(255,250,240,.90);
+  border-top-color: var(--light-border);
+  border-bottom-color: var(--light-border);
+  box-shadow: 0 10px 26px rgba(54,42,15,.08);
+}
+
+body[data-theme="light"] .svc-tab {
+  background: rgba(255,255,255,.62);
+  border-color: var(--light-border);
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .svc-tab:hover,
+body[data-theme="light"] .svc-tab:focus-visible {
+  color: var(--gold-dk);
+  background: rgba(212,175,55,.12);
+}
+
+body[data-theme="light"] .services-main,
+body[data-theme="light"] .eligibility-section,
+body[data-theme="light"] .choice-section,
+body[data-theme="light"] .process-section,
+body[data-theme="light"] .trust-section {
+  background: var(--bg-body);
+}
+
+body[data-theme="light"] .service-intro-card,
+body[data-theme="light"] .svc-card,
+body[data-theme="light"] .choice-panel,
+body[data-theme="light"] .trust-card,
+body[data-theme="light"] .process-step,
+body[data-theme="light"] .svc-modal {
+  background: linear-gradient(145deg, var(--light-card-strong), var(--light-card-soft)) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+  color: var(--txt-light);
+}
+
+body[data-theme="light"] .svc-card:hover,
+body[data-theme="light"] .trust-card:hover,
+body[data-theme="light"] .process-step:hover {
+  border-color: var(--light-border-strong) !important;
+  box-shadow: var(--light-shadow-hover) !important;
+}
+
+body[data-theme="light"] .svc-card::before,
+body[data-theme="light"] .service-intro-card::before {
+  background: linear-gradient(120deg, transparent 0%, rgba(212,175,55,.14) 28%, transparent 55%);
+}
+
+body[data-theme="light"] .service-intro-card h2,
+body[data-theme="light"] .svc-category-header h2,
+body[data-theme="light"] .svc-card-body h3,
+body[data-theme="light"] .eligibility-copy h2,
+body[data-theme="light"] .choice-panel h2,
+body[data-theme="light"] .process-step h3,
+body[data-theme="light"] .trust-card h3,
+body[data-theme="light"] .svc-modal-head h2 {
+  color: var(--txt-white);
+}
+
+body[data-theme="light"] .service-intro-card p,
+body[data-theme="light"] .svc-category-header p,
+body[data-theme="light"] .svc-card-body p,
+body[data-theme="light"] .svc-card-body li,
+body[data-theme="light"] .eligibility-copy p,
+body[data-theme="light"] .choice-panel p,
+body[data-theme="light"] .process-step p,
+body[data-theme="light"] .trust-card p,
+body[data-theme="light"] .svc-modal-head p {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .svc-card-tag,
+body[data-theme="light"] .service-intro-stats div,
+body[data-theme="light"] .hero-proof-row span {
+  background: rgba(255,255,255,.58);
+  border-color: var(--light-border);
+}
+
+body[data-theme="light"] .svc-field input,
+body[data-theme="light"] .svc-field select,
+body[data-theme="light"] .svc-field textarea,
+body[data-theme="light"] .svc-control-wrap input,
+body[data-theme="light"] .svc-control-wrap select {
+  background: rgba(255,255,255,.72);
+  border-color: var(--light-border);
+  color: #102033;
+}
+
+body[data-theme="light"] .svc-field input[readonly] {
+  background: rgba(212,175,55,.10);
+}
+
+body[data-theme="light"] .svc-field select option {
+  background: #FFF8EA;
+  color: #102033;
+}
+
+body[data-theme="light"] .svc-modal-overlay {
+  background: rgba(16,32,51,.42);
+}

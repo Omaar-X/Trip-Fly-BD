@@ -796,3 +796,90 @@
   .cta-buttons { flex-direction:column; align-items:center; }
   .cta-buttons .btn { width:100%; max-width:300px; }
 }
+
+/* ============================================================
+   LIGHT MODE REFINEMENT - HOME
+============================================================ */
+body[data-theme="light"] .hero-bg-img img {
+  opacity: .30;
+  filter: saturate(.88) brightness(1.08);
+}
+
+body[data-theme="light"] .hero-bg-img::after {
+  background: linear-gradient(to bottom, rgba(247,240,226,.78) 0%, rgba(247,240,226,.62) 42%, rgba(247,240,226,.94) 100%);
+}
+
+body[data-theme="light"] .hero-subtitle,
+body[data-theme="light"] .hts-item,
+body[data-theme="light"] .hero-wa-link a {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .hero-trust-strip,
+body[data-theme="light"] .hero-stats,
+body[data-theme="light"] .why-card,
+body[data-theme="light"] .pkg-card,
+body[data-theme="light"] .fp-details,
+body[data-theme="light"] .expert-card,
+body[data-theme="light"] .expert-right,
+body[data-theme="light"] .svc-mini,
+body[data-theme="light"] .trust-item,
+body[data-theme="light"] .test-card,
+body[data-theme="light"] .pkg-modal {
+  background: linear-gradient(145deg, var(--light-card-strong), var(--light-card-soft)) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+  color: var(--txt-light);
+}
+
+body[data-theme="light"] .pkg-card:hover,
+body[data-theme="light"] .why-card:hover,
+body[data-theme="light"] .svc-mini:hover,
+body[data-theme="light"] .trust-item:hover,
+body[data-theme="light"] .test-card:hover {
+  border-color: var(--light-border-strong) !important;
+  box-shadow: var(--light-shadow-hover) !important;
+}
+
+body[data-theme="light"] .fp-price-box,
+body[data-theme="light"] .expert-benefits li,
+body[data-theme="light"] .expert-trust-row .etr-item,
+body[data-theme="light"] .pkg-card-footer {
+  background: rgba(255,255,255,.48);
+  border-color: var(--light-border);
+}
+
+body[data-theme="light"] .fp-title,
+body[data-theme="light"] .pkg-name,
+body[data-theme="light"] .why-card h3,
+body[data-theme="light"] .expert-left-title,
+body[data-theme="light"] .expert-form-head h3,
+body[data-theme="light"] .svc-mini h3,
+body[data-theme="light"] .trust-num,
+body[data-theme="light"] .test-text,
+body[data-theme="light"] .pkg-modal-head h3 {
+  color: var(--txt-white);
+}
+
+body[data-theme="light"] .fp-desc,
+body[data-theme="light"] .pkg-tag,
+body[data-theme="light"] .why-card p,
+body[data-theme="light"] .expert-left-desc,
+body[data-theme="light"] .expert-benefits li span,
+body[data-theme="light"] .expert-form-head p,
+body[data-theme="light"] .svc-mini p,
+body[data-theme="light"] .trust-label,
+body[data-theme="light"] .pkg-modal-head p {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .ef-input-wrap input,
+body[data-theme="light"] .ef-input-wrap select,
+body[data-theme="light"] .ef-input-wrap textarea,
+body[data-theme="light"] .pkg-modal-form input,
+body[data-theme="light"] .pkg-modal-form select,
+body[data-theme="light"] .pkg-modal-form textarea {
+  background: rgba(255,255,255,.72);
+  border-color: var(--light-border);
+  color: #102033;
+}

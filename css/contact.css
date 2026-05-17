@@ -315,3 +315,55 @@
   .contact-socials-row { justify-content:center; }
   .location-badges { flex-direction:column; align-items:center; }
 }
+
+/* ============================================================
+   LIGHT MODE REFINEMENT - CONTACT
+============================================================ */
+body[data-theme="light"] .contact-main,
+body[data-theme="light"] .location-section {
+  background: var(--bg-body);
+}
+
+body[data-theme="light"] .info-card,
+body[data-theme="light"] .contact-socials-card,
+body[data-theme="light"] .contact-form-wrap,
+body[data-theme="light"] .location-inner {
+  background: linear-gradient(145deg, var(--light-card-strong), var(--light-card-soft)) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+  color: var(--txt-light);
+}
+
+body[data-theme="light"] .info-card:hover,
+body[data-theme="light"] .location-inner:hover {
+  border-color: var(--light-border-strong) !important;
+  box-shadow: var(--light-shadow-hover) !important;
+}
+
+body[data-theme="light"] .contact-info-panel h2,
+body[data-theme="light"] .info-card-text strong,
+body[data-theme="light"] .form-header h3,
+body[data-theme="light"] .location-inner h3 {
+  color: var(--txt-white);
+}
+
+body[data-theme="light"] .contact-info-panel > p,
+body[data-theme="light"] .info-card-text span,
+body[data-theme="light"] .form-header p,
+body[data-theme="light"] .location-inner p,
+body[data-theme="light"] .cf-privacy {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .cf-input,
+body[data-theme="light"] .cf-select,
+body[data-theme="light"] .cf-textarea {
+  background: rgba(255,255,255,.72);
+  border-color: var(--light-border);
+  color: #102033;
+}
+
+body[data-theme="light"] .cf-select option {
+  background: #FFF8EA;
+  color: #102033;
+}

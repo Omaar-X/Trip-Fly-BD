@@ -618,3 +618,50 @@ body {
     transition: none !important;
   }
 }
+
+/* ============================================================
+   LIGHT MODE REFINEMENT - SUCCESS STORY / GALLERY
+============================================================ */
+body[data-theme="light"] .gallery-filter {
+  background: rgba(255,250,240,.90);
+  border-top-color: var(--light-border);
+  border-bottom-color: var(--light-border);
+  box-shadow: 0 10px 26px rgba(54,42,15,.08);
+}
+
+body[data-theme="light"] .gallery-filter button,
+body[data-theme="light"] .gallery-stats-bar {
+  background: rgba(255,255,255,.62);
+  border-color: var(--light-border);
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .gallery-filter button:hover,
+body[data-theme="light"] .gallery-filter button.active {
+  color: #07111C;
+  background: linear-gradient(135deg, var(--gold-lt), var(--gold), var(--gold-dk));
+}
+
+body[data-theme="light"] .gallery-main {
+  background: var(--bg-body);
+}
+
+body[data-theme="light"] .gallery-item {
+  background: linear-gradient(145deg, var(--light-card-strong), var(--light-card-soft)) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+}
+
+body[data-theme="light"] .gallery-item:hover,
+body[data-theme="light"] .gallery-item:focus-within {
+  border-color: var(--light-border-strong) !important;
+  box-shadow: var(--light-shadow-hover) !important;
+}
+
+body[data-theme="light"] .lightbox {
+  background: rgba(16,32,51,.78);
+}
+
+body[data-theme="light"] .lb-caption {
+  color: #fff;
+}

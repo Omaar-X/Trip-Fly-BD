@@ -5,6 +5,68 @@
 
 'use strict';
 
+/* ============================================================
+   THEME TOGGLE - DARK DEFAULT + LIGHT MODE
+============================================================ */
+(function initThemeToggle() {
+  const storageKey = 'tripFlyBdTheme';
+  const allowedThemes = new Set(['dark', 'light']);
+
+  const getSavedTheme = () => {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      return allowedThemes.has(saved) ? saved : 'dark';
+    } catch (error) {
+      return 'dark';
+    }
+  };
+
+  const saveTheme = theme => {
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch (error) {
+      /* localStorage can be unavailable in private/browser-restricted contexts. */
+    }
+  };
+
+  const updateToggleState = theme => {
+    document.querySelectorAll('.theme-toggle').forEach(button => {
+      const isLight = theme === 'light';
+      button.setAttribute('aria-pressed', String(isLight));
+      button.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      button.setAttribute('title', isLight ? 'Dark mode' : 'Light mode');
+    });
+  };
+
+  const applyTheme = theme => {
+    const nextTheme = allowedThemes.has(theme) ? theme : 'dark';
+    document.body.setAttribute('data-theme', nextTheme);
+    document.documentElement.style.colorScheme = nextTheme;
+
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute('content', nextTheme === 'light' ? '#F7F0E2' : '#D4AF37');
+    }
+
+    updateToggleState(nextTheme);
+  };
+
+  const initialTheme = getSavedTheme();
+  applyTheme(initialTheme);
+
+  document.querySelectorAll('.theme-toggle').forEach(button => {
+    if (button.dataset.themeBound === 'true') return;
+    button.dataset.themeBound = 'true';
+
+    button.addEventListener('click', () => {
+      const current = document.body.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      saveTheme(next);
+    });
+  });
+})();
+
 /* ══════════════════════════════════════
    AIRPLANE ANIMATION — HOME PAGE ONLY
 ══════════════════════════════════════ */

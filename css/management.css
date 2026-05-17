@@ -652,3 +652,51 @@
   .stats-grid { grid-template-columns:1fr 1fr; }
   .process-grid { grid-template-columns:1fr; }
 }
+
+/* ============================================================
+   LIGHT MODE REFINEMENT - MANAGEMENT
+============================================================ */
+body[data-theme="light"] .team-section,
+body[data-theme="light"] .mgmt-stats-section,
+body[data-theme="light"] .process-section {
+  background: var(--bg-body);
+}
+
+body[data-theme="light"] .team-card,
+body[data-theme="light"] .stat-card,
+body[data-theme="light"] .process-card,
+body[data-theme="light"] .profile-modal {
+  background: linear-gradient(145deg, var(--light-card-strong), var(--light-card-soft)) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+  color: var(--txt-light);
+}
+
+body[data-theme="light"] .team-card:hover,
+body[data-theme="light"] .stat-card:hover,
+body[data-theme="light"] .process-card:hover {
+  border-color: var(--light-border-strong) !important;
+  box-shadow: var(--light-shadow-hover) !important;
+}
+
+body[data-theme="light"] .tc-name,
+body[data-theme="light"] .stat-num,
+body[data-theme="light"] .process-card h3,
+body[data-theme="light"] .pm-name,
+body[data-theme="light"] .pm-contact-title {
+  color: var(--txt-white);
+}
+
+body[data-theme="light"] .tc-role,
+body[data-theme="light"] .tc-desc,
+body[data-theme="light"] .stat-lbl,
+body[data-theme="light"] .process-card p,
+body[data-theme="light"] .pm-role,
+body[data-theme="light"] .pm-bio,
+body[data-theme="light"] .pm-footer {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .profile-modal-overlay {
+  background: rgba(16,32,51,.42);
+}

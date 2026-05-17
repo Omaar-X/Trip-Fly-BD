@@ -1457,3 +1457,234 @@ body {
     animation: none !important;
   }
 }
+
+/* ============================================================
+   LIGHT MODE REFINEMENT - DESTINATIONS
+============================================================ */
+body[data-theme="light"] .filter-bar {
+  background: rgba(255,250,240,.90);
+  border-top-color: var(--light-border);
+  border-bottom-color: var(--light-border);
+  box-shadow: 0 10px 26px rgba(54,42,15,.08);
+}
+
+body[data-theme="light"] .filter-btn {
+  background: rgba(255,255,255,.62);
+  border-color: var(--light-border);
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .filter-btn:hover {
+  color: var(--gold-dk);
+  background: rgba(212,175,55,.12);
+}
+
+body[data-theme="light"] .dest-card,
+body[data-theme="light"] .visa-modal,
+body[data-theme="light"] .vm-official-link-card {
+  background: linear-gradient(145deg, var(--light-card-strong), var(--light-card-soft)) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+  color: var(--txt-light);
+}
+
+body[data-theme="light"] .dest-card:hover,
+body[data-theme="light"] .dest-card.active-card,
+body[data-theme="light"] .vm-official-link-card:hover {
+  border-color: var(--light-border-strong) !important;
+  box-shadow: var(--light-shadow-hover) !important;
+}
+
+body[data-theme="light"] .dest-card::before {
+  background: linear-gradient(135deg, rgba(212,175,55,.10), transparent 42%, rgba(255,255,255,.22));
+}
+
+body[data-theme="light"] .dest-card-name,
+body[data-theme="light"] .vm-title,
+body[data-theme="light"] .vm-section-title,
+body[data-theme="light"] .vm-official-link-title {
+  color: var(--txt-white);
+}
+
+body[data-theme="light"] .dest-card-sub,
+body[data-theme="light"] .dest-card-meta,
+body[data-theme="light"] .dest-count-text,
+body[data-theme="light"] .dest-tip,
+body[data-theme="light"] .vm-text,
+body[data-theme="light"] .vm-official-link-desc {
+  color: var(--txt-mid);
+}
+
+body[data-theme="light"] .dest-card-footer,
+body[data-theme="light"] .vm-apply-box,
+body[data-theme="light"] .vm-chip,
+body[data-theme="light"] .dest-tip {
+  background: rgba(255,255,255,.54);
+  border-color: var(--light-border);
+}
+
+body[data-theme="light"] .visa-modal-overlay {
+  background: rgba(16,32,51,.42);
+}
+
+/* ============================================================
+   DESTINATION CARD ALIGNMENT + LIGHT IMAGE OVERLAY FIX
+============================================================ */
+.dest-grid {
+  grid-auto-rows: 1fr;
+}
+
+.dest-card {
+  height: 100%;
+}
+
+.dest-card-img {
+  isolation: isolate;
+}
+
+.dest-card-img-ov {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dest-flag,
+.dest-region-pill,
+.dest-premium-badge,
+.dest-tap-hint {
+  z-index: 4;
+}
+
+.dest-premium-badge {
+  left: .85rem;
+  right: calc(.85rem + 122px + .6rem);
+  bottom: .85rem;
+  max-width: none;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dest-premium-badge i,
+.dest-tap-hint i {
+  flex: 0 0 auto;
+}
+
+.dest-premium-badge {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dest-tap-hint {
+  right: .85rem;
+  bottom: .85rem;
+  width: 122px;
+  max-width: 122px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.dest-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.dest-card-meta {
+  margin-top: auto;
+  padding-top: .1rem;
+}
+
+.dest-card-footer {
+  margin-top: auto;
+  min-height: 78px;
+  align-items: center;
+  gap: .8rem;
+}
+
+.dest-card-footer > div:first-child {
+  min-width: 0;
+}
+
+.dest-price-lbl,
+.dest-price-val {
+  overflow-wrap: anywhere;
+}
+
+.dest-visa-btn {
+  flex: 0 0 auto;
+}
+
+body[data-theme="light"] .dest-card-img img {
+  filter: brightness(1.04) saturate(1.03) contrast(.98);
+}
+
+body[data-theme="light"] .dest-card:hover .dest-card-img img,
+body[data-theme="light"] .dest-card.active-card .dest-card-img img {
+  filter: brightness(.98) saturate(1.04) contrast(1);
+}
+
+body[data-theme="light"] .dest-card-img-ov {
+  background:
+    linear-gradient(to top, rgba(16,32,51,.52) 0%, rgba(16,32,51,.16) 48%, rgba(255,248,234,.06) 100%);
+}
+
+body[data-theme="light"] .dest-card-img::before {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(212,175,55,.12), transparent 34%),
+    linear-gradient(to top, rgba(16,32,51,.42), rgba(16,32,51,.10), rgba(255,248,234,.08));
+}
+
+body[data-theme="light"] .dest-flag {
+  background: rgba(255,255,255,.68);
+  border-color: rgba(168,134,10,.24);
+  box-shadow: 0 8px 18px rgba(54,42,15,.14);
+}
+
+body[data-theme="light"] .dest-region-pill,
+body[data-theme="light"] .dest-premium-badge {
+  background: rgba(255,255,255,.72);
+  border-color: rgba(168,134,10,.26);
+  color: var(--gold-dk);
+  box-shadow: 0 8px 20px rgba(54,42,15,.14);
+}
+
+body[data-theme="light"] .dest-tap-hint {
+  box-shadow: 0 8px 20px rgba(168,134,10,.20);
+}
+
+body[data-theme="light"] .dest-card-footer {
+  background: rgba(255,255,255,.58);
+  border-top-color: var(--light-border);
+}
+
+body[data-theme="light"] .dest-meta-tag {
+  background: rgba(255,255,255,.58);
+  border-color: var(--light-border);
+  color: var(--txt-mid);
+}
+
+@media (max-width: 560px) {
+  .dest-card-footer {
+    min-height: auto;
+    align-items: stretch;
+  }
+
+  .dest-card-footer > div:first-child {
+    text-align: left;
+  }
+
+  .dest-premium-badge,
+  .dest-tap-hint {
+    left: .75rem;
+    right: .75rem;
+    width: auto;
+    max-width: none;
+    justify-content: center;
+  }
+
+  .dest-premium-badge {
+    bottom: 3.05rem;
+  }
+
+  .dest-tap-hint {
+    bottom: .75rem;
+  }
+}
