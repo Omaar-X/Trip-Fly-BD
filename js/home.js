@@ -7,7 +7,7 @@
 (() => {
   const APPS_SCRIPT_URL =
     'https://script.google.com/macros/s/AKfycbxNNt8_3RtKAAHf2X4QjCrlfgSqPJCX1UmDNmT_u0ltneXI4sRhirNRzq9j2k4l4gwinQ/exec';
-  const WHATSAPP_NUMBER = '8801630840405';
+  const WHATSAPP_NUMBER = '8801898801939';
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -880,7 +880,7 @@
       payload.message ? `Message: ${payload.message}` : ''
     ].filter(Boolean);
 
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+    return `https://wa.me/8801898801939?text=${encodeURIComponent(lines.join('\n'))}`;
   }
 
   function validateLead(payload) {

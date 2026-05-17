@@ -7,7 +7,7 @@
 'use strict';
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNNt8_3RtKAAHf2X4QjCrlfgSqPJCX1UmDNmT_u0ltneXI4sRhirNRzq9j2k4l4gwinQ/exec';
-const WHATSAPP_NUMBER = '8801630840405';
+const WHATSAPP_NUMBER = '8801898801939';
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80&fit=crop';
 
 /* ── Broken image fallback ── */
@@ -975,7 +975,7 @@ const VISA_DATA = {
       const msg = encodeURIComponent(
         `Hello Trip Fly BD! I need ${data.flag} ${data.country} tourist visa assistance.`
       );
-      elWABtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      elWABtn.href = `https://wa.me/8801898801939?text=${msg}`;
       elWABtn.setAttribute('aria-label', `Talk to Trip Fly BD about ${data.country}`);
       elWABtn.classList.remove('show');
       elWABtn.innerHTML = '<i class="fab fa-whatsapp"></i> Talk To Expert';
@@ -1141,7 +1141,7 @@ async function submitVisaInquiry(country, flag, region) {
         const msg = encodeURIComponent(
           `Hello Trip Fly BD! I applied for ${flag} ${country} tourist visa.\nName: ${name}\nPhone: ${phone}`
         );
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+        window.open(`https://wa.me/8801898801939?text=${msg}`, '_blank');
       }, 1000);
 
     } else {
@@ -1164,7 +1164,7 @@ async function submitVisaInquiry(country, flag, region) {
       const msg = encodeURIComponent(
         `Hello Trip Fly BD! I need ${flag} ${country} tourist visa assistance.\nName: ${name}\nPhone: ${phone}`
       );
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+      window.open(`https://wa.me/8801898801939?text=${msg}`, '_blank');
     }, 1000);
   }
 }
@@ -1295,7 +1295,7 @@ function setModalStatus(status, type = '', message = '') {
 }
 
 function buildWhatsAppUrl(message) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/8801898801939?text=${encodeURIComponent(message)}`;
 }
 
 function safeJsonParse(text) {

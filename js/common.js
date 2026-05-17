@@ -117,7 +117,7 @@
 
   const wa = document.createElement('a');
   wa.className = 'wa-float';
-  wa.href = 'https://wa.me/8801XXXXXXXXX?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20enquire%20about%20a%20trip.';
+  wa.href = 'https://wa.me/8801898801939?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20enquire%20about%20a%20trip.';
   wa.target = '_blank';
   wa.rel = 'noopener noreferrer';
   wa.setAttribute('aria-label', 'Chat on WhatsApp');

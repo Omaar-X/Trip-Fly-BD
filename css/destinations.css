@@ -1,5 +1,5 @@
-/* ============================================================
-   TRIP FLY BD — DESTINATIONS.CSS
+﻿/* ============================================================
+   TRIP FLY BD â€” DESTINATIONS.CSS
    Premium Destination Page | Visa Modal | Mobile Responsive
 ============================================================ */
 
@@ -981,7 +981,7 @@
   }
 }
 /* ============================================================
-   OFFICIAL VISA PORTALS SECTION — vm-official-links
+   OFFICIAL VISA PORTALS SECTION â€” vm-official-links
    Premium dark-gold glassmorphism cards | Trip Fly BD
 ============================================================ */
 
@@ -1688,3 +1688,75 @@ body[data-theme="light"] .dest-meta-tag {
     bottom: .75rem;
   }
 }
+
+/* ============================================================
+   LIGHT MODE HERO OVERLAY FIX - DESTINATIONS
+============================================================ */
+body[data-theme="light"] .dest-hero,
+html[data-theme="light"] .dest-hero {
+  background:
+    linear-gradient(180deg, rgba(255,248,235,.76) 0%, rgba(255,255,255,.58) 46%, rgba(255,248,235,.88) 100%),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=85&w=1800&auto=format&fit=crop") center/cover no-repeat;
+}
+
+body[data-theme="light"] .dest-hero::before,
+html[data-theme="light"] .dest-hero::before {
+  background:
+    radial-gradient(ellipse at 50% 4%, rgba(212,175,55,.20), transparent 56%),
+    radial-gradient(ellipse at 12% 86%, rgba(255,255,255,.42), transparent 48%),
+    radial-gradient(ellipse at 88% 78%, rgba(212,175,55,.10), transparent 46%),
+    linear-gradient(90deg, rgba(255,248,235,.72), rgba(255,255,255,.30), rgba(255,248,235,.72));
+}
+
+body[data-theme="light"] .dest-hero::after,
+html[data-theme="light"] .dest-hero::after {
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 70px, rgba(168,134,10,.035) 71px),
+    repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(168,134,10,.03) 71px),
+    linear-gradient(180deg, transparent 62%, var(--bg-body) 100%);
+}
+
+body[data-theme="light"] .dest-hero-orb,
+html[data-theme="light"] .dest-hero-orb {
+  background: radial-gradient(circle, rgba(212,175,55,.18), rgba(255,255,255,.34) 42%, transparent 72%);
+  filter: blur(38px);
+  opacity: .82;
+}
+
+body[data-theme="light"] .dest-hero-content h1,
+html[data-theme="light"] .dest-hero-content h1 {
+  color: #102033;
+  text-shadow: 0 2px 18px rgba(255,255,255,.72);
+}
+
+body[data-theme="light"] .dest-hero-content p,
+html[data-theme="light"] .dest-hero-content p {
+  color: #52657a;
+  text-shadow: 0 1px 10px rgba(255,255,255,.55);
+}
+
+body[data-theme="light"] .dest-hero .section-tag,
+body[data-theme="light"] .dest-hero .breadcrumb,
+body[data-theme="light"] .dest-hero-trust span,
+html[data-theme="light"] .dest-hero .section-tag,
+html[data-theme="light"] .dest-hero .breadcrumb,
+html[data-theme="light"] .dest-hero-trust span {
+  background: rgba(255,255,255,.66);
+  border-color: rgba(168,134,10,.22);
+  color: #102033;
+  box-shadow: 0 10px 26px rgba(54,42,15,.10);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+body[data-theme="light"] .dest-hero .breadcrumb a,
+body[data-theme="light"] .dest-hero .breadcrumb i,
+body[data-theme="light"] .dest-hero .section-tag i,
+body[data-theme="light"] .dest-hero-trust i,
+html[data-theme="light"] .dest-hero .breadcrumb a,
+html[data-theme="light"] .dest-hero .breadcrumb i,
+html[data-theme="light"] .dest-hero .section-tag i,
+html[data-theme="light"] .dest-hero-trust i {
+  color: var(--gold-dk);
+}
+

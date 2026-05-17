@@ -9,8 +9,8 @@
   /* ══════════════════════════════════════
      CONFIG
   ══════════════════════════════════════ */
-  const WA_NUMBER = '8801630840405'; // ← Update with real number
-  const WA_URL    = `https://wa.me/${WA_NUMBER}?text=`;
+  const WA_NUMBER = '8801898801939'; // ← Update with real number
+  const WA_URL    = `https://wa.me/8801898801939?text=`;
   const CONTACT   = 'contact.html';
 
   /* ══════════════════════════════════════
@@ -260,7 +260,7 @@
         '📍 Dhaka, Bangladesh',
         '🕐 Sat–Thu: 9:00 AM – 9:00 PM',
         '🕐 Friday: 12:00 PM – 8:00 PM',
-        '📞 WhatsApp: +880 163-0840405',
+        '📞 WhatsApp: +880 18 9880 1939',
         '🌐 www.tripflybd.com',
       ],
       extra: `<br/>📌 Exact address ও direction এর জন্য WhatsApp করুন — আমরা Google Maps link পাঠিয়ে দেবো।`,
@@ -270,7 +270,7 @@
       label: '💬 WhatsApp Support',
       text: `<strong>WhatsApp এ সরাসরি কথা বলুন আমাদের expert team এর সাথে:</strong>`,
       list: [
-        '📞 +880 163-0840405',
+        '📞 +880 18 9880 1939',
         '⏰ 24/7 WhatsApp support',
         '🕐 Office hours: Sat–Thu 9AM–9PM',
         '⚡ Emergency support available anytime',

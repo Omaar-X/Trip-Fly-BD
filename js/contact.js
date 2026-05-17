@@ -1,16 +1,15 @@
-<<<<<<< HEAD
-/* ============================================================
-   TRIP FLY BD — CONTACT.JS
+﻿/* ============================================================
+   TRIP FLY BD â€” CONTACT.JS
    Google Sheets lead collection | Contact form handler
 ============================================================ */
 'use strict';
 
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // GOOGLE APPS SCRIPT WEB APP URL
-// ═══════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNNt8_3RtKAAHf2X4QjCrlfgSqPJCX1UmDNmT_u0ltneXI4sRhirNRzq9j2k4l4gwinQ/exec';
 
-/* ── CONTACT FORM SUBMISSION ── */
+/* â”€â”€ CONTACT FORM SUBMISSION â”€â”€ */
 (function initContactForm() {
 
   const form      = document.getElementById('contactForm');
@@ -113,7 +112,7 @@ Destination: ${destination || 'Not Selected'}`
           if (waEl) {
 
             waEl.href =
-              `https://wa.me/88017XXXXXXXX?text=${whatsappMessage}`;
+              `https://wa.me/8801898801939?text=${whatsappMessage}`;
 
             waEl.style.display = 'inline-flex';
           }
@@ -141,7 +140,7 @@ Destination: ${destination || 'Not Selected'}`
 
   });
 
-  /* ── BUTTON LOADING STATE ── */
+  /* â”€â”€ BUTTON LOADING STATE â”€â”€ */
   function setLoading(isLoading) {
 
     submitBtn.disabled = isLoading;
@@ -160,7 +159,7 @@ Destination: ${destination || 'Not Selected'}`
     }
   }
 
-  /* ── STATUS MESSAGE ── */
+  /* â”€â”€ STATUS MESSAGE â”€â”€ */
   function showStatus(type, html) {
 
     status.className = `cf-status show ${type}`;
@@ -168,7 +167,7 @@ Destination: ${destination || 'Not Selected'}`
     status.innerHTML = html;
   }
 
-  /* ── CLEAR STATUS ── */
+  /* â”€â”€ CLEAR STATUS â”€â”€ */
   function clearStatus() {
 
     status.className = 'cf-status';
@@ -178,7 +177,7 @@ Destination: ${destination || 'Not Selected'}`
 
 })();
 
-/* ── INPUT ICON ANIMATION ── */
+/* â”€â”€ INPUT ICON ANIMATION â”€â”€ */
 document.querySelectorAll(
   '.cf-input, .cf-select, .cf-textarea'
 ).forEach((element) => {
@@ -198,34 +197,4 @@ document.querySelectorAll(
     icon.style.color = 'var(--gold)';
   });
 
-=======
-/* CONTACT JS */
-document.getElementById('sendBtn').addEventListener('click',()=>{
-  const name  = document.getElementById('cf-name').value.trim();
-  const phone = document.getElementById('cf-phone').value.trim();
-  const dest  = document.getElementById('cf-dest').value;
-  const svc   = document.getElementById('cf-service').value;
-  const msg   = document.getElementById('cf-msg').value.trim();
-
-  const invalid = [];
-  if(!name) invalid.push(document.getElementById('cf-name'));
-  if(!phone) invalid.push(document.getElementById('cf-phone'));
-  if(!dest) invalid.push(document.getElementById('cf-dest'));
-
-  if(invalid.length){
-    invalid.forEach(el=>{ el.style.borderColor='#ef4444'; setTimeout(()=>el.style.borderColor='',1500); });
-    return;
-  }
-
-  const text=encodeURIComponent(
-    `Hello Trip Fly BD! 👋\n\n`+
-    `*Name:* ${name}\n`+
-    `*Phone:* ${phone}\n`+
-    `*Destination:* ${dest}\n`+
-    `*Service:* ${svc||'Not specified'}\n`+
-    `*Message:* ${msg||'No extra message'}\n\n`+
-    `Please assist me with travel planning. 🙏`
-  );
-  window.open(`https://wa.me/8801XXXXXXXXX?text=${text}`,'_blank');
->>>>>>> ef590147a10e3748a2fc0bbd04a8c0ec28f26565
 });

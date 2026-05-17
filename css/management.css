@@ -1,12 +1,12 @@
-/* ============================================================
-   TRIP FLY BD — MANAGEMENT.CSS  (Ultra Premium Edition v2)
+﻿/* ============================================================
+   TRIP FLY BD â€” MANAGEMENT.CSS  (Ultra Premium Edition v2)
    Corporate Luxury | Dark Gold | Glassmorphism | Cinematic
-   Mobile-first | 320px → 4K
+   Mobile-first | 320px â†’ 4K
 ============================================================ */
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PAGE HERO
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .mgmt-hero {
   position: relative;
   min-height: clamp(380px, 60vw, 580px);
@@ -95,9 +95,9 @@
   opacity: .6;
 }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SECTION DIVIDER
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .section-divider {
   display: flex; align-items: center; gap: 1rem;
   margin-bottom: clamp(2rem, 5vw, 3rem);
@@ -115,9 +115,9 @@
   box-shadow: 0 0 20px rgba(212,175,55,.2);
 }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    EXECUTIVE LEADERSHIP  (Section 1)
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .exec-section {
   background: var(--bg-body);
   padding: clamp(2.8rem, 5.5vw, 4.5rem) 0;
@@ -137,7 +137,7 @@
   max-width: 1060px; margin: 0 auto;
 }
 
-/* ── EXECUTIVE CARD ── */
+/* â”€â”€ EXECUTIVE CARD â”€â”€ */
 .exec-card {
   background: linear-gradient(155deg,
     rgba(20, 29, 43, .98) 0%,
@@ -178,7 +178,7 @@
     0 0 80px rgba(212,175,55,.2),
     0 40px 100px rgba(0,0,0,.7);
 }
-/* Proprietor — extra glow */
+/* Proprietor â€” extra glow */
 .exec-card.proprietor-card {
   border-color: rgba(212,175,55,.42);
   box-shadow:
@@ -210,7 +210,7 @@
   box-shadow: 0 4px 18px rgba(212,175,55,.55);
 }
 
-/* ── ANIMATED PHOTO RING ── */
+/* â”€â”€ ANIMATED PHOTO RING â”€â”€ */
 .photo-ring-wrap {
   position: relative; margin: 0 auto clamp(1.6rem, 3.5vw, 2.5rem);
   width: clamp(150px, 22vw, 210px);
@@ -327,7 +327,7 @@
   margin-bottom: 1.6rem;
 }
 
-/* ── SOCIAL BUTTONS ── */
+/* â”€â”€ SOCIAL BUTTONS â”€â”€ */
 .member-socials {
   display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap;
 }
@@ -374,9 +374,9 @@
   transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    CORE TEAM SECTION (5 members, 2 rows)
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .team-section {
   background: var(--bg-section);
   padding: clamp(2.8rem, 5.5vw, 4.5rem) 0;
@@ -411,7 +411,7 @@
   max-width: 700px; margin: 0 auto;
 }
 
-/* ── TEAM CARD ── */
+/* â”€â”€ TEAM CARD â”€â”€ */
 .team-card {
   background: linear-gradient(155deg,
     rgba(20,29,43,.98) 0%,
@@ -453,7 +453,7 @@
   box-shadow: 0 28px 70px rgba(0,0,0,.6), 0 0 40px rgba(212,175,55,.18);
 }
 
-/* Team card photo ring — smaller */
+/* Team card photo ring â€” smaller */
 .tc-photo-wrap {
   position: relative; margin: 0 auto clamp(1rem, 2.5vw, 1.5rem);
   width: clamp(110px, 17vw, 148px);
@@ -482,9 +482,9 @@
 }
 .tc-view-btn:hover { background:var(--gold); color:#000; transform:translateY(-2px); }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    STATS SECTION
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .mgmt-stats-section {
   background: var(--bg-body);
   padding: clamp(3rem, 7vw, 6rem) 0;
@@ -517,9 +517,9 @@
 .stat-num  { font-family:var(--font-serif); font-size:clamp(2.3rem,5.5vw,3.8rem); font-weight:900; color:var(--gold); line-height:1; text-shadow:0 0 30px rgba(212,175,55,.5); display:block; }
 .stat-lbl  { font-size:clamp(.72rem,1.7vw,.8rem); color:var(--txt-dim); text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-top:.5rem; display:block; }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PROCESS SECTION
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .process-section {
   background: var(--bg-alt);
   padding: clamp(2.8rem, 5.5vw, 4.2rem) 0;
@@ -542,9 +542,9 @@
 .process-card h3 { font-size:clamp(.88rem,2vw,.98rem); font-weight:800; color:var(--txt-white); margin-bottom:.45rem; }
 .process-card p  { font-size:clamp(.74rem,1.6vw,.81rem); color:var(--txt-mid); line-height:1.78; }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PROFILE MODAL  (Glassmorphism premium)
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .profile-modal-overlay {
   position: fixed; inset: 0; z-index: 9000;
   background: rgba(4,7,11,.9);
@@ -626,9 +626,9 @@
 .pm-footer { padding:.8rem clamp(1.6rem,4vw,2.5rem) clamp(1.5rem,3.5vw,2.2rem); border-top:1px solid rgba(255,255,255,.06); }
 .pm-footer .btn { width:100%; justify-content:center; }
 
-/* ══════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    RESPONSIVE
-══════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 960px) {
   .exec-grid { grid-template-columns:1fr; max-width:500px; margin:0 auto; }
   .team-row-1 { grid-template-columns:repeat(3,1fr); }
@@ -700,3 +700,234 @@ body[data-theme="light"] .pm-footer {
 body[data-theme="light"] .profile-modal-overlay {
   background: rgba(16,32,51,.42);
 }
+
+/* ============================================================
+   LIGHT MODE MANAGEMENT CARD FIX
+============================================================ */
+body[data-theme="light"] .exec-card,
+body[data-theme="light"] .exec-card.proprietor-card,
+body[data-theme="light"] .team-card,
+body[data-theme="light"] .stat-card,
+body[data-theme="light"] .process-card,
+body[data-theme="light"] .profile-modal,
+html[data-theme="light"] .exec-card,
+html[data-theme="light"] .exec-card.proprietor-card,
+html[data-theme="light"] .team-card,
+html[data-theme="light"] .stat-card,
+html[data-theme="light"] .process-card,
+html[data-theme="light"] .profile-modal {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.12), transparent 58%),
+    linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,248,234,.76)) !important;
+  border-color: rgba(168,134,10,.24) !important;
+  box-shadow:
+    0 18px 48px rgba(54,42,15,.12),
+    0 0 0 1px rgba(255,255,255,.72) inset,
+    0 0 34px rgba(212,175,55,.08) !important;
+  color: #102033;
+}
+
+body[data-theme="light"] .exec-card:hover,
+body[data-theme="light"] .exec-card.proprietor-card:hover,
+body[data-theme="light"] .team-card:hover,
+body[data-theme="light"] .stat-card:hover,
+body[data-theme="light"] .process-card:hover,
+html[data-theme="light"] .exec-card:hover,
+html[data-theme="light"] .exec-card.proprietor-card:hover,
+html[data-theme="light"] .team-card:hover,
+html[data-theme="light"] .stat-card:hover,
+html[data-theme="light"] .process-card:hover {
+  border-color: rgba(168,134,10,.38) !important;
+  box-shadow:
+    0 24px 64px rgba(54,42,15,.16),
+    0 0 0 1px rgba(255,255,255,.78) inset,
+    0 0 42px rgba(212,175,55,.15) !important;
+}
+
+body[data-theme="light"] .exec-card::after,
+body[data-theme="light"] .team-card::after,
+body[data-theme="light"] .stat-card::after,
+body[data-theme="light"] .process-card::after,
+html[data-theme="light"] .exec-card::after,
+html[data-theme="light"] .team-card::after,
+html[data-theme="light"] .stat-card::after,
+html[data-theme="light"] .process-card::after {
+  background: radial-gradient(ellipse 82% 60% at 50% 0%, rgba(212,175,55,.12) 0%, transparent 68%);
+}
+
+body[data-theme="light"] .exec-spotlight,
+html[data-theme="light"] .exec-spotlight {
+  background: radial-gradient(circle, rgba(212,175,55,.13) 0%, rgba(255,255,255,.16) 42%, transparent 72%);
+}
+
+body[data-theme="light"] .tc-shine,
+html[data-theme="light"] .tc-shine {
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.12), transparent);
+}
+
+body[data-theme="light"] .exec-name,
+body[data-theme="light"] .tc-name,
+body[data-theme="light"] .pm-name,
+body[data-theme="light"] .process-card h3,
+html[data-theme="light"] .exec-name,
+html[data-theme="light"] .tc-name,
+html[data-theme="light"] .pm-name,
+html[data-theme="light"] .process-card h3 {
+  color: #102033 !important;
+  text-shadow: none;
+}
+
+body[data-theme="light"] .exec-label,
+body[data-theme="light"] .exec-role,
+body[data-theme="light"] .tc-role,
+body[data-theme="light"] .pm-role,
+body[data-theme="light"] .pm-contact-title,
+html[data-theme="light"] .exec-label,
+html[data-theme="light"] .exec-role,
+html[data-theme="light"] .tc-role,
+html[data-theme="light"] .pm-role,
+html[data-theme="light"] .pm-contact-title {
+  color: var(--gold-dk) !important;
+}
+
+body[data-theme="light"] .exec-bio,
+body[data-theme="light"] .tc-bio,
+body[data-theme="light"] .pm-bio,
+body[data-theme="light"] .process-card p,
+body[data-theme="light"] .stat-lbl,
+body[data-theme="light"] .pm-footer,
+html[data-theme="light"] .exec-bio,
+html[data-theme="light"] .tc-bio,
+html[data-theme="light"] .pm-bio,
+html[data-theme="light"] .process-card p,
+html[data-theme="light"] .stat-lbl,
+html[data-theme="light"] .pm-footer {
+  color: #52657a !important;
+}
+
+body[data-theme="light"] .stat-num,
+body[data-theme="light"] .stat-icon,
+html[data-theme="light"] .stat-num,
+html[data-theme="light"] .stat-icon {
+  color: var(--gold-dk);
+  text-shadow: 0 8px 24px rgba(168,134,10,.18);
+}
+
+body[data-theme="light"] .photo-circle,
+body[data-theme="light"] .tc-photo,
+body[data-theme="light"] .pm-photo,
+html[data-theme="light"] .photo-circle,
+html[data-theme="light"] .tc-photo,
+html[data-theme="light"] .pm-photo {
+  background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,248,234,.78));
+  box-shadow: 0 10px 28px rgba(54,42,15,.14) inset;
+}
+
+body[data-theme="light"] .photo-circle img,
+body[data-theme="light"] .tc-photo img,
+body[data-theme="light"] .pm-photo img,
+html[data-theme="light"] .photo-circle img,
+html[data-theme="light"] .tc-photo img,
+html[data-theme="light"] .pm-photo img {
+  filter: brightness(1.02) saturate(1.02) contrast(.98);
+}
+
+body[data-theme="light"] .ring-orbit,
+body[data-theme="light"] .tc-ring-orbit,
+body[data-theme="light"] .pm-ring-outer,
+html[data-theme="light"] .ring-orbit,
+html[data-theme="light"] .tc-ring-orbit,
+html[data-theme="light"] .pm-ring-outer {
+  border-color: rgba(168,134,10,.34);
+}
+
+body[data-theme="light"] .ring-pulse,
+body[data-theme="light"] .ring-solid,
+body[data-theme="light"] .tc-ring-pulse,
+body[data-theme="light"] .tc-ring-solid,
+body[data-theme="light"] .pm-ring-solid,
+html[data-theme="light"] .ring-pulse,
+html[data-theme="light"] .ring-solid,
+html[data-theme="light"] .tc-ring-pulse,
+html[data-theme="light"] .tc-ring-solid,
+html[data-theme="light"] .pm-ring-solid {
+  border-color: var(--gold);
+  box-shadow:
+    0 0 18px rgba(168,134,10,.34),
+    0 0 34px rgba(212,175,55,.18);
+}
+
+body[data-theme="light"] .photo-badge,
+body[data-theme="light"] .tc-badge,
+body[data-theme="light"] .pm-badge,
+body[data-theme="light"] .exec-rank-badge,
+html[data-theme="light"] .photo-badge,
+html[data-theme="light"] .tc-badge,
+html[data-theme="light"] .pm-badge,
+html[data-theme="light"] .exec-rank-badge {
+  color: #07111C;
+  box-shadow: 0 8px 22px rgba(168,134,10,.28);
+}
+
+body[data-theme="light"] .soc-btn.call,
+body[data-theme="light"] .pm-social-btn.call,
+html[data-theme="light"] .soc-btn.call,
+html[data-theme="light"] .pm-social-btn.call {
+  background: rgba(212,175,55,.13);
+  border-color: rgba(168,134,10,.28);
+  color: var(--gold-dk);
+}
+
+body[data-theme="light"] .soc-btn.wa,
+body[data-theme="light"] .pm-social-btn.wa,
+html[data-theme="light"] .soc-btn.wa,
+html[data-theme="light"] .pm-social-btn.wa {
+  background: rgba(37,211,102,.10);
+  border-color: rgba(22,163,74,.24);
+  color: #15803d;
+}
+
+body[data-theme="light"] .soc-btn.fb,
+body[data-theme="light"] .pm-social-btn.fb,
+html[data-theme="light"] .soc-btn.fb,
+html[data-theme="light"] .pm-social-btn.fb {
+  background: rgba(24,119,242,.10);
+  border-color: rgba(24,119,242,.22);
+  color: #1d4ed8;
+}
+
+body[data-theme="light"] .soc-btn.li,
+body[data-theme="light"] .pm-social-btn.li,
+html[data-theme="light"] .soc-btn.li,
+html[data-theme="light"] .pm-social-btn.li {
+  background: rgba(10,102,194,.10);
+  border-color: rgba(10,102,194,.22);
+  color: #075985;
+}
+
+body[data-theme="light"] .view-profile-btn,
+body[data-theme="light"] .tc-view-btn,
+html[data-theme="light"] .view-profile-btn,
+html[data-theme="light"] .tc-view-btn {
+  background: rgba(212,175,55,.12);
+  border-color: rgba(168,134,10,.28);
+  color: var(--gold-dk);
+}
+
+body[data-theme="light"] .profile-modal-overlay,
+html[data-theme="light"] .profile-modal-overlay {
+  background: rgba(16,32,51,.42);
+}
+
+body[data-theme="light"] .pm-close-btn,
+html[data-theme="light"] .pm-close-btn {
+  background: rgba(255,255,255,.72);
+  border-color: rgba(168,134,10,.20);
+  color: #52657a;
+}
+
+body[data-theme="light"] .pm-footer,
+html[data-theme="light"] .pm-footer {
+  border-top-color: rgba(168,134,10,.16);
+}
+
