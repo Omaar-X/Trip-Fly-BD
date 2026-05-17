@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    TRIP FLY BD â€” DESTINATIONS.CSS
    Premium Destination Page | Visa Modal | Mobile Responsive
 ============================================================ */
@@ -1760,3 +1760,76 @@ html[data-theme="light"] .dest-hero-trust i {
   color: var(--gold-dk);
 }
 
+/* ============================================================
+   DESTINATION FLAG ICON + LIGHT TONE FIX
+============================================================ */
+.dest-flag,
+.vm-flag {
+  font-size: 0;
+}
+
+.dest-flag i,
+.vm-flag i,
+.dest-flag::before,
+.vm-flag::before {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.dest-flag:not(:has(i))::before,
+.vm-flag:not(:has(i))::before {
+  content: "\f57e";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+body[data-theme="light"] .dest-hero,
+html[data-theme="light"] .dest-hero {
+  background:
+    linear-gradient(180deg, rgba(241,226,199,.64) 0%, rgba(246,237,220,.44) 48%, rgba(239,227,207,.82) 100%),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=85&w=1800&auto=format&fit=crop") center/cover no-repeat;
+}
+
+body[data-theme="light"] .dest-hero::before,
+html[data-theme="light"] .dest-hero::before {
+  background:
+    radial-gradient(ellipse at 50% 4%, rgba(212,175,55,.15), transparent 56%),
+    radial-gradient(ellipse at 12% 86%, rgba(255,255,255,.28), transparent 48%),
+    radial-gradient(ellipse at 88% 78%, rgba(212,175,55,.07), transparent 46%),
+    linear-gradient(90deg, rgba(241,226,199,.56), rgba(255,255,255,.18), rgba(241,226,199,.56));
+}
+
+body[data-theme="light"] .dest-card-img img,
+html[data-theme="light"] .dest-card-img img {
+  filter: brightness(.95) saturate(1.02) contrast(.98);
+}
+
+body[data-theme="light"] .dest-card:hover .dest-card-img img,
+body[data-theme="light"] .dest-card.active-card .dest-card-img img,
+html[data-theme="light"] .dest-card:hover .dest-card-img img,
+html[data-theme="light"] .dest-card.active-card .dest-card-img img {
+  filter: brightness(.88) saturate(1.03) contrast(1);
+}
+
+body[data-theme="light"] .dest-card-img-ov,
+html[data-theme="light"] .dest-card-img-ov {
+  background:
+    linear-gradient(to top, rgba(16,32,51,.42) 0%, rgba(16,32,51,.12) 48%, rgba(239,227,207,.04) 100%);
+}
+
+body[data-theme="light"] .dest-card-img::before,
+html[data-theme="light"] .dest-card-img::before {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(212,175,55,.09), transparent 34%),
+    linear-gradient(to top, rgba(16,32,51,.32), rgba(16,32,51,.08), rgba(239,227,207,.05));
+}
+
+body[data-theme="light"] .dest-flag,
+body[data-theme="light"] .vm-flag,
+html[data-theme="light"] .dest-flag,
+html[data-theme="light"] .vm-flag {
+  background: rgba(250,244,232,.72);
+  border-color: rgba(168,134,10,.28);
+  color: var(--gold-dk);
+  box-shadow: 0 8px 18px rgba(54,42,15,.14);
+}

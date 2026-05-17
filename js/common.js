@@ -1,5 +1,5 @@
 /* ============================================================
-   TRIP FLY BD — COMMON.JS
+   TRIP FLY BD â€” COMMON.JS
    Navbar | Hamburger | Scroll Reveal | Counters | Airplane | WhatsApp Float
 ============================================================ */
 
@@ -9,8 +9,15 @@
    THEME TOGGLE - DARK DEFAULT + LIGHT MODE
 ============================================================ */
 (function initThemeToggle() {
-  const storageKey = 'tripFlyBdTheme';
+  const storageKey = 'tripFlyBdThemeV3';
+  const legacyStorageKeys = ['tripFlyBdTheme', 'tripFlyBdThemeV2'];
   const allowedThemes = new Set(['dark', 'light']);
+
+  try {
+    legacyStorageKeys.forEach(key => localStorage.removeItem(key));
+  } catch (error) {
+    /* Ignore storage cleanup failures. */
+  }
 
   const getSavedTheme = () => {
     try {
@@ -41,6 +48,7 @@
   const applyTheme = theme => {
     const nextTheme = allowedThemes.has(theme) ? theme : 'dark';
     document.body.setAttribute('data-theme', nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
     document.documentElement.style.colorScheme = nextTheme;
 
     const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -67,9 +75,9 @@
   });
 })();
 
-/* ══════════════════════════════════════
-   AIRPLANE ANIMATION — HOME PAGE ONLY
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   AIRPLANE ANIMATION â€” HOME PAGE ONLY
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 (function initAirplanes() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
 
@@ -109,9 +117,9 @@
   });
 })();
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    FLOATING WHATSAPP BUTTON
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 (function initWAFloat() {
   if (document.querySelector('.wa-float')) return;
 
@@ -126,9 +134,9 @@
   document.body.appendChild(wa);
 })();
 
-/* ══════════════════════════════════════
-   NAVBAR — SCROLL + HAMBURGER
-══════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NAVBAR â€” SCROLL + HAMBURGER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
@@ -189,9 +197,9 @@ if (hamburger && navMenu) {
   );
 }
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    ACTIVE NAV LINK
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 (function setActiveNav() {
   const page = window.location.pathname.split('/').pop() || 'index.html';
 
@@ -204,9 +212,9 @@ if (hamburger && navMenu) {
   });
 })();
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SCROLL REVEAL
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 document.addEventListener('DOMContentLoaded', () => {
   const revealEls = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
@@ -231,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
   revealEls.forEach(el => observer.observe(el));
 });
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    COUNTER ANIMATION
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function animateCount(el) {
   const target = parseFloat(el.dataset.count) || 0;
   const suffix = el.dataset.suffix || '';
@@ -283,9 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(counter => observer.observe(counter));
 });
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HERO PARTICLE STARS
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 (function initParticles() {
   const container = document.querySelector('.hero-particles');
 
@@ -309,9 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
-/* ══════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SMOOTH ANCHOR SCROLL
-══════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', event => {
     const href = anchor.getAttribute('href');

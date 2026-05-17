@@ -1147,3 +1147,34 @@ body[data-theme="light"] select,
 body[data-theme="light"] textarea {
   color: #102033;
 }
+
+/* ============================================================
+   LIGHT MODE SOFTNESS TUNING
+============================================================ */
+body[data-theme="light"],
+html[data-theme="light"] body {
+  --bg-body:     #EFE3CF;
+  --bg-section:  #EADAC0;
+  --bg-alt:      #F4E8D4;
+  --bg-card:     rgba(250,244,232,0.84);
+  --bg-card2:    rgba(242,232,214,0.90);
+  --bg-nav:      rgba(246,237,220,0.92);
+  --glass:       rgba(255,250,240,0.48);
+  --light-card: rgba(250,244,232,.80);
+  --light-card-strong: rgba(252,247,236,.88);
+  --light-card-soft: rgba(242,232,214,.74);
+  --light-shadow: 0 15px 40px rgba(54,42,15,.11);
+  --light-shadow-hover: 0 22px 58px rgba(54,42,15,.16), 0 0 26px rgba(212,175,55,.10);
+}
+
+body[data-theme="light"] {
+  background:
+    radial-gradient(ellipse 70% 44% at 50% -10%, rgba(212,175,55,.10) 0%, transparent 60%),
+    var(--bg-body);
+}
+
+body[data-theme="light"]::before {
+  background:
+    radial-gradient(ellipse 80% 50% at 12% 0%, rgba(212,175,55,.08) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 44% at 88% 100%, rgba(168,134,10,.07) 0%, transparent 58%);
+}
