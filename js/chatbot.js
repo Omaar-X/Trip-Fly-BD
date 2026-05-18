@@ -1,7 +1,8 @@
 /* ============================================================
-   TRIP FLY BD — CHATBOT.JS  (v2 — Advanced Smart Edition)
-   Premium Travel Assistant | Bangla + Banglish + English
-   Frontend-only | Pure HTML/CSS/JS | No frameworks
+   TRIP FLY BD — CHATBOT.JS  (v3 — Premium Smart Bilingual)
+   Travel Consultant · Tourism Sales · Visa Advisor
+   Bangla + Banglish + English | No external API | Pure JS
+   WhatsApp: +880 18 9880 1939 | wa.me/8801898801939
 ============================================================ */
 (function () {
   'use strict';
@@ -9,495 +10,568 @@
   /* ══════════════════════════════════════
      CONFIG
   ══════════════════════════════════════ */
-  const WA_NUMBER = '8801898801939'; // ← Update with real number
-  const WA_URL    = `https://wa.me/8801898801939?text=`;
+  const WA_NUMBER = '8801898801939';
+  const WA_URL    = `https://wa.me/${WA_NUMBER}?text=`;
+  const DEST_PAGE = 'destinations.html';
   const CONTACT   = 'contact.html';
 
   /* ══════════════════════════════════════
-     RESPONSE DATA
+     COUNTRY / DESTINATION DATA
+     Each entry: flag, emoji, slug (matches destinations.html data-visa-key),
+     summary, price, highlights, visa type
+  ══════════════════════════════════════ */
+  const DESTINATIONS = {
+    maldives: {
+      name: 'Maldives',
+      flag: '🇲🇻',
+      slug: 'maldives',
+      visa: 'Visa on Arrival ✅ (Free)',
+      price: 'BDT 55,000',
+      duration: '5N/6D',
+      highlight: 'Water villas · Overwater bungalows · Crystal lagoons',
+      includes: 'Visa + Return Flight + Resort + Transfers',
+      type: 'Honeymoon · Luxury · Beach',
+      waText: 'আমি Maldives প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🏝️ <strong>Maldives</strong> — স্বপ্নের overwater paradise!<br><br>
+বিশ্বের সবচেয়ে সুন্দর lagoon আর water villa এর দেশ। Honeymoon বা luxury vacation এর জন্য perfect choice।`,
+    },
+    thailand: {
+      name: 'Thailand',
+      flag: '🇹🇭',
+      slug: 'thailand',
+      visa: 'Tourist Visa (Embassy)',
+      price: 'BDT 28,000',
+      duration: '5N/6D',
+      highlight: 'Phuket · Bangkok · Pattaya · Chiang Mai',
+      includes: 'Visa + Return Flight + Hotel + Transfers',
+      type: 'Beach · City · Adventure',
+      waText: 'আমি Thailand প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇹🇭 <strong>Thailand</strong> — Southeast Asia এর সেরা গন্তব্য!<br><br>
+Phuket এর সমুদ্র সৈকত থেকে Bangkok এর city life — সব কিছুর এক অপূর্ব মিশ্রণ।`,
+    },
+    malaysia: {
+      name: 'Malaysia',
+      flag: '🇲🇾',
+      slug: 'malaysia',
+      visa: 'eVisa / Visa on Arrival ✅',
+      price: 'BDT 22,000',
+      duration: '4N/5D',
+      highlight: 'KL · Genting · Langkawi · Penang',
+      includes: 'Visa + Return Flight + Hotel + City Tour',
+      type: 'Family · City · Nature',
+      waText: 'আমি Malaysia প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇲🇾 <strong>Malaysia</strong> — Family travel এর জন্য অসাধারণ!<br><br>
+Kuala Lumpur এর iconic Petronas Twin Towers, Langkawi দ্বীপ, আর Genting Highlands — সব এক দেশে!`,
+    },
+    singapore: {
+      name: 'Singapore',
+      flag: '🇸🇬',
+      slug: 'singapore',
+      visa: 'Tourist Visa (Embassy)',
+      price: 'BDT 38,000',
+      duration: '4N/5D',
+      highlight: 'Marina Bay · Sentosa · Universal Studios',
+      includes: 'Visa + Return Flight + Hotel + SIM',
+      type: 'City · Shopping · Family',
+      waText: 'আমি Singapore প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇸🇬 <strong>Singapore</strong> — Asia এর সবচেয়ে আধুনিক শহর!<br><br>
+Marina Bay Sands, Gardens by the Bay, Universal Studios — world-class experience মাত্র কয়েক ঘণ্টার দূরত্বে।`,
+    },
+    dubai: {
+      name: 'Dubai',
+      flag: '🇦🇪',
+      slug: 'dubai',
+      visa: 'UAE Tourist Visa',
+      price: 'BDT 42,000',
+      duration: '4N/5D',
+      highlight: 'Burj Khalifa · Desert Safari · Palm Jumeirah',
+      includes: 'Visa + Return Flight + Hotel + Desert Safari',
+      type: 'Luxury · Shopping · Adventure',
+      waText: 'আমি Dubai প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇦🇪 <strong>Dubai / UAE</strong> — বিলাসিতা আর আধুনিকতার শহর!<br><br>
+Burj Khalifa থেকে সূর্যাস্ত, desert safari তে উত্তেজনা, Dubai Mall এ shopping — luxury ভ্রমণের সংজ্ঞাই বদলে দেবে!`,
+    },
+    srilanka: {
+      name: 'Sri Lanka',
+      flag: '🇱🇰',
+      slug: 'srilanka',
+      visa: 'eVisa ✅ (Online)',
+      price: 'BDT 24,000',
+      duration: '5N/6D',
+      highlight: 'Sigiriya · Ella · Colombo · Tea Hills',
+      includes: 'Visa + Return Flight + Hotel + Train Pass',
+      type: 'Nature · Heritage · Budget',
+      waText: 'আমি Sri Lanka প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇱🇰 <strong>Sri Lanka</strong> — প্রকৃতির এক অনন্য রত্ন!<br><br>
+চা বাগানের সবুজ পাহাড়, প্রাচীন স্থাপত্য আর অপূর্ব সমুদ্র সৈকত — অল্প খরচে অসাধারণ অভিজ্ঞতা।`,
+    },
+    india: {
+      name: 'India',
+      flag: '🇮🇳',
+      slug: 'india',
+      visa: 'e-Visa ✅ (Online) / Embassy Visa',
+      price: 'BDT 15,000',
+      duration: '4N/5D',
+      highlight: 'Kolkata · Delhi · Darjeeling · Agra · Mumbai',
+      includes: 'Visa + Return Flight + Hotel',
+      type: 'Culture · Medical · Family',
+      waText: 'আমি India প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇮🇳 <strong>India</strong> — কাছের প্রতিবেশী, অফুরন্ত বৈচিত্র্য!<br><br>
+Kolkata, Darjeeling, Agra এর Taj Mahal বা Kerala এর backwaters — সব ধরনের ভ্রমণকারীর জন্য আদর্শ।`,
+    },
+    turkey: {
+      name: 'Turkey',
+      flag: '🇹🇷',
+      slug: 'turkey',
+      visa: 'e-Visa ✅ (Online)',
+      price: 'BDT 52,000',
+      duration: '6N/7D',
+      highlight: 'Istanbul · Cappadocia · Antalya · Ephesus',
+      includes: 'Visa + Return Flight + Hotel + Hot Air Balloon',
+      type: 'History · Romance · Adventure',
+      waText: 'আমি Turkey প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇹🇷 <strong>Turkey</strong> — ইতিহাস আর প্রকৃতির অপূর্ব মিলন!<br><br>
+Istanbul এর Blue Mosque, Cappadocia তে hot air balloon ride, Antalya এর Mediterranean সৈকত — এক trip এ তিন অভিজ্ঞতা!`,
+    },
+    usa: {
+      name: 'USA',
+      flag: '🇺🇸',
+      slug: 'usa',
+      visa: 'B1/B2 Tourist Visa (Embassy)',
+      price: 'BDT 1,80,000',
+      duration: '10N/12D',
+      highlight: 'New York · Los Angeles · Miami · Las Vegas',
+      includes: 'Visa Assistance + Flight + Hotel Guidance',
+      type: 'Luxury · City · Adventure',
+      waText: 'আমি USA ভিসা ও ট্যুর সম্পর্কে জানতে চাই।',
+      intro: `🇺🇸 <strong>USA</strong> — স্বপ্নের American journey!<br><br>
+New York এর Times Square, LA এর Hollywood, Vegas এর glam — America এর অভিজ্ঞতা অতুলনীয়। Visa processing সহ আমরা পুরো সাপোর্ট দিই।`,
+    },
+    switzerland: {
+      name: 'Switzerland',
+      flag: '🇨🇭',
+      slug: 'switzerland',
+      visa: 'Schengen Visa (Embassy)',
+      price: 'BDT 1,20,000',
+      duration: '7N/8D',
+      highlight: 'Interlaken · Zurich · Jungfrau · Geneva',
+      includes: 'Visa Assistance + Flight + Hotel + Swiss Pass',
+      type: 'Luxury · Nature · Honeymoon',
+      waText: 'আমি Switzerland প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇨🇭 <strong>Switzerland</strong> — ইউরোপের সবচেয়ে সুন্দর দেশ!<br><br>
+তুষারঢাকা Jungfrau, নীল হ্রদ, চকোলেট আর Alpine villages — Schengen visa সহ আমরা dream trip সাজিয়ে দিই।`,
+    },
+    indonesia: {
+      name: 'Indonesia / Bali',
+      flag: '🇮🇩',
+      slug: 'indonesia',
+      visa: 'Visa on Arrival ✅',
+      price: 'BDT 32,000',
+      duration: '5N/6D',
+      highlight: 'Bali · Ubud · Seminyak · Lombok',
+      includes: 'Visa + Return Flight + Villa + Transfers',
+      type: 'Romance · Beach · Nature',
+      waText: 'আমি Bali / Indonesia প্যাকেজ সম্পর্কে জানতে চাই।',
+      intro: `🇮🇩 <strong>Bali / Indonesia</strong> — Honeymoon এর paradise!<br><br>
+Ubud এর rice terraces, Seminyak এর sunset beaches আর private villa — romantic getaway এর জন্য Bali এর জুড়ি নেই।`,
+    },
+  };
+
+  /* ══════════════════════════════════════
+     GENERAL SERVICE RESPONSES
   ══════════════════════════════════════ */
   const RESPONSES = {
-
     'tourist-visa': {
       label: '🛂 Tourist Visa',
-      text: `আমরা নিচের দেশগুলোতে <strong>Tourist Visa</strong> প্রসেস করি:`,
-      list: [
-        'Thailand 🇹🇭', 'Malaysia 🇲🇾', 'Singapore 🇸🇬',
-        'Dubai / UAE 🇦🇪', 'India 🇮🇳', 'Sri Lanka 🇱🇰',
-        'Maldives 🇲🇻', 'China 🇨🇳', 'Japan 🇯🇵', 'Turkey 🇹🇷',
-        'Indonesia 🇮🇩', 'Vietnam 🇻🇳', 'Nepal 🇳🇵',
-      ],
-      extra: `<br/><strong>Documents Required:</strong><ul class="cb-list">
-        <li>Valid Passport (6+ months validity)</li>
-        <li>Passport-size Photo (white background)</li>
-        <li>NID / Birth Certificate (copy)</li>
-        <li>3–6 months Bank Statement</li>
-        <li>Profession Proof (job card / trade license / student ID)</li>
-        <li>Hotel Booking Confirmation</li>
-        <li>Return Air Ticket Copy</li>
-        <li>Travel History (if available)</li>
-      </ul><br/>⏱ <strong>Processing Time:</strong> 3–15 working days depending on destination.<br/>
-      💰 <strong>Fee:</strong> Varies by country — WhatsApp করুন exact cost জানতে।<br/><br/>
-      আমাদের <strong>99% approval rate</strong> আছে! আজই আবেদন করুন। 🎯`,
+      reply: `আমরা <strong>25+ দেশের Tourist Visa</strong> process করি:<br><br>
+🟢 <strong>On Arrival / eVisa:</strong> Maldives, Malaysia, Sri Lanka, Turkey, Indonesia, Nepal<br>
+🔵 <strong>Embassy Visa:</strong> Thailand, Singapore, Dubai, India, China, Japan, UK, USA<br><br>
+📋 <strong>Common Documents:</strong><br>
+✅ Valid Passport (6+ months) · ✅ Photo · ✅ Bank Statement (3-6 months)<br>
+✅ NID/Birth Certificate · ✅ Job Proof/Trade License<br><br>
+⏱ Processing: <strong>3–15 working days</strong> | Urgent: <strong>1–3 days</strong><br>
+🏆 আমাদের <strong>99% visa approval rate!</strong>`,
+      waMsg: 'Tourist Visa সম্পর্কে বিস্তারিত জানতে চাই।',
+      dest: null,
     },
-
-    'visa-requirements': {
-      label: '📋 Visa Requirements',
-      text: `<strong>সব দেশের Visa এর জন্য সাধারণ Documents:</strong>`,
-      list: [
-        '✅ Valid Passport (minimum 6 months validity)',
-        '✅ Passport-size Photo (white background, 35×45mm)',
-        '✅ NID / Birth Certificate (photocopy)',
-        '✅ Bank Statement (3–6 months, minimum balance varies)',
-        '✅ Profession Proof (job letter / business certificate / student ID)',
-        '✅ Travel History (previous visas — if available)',
-        '✅ Hotel Booking / Invitation Letter (country-specific)',
-        '✅ Return Air Ticket Copy (some countries)',
-      ],
-      extra: `<br/>⚠️ <strong>Note:</strong> Country-specific requirements আলাদা হতে পারে। Exact checklist পেতে আমাদের WhatsApp করুন।`,
-    },
-
-    'visa-cost': {
-      label: '💰 Visa Cost & Fees',
-      text: `<strong>Popular Destinations — Approximate Visa Fees:</strong>`,
-      list: [
-        'Thailand 🇹🇭 — Tourist Visa: ~BDT 5,000–8,000',
-        'Malaysia 🇲🇾 — eVisa / On Arrival: ~BDT 3,000–6,000',
-        'Dubai / UAE 🇦🇪 — Tourist Visa: ~BDT 10,000–18,000',
-        'India 🇮🇳 — e-Visa: ~BDT 3,500–6,000',
-        'Singapore 🇸🇬 — Tourist Visa: ~BDT 7,000–12,000',
-        'China 🇨🇳 — Tourist Visa: ~BDT 8,000–14,000',
-        'Turkey 🇹🇷 — e-Visa: ~BDT 5,000–9,000',
-      ],
-      extra: `<br/>💡 উপরের fees approximate। Embassy fee + service charge সহ actual cost জানতে WhatsApp করুন।<br/>
-      <strong>Urgent processing available</strong> at extra cost.`,
-    },
-
-    'processing-time': {
-      label: '⏱ Processing Time',
-      text: `<strong>Visa Processing Time by Destination:</strong>`,
-      list: [
-        'Thailand 🇹🇭 — 3–7 working days',
-        'Malaysia 🇲🇾 — 2–5 working days',
-        'Dubai / UAE 🇦🇪 — 3–7 working days',
-        'India 🇮🇳 — 2–4 working days (e-Visa)',
-        'Singapore 🇸🇬 — 5–10 working days',
-        'China 🇨🇳 — 7–15 working days',
-        'Turkey 🇹🇷 — 2–3 working days (e-Visa)',
-        'Japan 🇯🇵 — 5–10 working days',
-      ],
-      extra: `<br/>🚀 <strong>Urgent / Express Processing</strong> available for most destinations!<br/>
-      Urgent processing time: <strong>1–3 working days</strong> (extra fee applies).<br/>
-      Emergency ticket বা urgent visa হলে এখনই WhatsApp করুন।`,
-    },
-
-    'air-ticketing': {
-      label: '✈ Air Ticketing',
-      text: `আমরা সেরা দামে <strong>International Air Tickets</strong> বুক করি:`,
-      list: [
-        'All major international airlines',
-        'Economy, Business & First Class',
-        'Best-price guarantee — সেরা দাম নিশ্চিত',
-        'E-ticket instantly on WhatsApp',
-        'Group booking discounts available',
-        'Open-jaw & multi-city tickets',
-      ],
-      extra: `<br/>✈ <strong>Ticket Date Change / Reissue</strong> সার্ভিসও আমরা দিই।<br/>
-      Travel dates ও destination WhatsApp করুন — সাথে সাথে best fare পাবেন।`,
-    },
-
-    'date-change': {
-      label: '📅 Ticket Date Change',
-      text: `<strong>Ticket Reschedule / Date Change</strong> সার্ভিস:`,
-      list: [
-        'International & domestic flights',
-        'All major airlines supported',
-        'Fast processing via WhatsApp',
-        'Fare difference calculation done for you',
-        '24/7 urgent support available',
-        'Penalty & fee guidance provided',
-      ],
-      extra: `<br/>📨 Ticket copy ও new dates WhatsApp এ পাঠান — বাকি আমরা সামলাবো।`,
-    },
-
     'student-visa': {
       label: '🎓 Student Visa',
-      text: `আমরা <strong>Student Visa</strong> process করি এই দেশগুলোর জন্য:`,
-      list: [
-        'Malaysia 🇲🇾', 'China 🇨🇳', 'India 🇮🇳',
-        'Turkey 🇹🇷', 'Thailand 🇹🇭', 'UK 🇬🇧 (consultation)',
-      ],
-      extra: `<br/><strong>Documents Required:</strong><ul class="cb-list">
-        <li>University / College Admission Letter</li>
-        <li>Valid Passport + Photo</li>
-        <li>Academic Certificates (SSC, HSC, Degree)</li>
-        <li>Bank Statement (family's / sponsor's)</li>
-        <li>NID / Birth Certificate</li>
-        <li>IELTS / Language Certificate (if required)</li>
-      </ul><br/>আমাদের consultants প্রতিটা step এ guide করবে — document থেকে visa approval পর্যন্ত।`,
+      reply: `<strong>Student / Study Visa</strong> — বিদেশে পড়ার স্বপ্ন পূরণ করুন!<br><br>
+📚 <strong>আমরা যেসব দেশে প্রসেস করি:</strong><br>
+🇲🇾 Malaysia · 🇨🇳 China · 🇮🇳 India · 🇹🇷 Turkey · 🇹🇭 Thailand<br><br>
+📋 <strong>Documents:</strong><br>
+✅ University Admission Letter<br>
+✅ Academic Certificates (SSC, HSC, Degree)<br>
+✅ Bank Statement (family/sponsor)<br>
+✅ IELTS/Language Certificate (if required)<br>
+✅ Valid Passport + Photo + NID<br><br>
+👨‍💼 আমাদের consultants প্রতিটি step এ guide করবে — document থেকে visa approval পর্যন্ত।`,
+      waMsg: 'Student Visa সম্পর্কে জানতে চাই। আমার destination হলো: ',
+      dest: null,
     },
-
     'medical-visa': {
       label: '🏥 Medical Visa',
-      text: `<strong>Medical Visa</strong> — বিদেশে চিকিৎসার জন্য দ্রুত সহায়তা:`,
-      list: [
-        'India 🇮🇳 — CMC Vellore, Apollo, Fortis',
-        'Thailand 🇹🇭 — Bumrungrad, Bangkok Hospital',
-        'Malaysia 🇲🇾 — Gleneagles, KPJ',
-        'Singapore 🇸🇬 — Mount Elizabeth, Raffles',
-      ],
-      extra: `<br/><strong>Documents Required:</strong><ul class="cb-list">
-        <li>Hospital Referral / Appointment Letter</li>
-        <li>Doctor's Prescription / Medical Report</li>
-        <li>Valid Passport + Photo</li>
-        <li>NID / Birth Certificate</li>
-        <li>Bank Statement</li>
-        <li>Attendant visa (for accompanying person)</li>
-      </ul><br/>⚡ <strong>Urgent medical visa processing available.</strong> রোগীর জন্য আমরা সর্বোচ্চ দ্রুততায় কাজ করি।`,
+      reply: `<strong>Medical Visa</strong> — বিদেশে চিকিৎসায় দ্রুত সহায়তা!<br><br>
+🏥 <strong>Popular Destinations:</strong><br>
+🇮🇳 India — Apollo, Fortis, CMC Vellore<br>
+🇹🇭 Thailand — Bumrungrad, Bangkok Hospital<br>
+🇲🇾 Malaysia — Gleneagles, KPJ<br>
+🇸🇬 Singapore — Mount Elizabeth, Raffles<br><br>
+📋 <strong>Documents:</strong><br>
+✅ Hospital Appointment Letter · ✅ Doctor's Report<br>
+✅ Valid Passport + Photo + NID + Bank Statement<br>
+✅ Attendant Visa (for companion)<br><br>
+⚡ <strong>Urgent medical visa — priority handling available!</strong><br>
+রোগীর জন্য আমরা সর্বোচ্চ দ্রুততায় কাজ করি।`,
+      waMsg: 'Medical Visa সম্পর্কে জরুরিভাবে জানতে চাই।',
+      dest: null,
     },
-
-    'group-visa': {
-      label: '👥 Group Visa / Package',
-      text: `<strong>Group Tour</strong> এর জন্য বিশেষ ব্যবস্থা (5+ জন):`,
-      list: [
-        'Family tours & group holidays',
-        'Corporate & office trips',
-        'Group discounts on visa & tickets',
-        'Single-point coordination — একজনই যোগাযোগ করুন',
-        'Hotel & transport arrangements',
-        'Guided tour & activities optional',
-      ],
-      extra: `<br/>Group size ও destination WhatsApp করুন — আমরা full package quote দেবো।`,
+    'honeymoon': {
+      label: '💑 Honeymoon Package',
+      reply: `💍 <strong>Romantic Honeymoon Packages</strong> — স্বপ্নের শুরু হোক অসাধারণভাবে!<br><br>
+🏝️ <strong>Top Honeymoon Destinations:</strong><br>
+🇲🇻 Maldives — Water Villa, Sunset Cruise (from BDT 55,000)<br>
+🇹🇭 Thailand — Phuket, Krabi (from BDT 28,000)<br>
+🇦🇪 Dubai — Luxury Desert & City (from BDT 42,000)<br>
+🇮🇩 Bali — Private Villa, Rice Terraces (from BDT 32,000)<br>
+🇱🇰 Sri Lanka — Tea Hills & Beaches (from BDT 24,000)<br>
+🇨🇭 Switzerland — Alpine Romance (from BDT 1,20,000)<br><br>
+💐 Package includes: Visa + Flights + Hotel/Villa + Transfers<br>
+🕯️ Special arrangements: Candlelight dinner, Spa, Couple photoshoot`,
+      waMsg: 'আমাদের Honeymoon Package সম্পর্কে বিস্তারিত জানতে চাই।',
+      dest: null,
     },
-
-    'couple-package': {
-      label: '💑 Couple / Honeymoon Package',
-      text: `<strong>Romantic Couple & Honeymoon Packages</strong> — স্বপ্নের গন্তব্য:`,
-      list: [
-        'Maldives — Water Villa & sunset cruise 🇲🇻',
-        'Thailand — Phuket, Krabi, Koh Samui 🇹🇭',
-        'Dubai — Luxury desert & city experience 🇦🇪',
-        'Bali, Indonesia — Rice fields & temples 🇮🇩',
-        'Sri Lanka — Tea hills & beaches 🇱🇰',
-        'Visa + flights + hotel + transfers সব included',
-        'Candlelight dinner & spa arrangements',
-      ],
-      extra: `<br/>💍 Anniversary, honeymoon বা যেকোনো special trip এর জন্য আমরা unforgettable experience তৈরি করি।`,
+    'air-ticketing': {
+      label: '✈ Air Ticket',
+      reply: `✈️ <strong>International Air Tickets</strong> — সেরা দামে, সেরা সার্ভিসে!<br><br>
+✅ সব major airlines — Economy, Business & First Class<br>
+✅ <strong>Best-price guarantee</strong> — সবচেয়ে কম দামে ticket<br>
+✅ E-ticket instantly on WhatsApp<br>
+✅ Group booking discounts<br>
+✅ Open-jaw & multi-city tickets<br>
+✅ Ticket date change / reissue service<br><br>
+📍 Travel dates ও destination বলুন — সাথে সাথে <strong>best fare</strong> পাবেন!`,
+      waMsg: 'Air Ticket price জানতে চাই। Destination: ',
+      dest: null,
     },
-
+    'group-package': {
+      label: '👥 Group Package',
+      reply: `👥 <strong>Group Tour Package</strong> — 5+ জনের জন্য বিশেষ সুবিধা!<br><br>
+✅ Family tours & group holidays<br>
+✅ Corporate & office trips<br>
+✅ Group discounts on visa, tickets & hotels<br>
+✅ Single-point coordination<br>
+✅ Hotel + transport + guided tour arrangements<br><br>
+🎯 Group size ও destination জানালে আমরা <strong>special package quote</strong> দেবো!`,
+      waMsg: 'Group Tour Package সম্পর্কে জানতে চাই। আমাদের group size: ',
+      dest: null,
+    },
     'urgent-visa': {
-      label: '⚡ Urgent / Emergency Visa',
-      text: `<strong>Urgent & Emergency Visa Processing</strong> — দ্রুত সেবা:`,
-      list: [
-        'Same-day / next-day processing (select countries)',
-        'Emergency medical visa — priority handling',
-        'Urgent business travel support',
-        'Emergency air ticket booking',
-        '24/7 WhatsApp support for emergencies',
-      ],
-      extra: `<br/>🔴 <strong>এখনই WhatsApp করুন</strong> — urgent cases এ আমরা সর্বোচ্চ অগ্রাধিকার দিই।<br/>
-      Extra express fee প্রযোজ্য।`,
+      label: '⚡ Urgent Visa',
+      reply: `🔴 <strong>Urgent / Emergency Visa Processing</strong> — দ্রুততম সেবা!<br><br>
+⚡ Same-day / Next-day processing (select countries)<br>
+🏥 Emergency medical visa — priority handling<br>
+💼 Urgent business travel support<br>
+✈️ Emergency air ticket booking<br>
+📞 24/7 WhatsApp support<br><br>
+<strong>এখনই WhatsApp করুন</strong> — urgent cases এ আমরা সর্বোচ্চ অগ্রাধিকার দিই।<br>
+⚠️ Express fee প্রযোজ্য।`,
+      waMsg: '🔴 URGENT VISA দরকার। দেশ: ',
+      dest: null,
     },
-
-    'passport': {
-      label: '📘 Passport Requirements',
-      text: `Visa আবেদনের জন্য <strong>Passport</strong> সংক্রান্ত তথ্য:`,
-      list: [
-        'Passport minimum 6 months valid থাকতে হবে',
-        'কমপক্ষে 2টি blank pages থাকতে হবে',
-        'পুরনো / expire passport থাকলে সেটাও সাথে রাখুন',
-        'Passport নষ্ট বা হারালে নতুন করুন আগে',
-        'Machine Readable Passport (MRP) বা e-Passport দুটোই চলে',
-      ],
-      extra: `<br/>⚠️ Passport নতুন হলে (6 months এর কম) কিছু দেশে ভিসা পেতে সমস্যা হতে পারে।<br/>
-      Passport নিয়ে কোনো প্রশ্ন থাকলে WhatsApp করুন।`,
+    'visa-cost': {
+      label: '💰 Visa Cost',
+      reply: `💰 <strong>Approximate Visa Fees (Embassy fee + Service charge):</strong><br><br>
+🇹🇭 Thailand — BDT 5,000–8,000<br>
+🇲🇾 Malaysia — BDT 3,000–6,000<br>
+🇦🇪 Dubai/UAE — BDT 10,000–18,000<br>
+🇮🇳 India — BDT 3,500–6,000<br>
+🇸🇬 Singapore — BDT 7,000–12,000<br>
+🇹🇷 Turkey — BDT 5,000–9,000<br>
+🇲🇻 Maldives — <strong>FREE</strong> (Visa on Arrival)<br>
+🇱🇰 Sri Lanka — BDT 2,500–4,000<br>
+🇮🇩 Indonesia — BDT 2,500–4,000<br><br>
+💡 Exact cost জানতে WhatsApp করুন — আমরা সাথে সাথে জানাবো।`,
+      waMsg: 'Visa cost সম্পর্কে বিস্তারিত জানতে চাই। দেশ: ',
+      dest: null,
     },
-
-    'bank-statement': {
-      label: '🏦 Bank Statement',
-      text: `Visa আবেদনে <strong>Bank Statement</strong> কেন ও কতটুকু লাগে:`,
-      list: [
-        '3–6 months এর bank statement লাগে',
-        'Minimum balance: ভ্রমণ অনুযায়ী ভিন্ন (সাধারণত BDT 50,000–2,00,000)',
-        'Statement এ নিয়মিত transaction থাকলে ভালো',
-        'Salary certificate / income proof সহ দিলে আরো ভালো',
-        'Bank থেকে signed & sealed statement আনতে হবে',
-        'Savings ও Current account দুটোই গ্রহণযোগ্য',
-      ],
-      extra: `<br/>💡 Bank balance কম হলে চিন্তা নেই — আমাদের সাথে কথা বলুন, সমাধান আছে।`,
+    'processing-time': {
+      label: '⏱ Processing Time',
+      reply: `⏱ <strong>Visa Processing Time:</strong><br><br>
+🇮🇳 India — 2–4 days (eVisa)<br>
+🇹🇷 Turkey — 2–3 days (eVisa)<br>
+🇲🇾 Malaysia — 2–5 days<br>
+🇹🇭 Thailand — 3–7 days<br>
+🇦🇪 Dubai — 3–7 days<br>
+🇸🇬 Singapore — 5–10 days<br>
+🇨🇳 China — 7–15 days<br>
+🇬🇧 UK / 🇺🇸 USA — 30–60 days<br><br>
+🚀 <strong>Urgent processing:</strong> 1–3 days (extra fee applies)<br>
+Emergency ticket বা urgent visa হলে এখনই WhatsApp করুন!`,
+      waMsg: 'Visa processing time সম্পর্কে জানতে চাই।',
+      dest: null,
     },
-
-    'refund': {
-      label: '↩ Refund / Cancellation',
-      text: `<strong>Refund ও Cancellation Policy:</strong>`,
-      list: [
-        'Visa refund: Embassy fee non-refundable (visa reject হলেও)',
-        'Service charge partially/fully refundable — case by case',
-        'Air ticket refund: Airline policy অনুযায়ী',
-        'Tour package: Cancellation charges প্রযোজ্য',
-        'Hotel booking: Hotel policy অনুযায়ী',
-      ],
-      extra: `<br/>📞 Refund বা cancellation request এর জন্য আমাদের সাথে WhatsApp এ যোগাযোগ করুন।<br/>
-      আমরা সবসময় customer-friendly সমাধান দেওয়ার চেষ্টা করি।`,
-    },
-
     'payment': {
-      label: '💳 Payment Methods',
-      text: `আমরা নিচের <strong>Payment Methods</strong> গ্রহণ করি:`,
-      list: [
-        '💵 Cash (office visit)',
-        '📱 bKash / Nagad / Rocket',
-        '🏦 Bank Transfer (DBBL, Dutch-Bangla, BRAC, Islami Bank)',
-        '💳 Debit / Credit Card (select cases)',
-      ],
-      extra: `<br/>Payment method নিয়ে বিস্তারিত জানতে WhatsApp করুন।`,
+      label: '💳 Payment',
+      reply: `💳 <strong>Payment Methods আমরা গ্রহণ করি:</strong><br><br>
+💵 Cash (office visit)<br>
+📱 <strong>bKash / Nagad / Rocket</strong><br>
+🏦 Bank Transfer (DBBL, BRAC, Islami Bank, Dutch-Bangla)<br>
+💳 Debit / Credit Card (select cases)<br><br>
+📨 Payment করার পর screenshot WhatsApp এ পাঠান — confirm হয়ে যাবে।`,
+      waMsg: 'Payment method সম্পর্কে জানতে চাই।',
+      dest: null,
     },
-
     'office-location': {
       label: '📍 Office Location',
-      text: `<strong>Trip Fly BD — Office Address:</strong>`,
-      list: [
-        '📍 Dhaka, Bangladesh',
-        '🕐 Sat–Thu: 9:00 AM – 9:00 PM',
-        '🕐 Friday: 12:00 PM – 8:00 PM',
-        '📞 WhatsApp: +880 18 9880 1939',
-        '🌐 www.tripflybd.com',
-      ],
-      extra: `<br/>📌 Exact address ও direction এর জন্য WhatsApp করুন — আমরা Google Maps link পাঠিয়ে দেবো।`,
+      reply: `📍 <strong>Trip Fly BD — Office:</strong><br><br>
+🏢 Location: Dhaka, Bangladesh<br>
+🕐 Sat–Thu: <strong>9:00 AM – 9:00 PM</strong><br>
+🕐 Friday: <strong>12:00 PM – 8:00 PM</strong><br>
+📞 WhatsApp: <strong>+880 18 9880 1939</strong><br>
+🌐 www.tripflybd.com<br><br>
+📌 Exact address ও Google Maps link এর জন্য WhatsApp করুন!`,
+      waMsg: 'Office address ও location জানতে চাই।',
+      dest: null,
     },
-
+    'trusted': {
+      label: '🏆 Why Trust Us?',
+      reply: `🏆 <strong>কেন Trip Fly BD বিশ্বস্ত?</strong><br><br>
+✅ <strong>99% Visa Approval Rate</strong> — industry সেরা<br>
+✅ <strong>10,000+ Happy Travelers</strong> served<br>
+✅ <strong>8+ Years Experience</strong> in travel industry<br>
+✅ ATAB & TOAB সদস্য<br>
+✅ 24/7 WhatsApp support<br>
+✅ Transparent pricing — কোনো hidden charge নেই<br>
+✅ Free consultation — কোনো fee নেই<br><br>
+আমাদের <strong>Google Reviews</strong> দেখুন — হাজারো satisfied customer এর experience!`,
+      waMsg: 'Trip Fly BD সম্পর্কে আরো জানতে চাই।',
+      dest: null,
+    },
+    'hotel': {
+      label: '🏨 Hotel Included?',
+      reply: `🏨 <strong>Hotel Booking — হ্যাঁ, আমরা করি!</strong><br><br>
+✅ Package গুলোতে <strong>hotel সাধারণত included</strong><br>
+✅ 3⭐ Budget থেকে 5⭐ Luxury — সব options আছে<br>
+✅ Resort · City Hotel · Villa · Boutique Hotel<br>
+✅ Breakfast included option আছে<br>
+✅ Private room বা shared — আপনার choice<br><br>
+🏝️ Honeymoon/Couple packages এ <strong>premium room upgrade</strong> option আছে!<br><br>
+Destination ও budget বলুন — আমরা best hotel suggest করবো।`,
+      waMsg: 'Hotel booking ও package সম্পর্কে জানতে চাই। Destination: ',
+      dest: null,
+    },
+    'package-start': {
+      label: '📦 Package Price Range',
+      reply: `📦 <strong>Trip Fly BD Package Starting Price:</strong><br><br>
+🇮🇳 India — from <strong>BDT 15,000</strong>/person<br>
+🇱🇰 Sri Lanka — from <strong>BDT 24,000</strong>/person<br>
+🇲🇾 Malaysia — from <strong>BDT 22,000</strong>/person<br>
+🇹🇭 Thailand — from <strong>BDT 28,000</strong>/person<br>
+🇮🇩 Bali/Indonesia — from <strong>BDT 32,000</strong>/person<br>
+🇸🇬 Singapore — from <strong>BDT 38,000</strong>/person<br>
+🇦🇪 Dubai — from <strong>BDT 42,000</strong>/person<br>
+🇲🇻 Maldives — from <strong>BDT 55,000</strong>/person<br>
+🇨🇭 Switzerland — from <strong>BDT 1,20,000</strong>/person<br><br>
+💡 Price includes Visa + Flight + Hotel + Transfer (varies by package).`,
+      waMsg: 'Package price ও details জানতে চাই। আমার destination: ',
+      dest: null,
+    },
     'whatsapp': {
-      label: '💬 WhatsApp Support',
-      text: `<strong>WhatsApp এ সরাসরি কথা বলুন আমাদের expert team এর সাথে:</strong>`,
-      list: [
-        '📞 +880 18 9880 1939',
-        '⏰ 24/7 WhatsApp support',
-        '🕐 Office hours: Sat–Thu 9AM–9PM',
-        '⚡ Emergency support available anytime',
-        '🆓 Free consultation — কোনো charge নেই',
-      ],
-      extra: `<br/>নিচের button এ click করে এখনই WhatsApp করুন 👇`,
+      label: '💬 WhatsApp',
+      reply: `💬 <strong>WhatsApp এ সরাসরি কথা বলুন:</strong><br><br>
+📞 <strong>+880 18 9880 1939</strong><br>
+⏰ 24/7 WhatsApp support<br>
+🕐 Office: Sat–Thu 9AM–9PM<br>
+⚡ Emergency support anytime<br>
+🆓 Free consultation — কোনো charge নেই!<br><br>
+নিচের button এ click করে এখনই connect করুন 👇`,
+      waMsg: 'Hello Trip Fly BD! আমি travel assistance চাই।',
+      dest: null,
     },
-
-    'appointment': {
-      label: '📅 Book Appointment',
-      text: `<strong>Appointment Book করুন</strong> — ব্যক্তিগত পরামর্শের জন্য:`,
-      list: [
-        'Office visit appointment',
-        'Video call consultation available',
-        'Free 15-minute consultation',
-        'Document review session',
-        'Visa strategy planning session',
-      ],
-      extra: `<br/>Appointment নিতে WhatsApp করুন — আমরা আপনার সুবিধামতো সময় নির্ধারণ করবো।`,
-    },
-
     'contact-agent': {
-      label: '📞 Contact Agent',
-      text: `<strong>Expert Travel Consultant</strong> এর সাথে কথা বলুন:`,
-      list: [
-        'Sat–Thu, 9AM–9PM',
-        '24/7 WhatsApp support',
-        'Fast response guaranteed',
-        'Free consultation',
-        'Bangla ও English দুটোতেই কথা বলতে পারবেন',
-      ],
-      extra: `<br/>আমাদের team সবসময় আপনাকে সাহায্য করতে প্রস্তুত।`,
+      label: '🧑‍💼 Talk to Expert',
+      reply: `🧑‍💼 <strong>আমাদের Expert Travel Consultant</strong> এর সাথে কথা বলুন!<br><br>
+📞 WhatsApp: <strong>+880 18 9880 1939</strong><br>
+🕐 Sat–Thu: 9AM–9PM<br>
+🌙 Emergency: 24/7 WhatsApp<br>
+🆓 Free consultation guaranteed<br>
+🗣️ Bangla, Banglish & English — সব ভাষায় কথা বলতে পারবেন<br><br>
+আমাদের team সবসময় আপনাকে সাহায্য করতে প্রস্তুত। 😊`,
+      waMsg: 'Hello! আমি একজন expert travel consultant এর সাথে কথা বলতে চাই।',
+      dest: null,
     },
-
+    'bank-statement': {
+      label: '🏦 Bank Statement',
+      reply: `🏦 <strong>Visa এর জন্য Bank Statement:</strong><br><br>
+📅 3–6 months এর statement লাগে<br>
+💰 Minimum balance: BDT 50,000–2,00,000 (দেশভেদে ভিন্ন)<br>
+✅ Regular transaction থাকলে ভালো<br>
+✅ Salary certificate / income proof সহ দিলে strength বাড়ে<br>
+✅ Bank থেকে signed & sealed statement আনুন<br><br>
+💡 Balance কম থাকলেও সমাধান আছে — WhatsApp করে জিজ্ঞেস করুন!`,
+      waMsg: 'Bank statement requirement সম্পর্কে জানতে চাই। Destination: ',
+      dest: null,
+    },
+    'refund': {
+      label: '↩ Refund Policy',
+      reply: `↩ <strong>Refund & Cancellation Policy:</strong><br><br>
+⚠️ Visa embassy fee — <strong>non-refundable</strong> (reject হলেও)<br>
+💚 Service charge — partially/fully refundable (case by case)<br>
+✈️ Air ticket — airline policy অনুযায়ী<br>
+🏨 Hotel — hotel cancellation policy অনুযায়ী<br>
+📦 Tour package — cancellation timeline অনুযায়ী charges<br><br>
+📞 Refund request এর জন্য WhatsApp করুন — আমরা customer-friendly সমাধান দেওয়ার চেষ্টা করি।`,
+      waMsg: 'Refund / cancellation policy সম্পর্কে জানতে চাই।',
+      dest: null,
+    },
   };
 
   /* ══════════════════════════════════════
      QUICK REPLY BUTTONS CONFIG
   ══════════════════════════════════════ */
-  const QUICK_BUTTONS = [
-    { key: 'tourist-visa',      label: '🛂 Tourist Visa'        },
-    { key: 'air-ticketing',     label: '✈ Air Ticket'           },
-    { key: 'visa-requirements', label: '📋 Visa Requirements'   },
-    { key: 'processing-time',   label: '⏱ Processing Time'      },
-    { key: 'visa-cost',         label: '💰 Visa Cost'           },
-    { key: 'student-visa',      label: '🎓 Student Visa'        },
-    { key: 'medical-visa',      label: '🏥 Medical Visa'        },
-    { key: 'group-visa',        label: '👥 Group Package'       },
-    { key: 'couple-package',    label: '💑 Couple Package'      },
-    { key: 'urgent-visa',       label: '⚡ Urgent Visa'         },
-    { key: 'bank-statement',    label: '🏦 Bank Statement'      },
-    { key: 'payment',           label: '💳 Payment Methods'     },
-    { key: 'refund',            label: '↩ Refund Policy'        },
-    { key: 'office-location',   label: '📍 Office Location'     },
-    { key: 'whatsapp',          label: '💬 WhatsApp Support'    },
+  const QUICK_BUTTONS_ROW1 = [
+    { type: 'dest', key: 'maldives',     label: 'Maldives Package' },
+    { type: 'dest', key: 'thailand',     label: 'Thailand Visa' },
+    { type: 'resp', key: 'air-ticketing', label: 'Air Ticket' },
+    { type: 'resp', key: 'contact-agent', label: 'Talk To Expert' },
+    { type: 'resp', key: 'tourist-visa',  label: 'Visa Checklist' },
+  ];
+
+  const QUICK_BUTTONS_ROW2 = [];
+
+  /* ══════════════════════════════════════
+     KEYWORD MAP — Bangla + Banglish + English
+  ══════════════════════════════════════ */
+  const DEST_KEYWORDS = [
+    { key: 'maldives',    words: ['maldives','maldive','maldibh','মালদ্বীপ','মালদিভস','maldib'] },
+    { key: 'thailand',    words: ['thailand','tailand','thai','থাইল্যান্ড','thai land','phuket','bangkok','pattaya','krabi'] },
+    { key: 'malaysia',    words: ['malaysia','malaesia','মালয়েশিয়া','kuala lumpur','kl','genting','langkawi','penang'] },
+    { key: 'singapore',   words: ['singapore','singapur','সিঙ্গাপুর','marina bay','sentosa','universal studio'] },
+    { key: 'dubai',       words: ['dubai','dubay','দুবাই','uae','abu dhabi','burj','emirates','আমিরাত'] },
+    { key: 'srilanka',    words: ['sri lanka','srilanka','shrilanka','শ্রীলঙ্কা','colombo','ella','sigiriya','ceylon'] },
+    { key: 'india',       words: ['india','ইন্ডিয়া','ভারত','kolkata','delhi','darjeeling','agra','mumbai','bengaluru','chennai'] },
+    { key: 'turkey',      words: ['turkey','turki','তুরস্ক','istanbul','cappadocia','ankara','antalya','ephesus'] },
+    { key: 'usa',         words: ['usa','america','আমেরিকা','new york','los angeles','miami','vegas','washington','us visa'] },
+    { key: 'switzerland', words: ['switzerland','swiss','সুইজারল্যান্ড','interlaken','zurich','geneva','jungfrau','alps','schengen'] },
+    { key: 'indonesia',   words: ['indonesia','bali','বালি','ইন্দোনেশিয়া','ubud','lombok','seminyak','kuta'] },
+  ];
+
+  const INTENT_KEYWORDS = [
+    { key: 'visa-cost',       words: ['fee','fees','charge','cost','price','taka','koto taka','koto tk','koto','কত টাকা','কত','দাম','visa fee','visa cost','how much','কত লাগবে','কত টাকা লাগবে'] },
+    { key: 'processing-time', words: ['time','din','koto din','processing time','how long','how many days','koto somoy','duration','কত দিন','কতদিন','সময়'] },
+    { key: 'urgent-visa',     words: ['urgent','emergency','asap','express','same day','next day','জরুরি','আর্জেন্ট','ইমার্জেন্সি','urgent visa','urgent possible'] },
+    { key: 'tourist-visa',    words: ['tourist visa','tourist','visa','ভিসা','visha','bisha','visa lagbe','visa ache','visa dorkar','ভিসা লাগবে'] },
+    { key: 'student-visa',    words: ['student visa','student','study','study abroad','পড়াশোনা','স্টুডেন্ট ভিসা','বিদেশে পড়তে','study visa','education visa','university','college'] },
+    { key: 'medical-visa',    words: ['medical visa','medical','hospital','treatment','doctor','chikitsha','haspatale','apollo','fortis','bumrungrad','মেডিকেল','চিকিৎসা','হাসপাতাল'] },
+    { key: 'honeymoon',       words: ['honeymoon','couple','হানিমুন','কাপল','romantic','anniversary','newly wed','bou niye','wife niye','নবদম্পতি'] },
+    { key: 'air-ticketing',   words: ['air ticket','ticket','tiket','flight','airline','plane','book ticket','টিকেট','এয়ার টিকেট','ফ্লাইট','fare','biman'] },
+    { key: 'group-package',   words: ['group','family tour','corporate','company tour','group package','গ্রুপ','পারিবারিক','family trip'] },
+    { key: 'hotel',           words: ['hotel','hotel included','hotel ache','accommodation','stay','lodge','villa','resort','হোটেল','থাকার ব্যবস্থা'] },
+    { key: 'package-start',   words: ['package','pkg','tour package','holiday package','trip package','প্যাকেজ','tour','koto theke start','starting price','from'] },
+    { key: 'trusted',         words: ['trusted','trustworthy','reliable','apnara ki','apnara thik ache','legit','real','fake','scam','বিশ্বস্ত','নির্ভরযোগ্য','আপনারা কি সঠিক'] },
+    { key: 'bank-statement',  words: ['bank statement','bank','statement','bank er kagoj','ব্যাংক','balance','account statement'] },
+    { key: 'payment',         words: ['payment','pay','bkash','nagad','rocket','bank transfer','পেমেন্ট','কিভাবে পেমেন্ট'] },
+    { key: 'office-location', words: ['office','location','address','kothay','where','office koi','ঠিকানা','অফিস','কোথায়','thikana'] },
+    { key: 'refund',          words: ['refund','cancel','cancellation','money back','taka ferat','ফেরত','টাকা ফেরত','ক্যান্সেল'] },
+    { key: 'whatsapp',        words: ['whatsapp','number','contact number','phone number','phone','kon number','হোয়াটসঅ্যাপ','নম্বর','ফোন'] },
+    { key: 'contact-agent',   words: ['agent','consultant','human','speak to','talk to','help lagbe','সাহায্য','কথা বলতে চাই','expert','kotha bolbo'] },
   ];
 
   /* ══════════════════════════════════════
-     SMART KEYWORD MAP (Bangla + Banglish + English)
+     SMART MATCH ENGINE
   ══════════════════════════════════════ */
-  const KEYWORD_MAP = [
-    {
-      key: 'visa-requirements',
-      words: [
-        'ki lage','ki ki lage','requirements','documents required','ki document',
-        'ki kagoj','kagoj','কি লাগে','কি কি লাগে','ডকুমেন্ট',
-        'document','docs','papers','requirements','what do i need',
-      ],
-    },
-    {
-      key: 'visa-cost',
-      words: [
-        'fee','fees','charge','cost','price','taka','koto taka','koto tk','koto',
-        'cost koto','fee koto','visa fee','visa cost','visa price',
-        'কত টাকা','কত','fee কত','দাম','charge কত',
-      ],
-    },
-    {
-      key: 'processing-time',
-      words: [
-        'time','din','koto din','processing time','how long','how many days',
-        'koto somoy','somoy','duration','ketodine','কত দিন','কতদিন',
-        'processing','লাগে','সময়','দিন',
-      ],
-    },
-    {
-      key: 'urgent-visa',
-      words: [
-        'urgent','emergency','asap','express','jodi urgent','urgent visa',
-        'urgent hobe','urgent possible','same day','next day',
-        'জরুরি','আর্জেন্ট','urgent ki hobe','ইমার্জেন্সি',
-      ],
-    },
-    {
-      key: 'tourist-visa',
-      words: [
-        'tourist visa','tourist','visa','visha','bisha','visaa',
-        'thailand visa','malaysia visa','dubai visa','india visa',
-        'singapore visa','maldives visa','china visa','japan visa',
-        'turkey visa','sri lanka visa','vietnam visa','nepal visa',
-        'ভিসা','বিসা','tourist','ট্যুরিস্ট ভিসা',
-        'kon kon desher','ki ki desh','which country',
-      ],
-    },
-    {
-      key: 'air-ticketing',
-      words: [
-        'air ticket','ticket','tiket','flight','airline','plane','book ticket',
-        'ticket booking','international ticket','ticket dorkar',
-        'টিকেট','এয়ার টিকেট','ফ্লাইট','ticket koren','book flight',
-        'biman','booking','air fare','fare',
-      ],
-    },
-    {
-      key: 'date-change',
-      words: [
-        'date change','reschedule','change date','change ticket','change flight',
-        'ticket change','reissue','tarikh change','date bodlate chai',
-        'ticket reschedule','তারিখ বদলাতে','রিশিডিউল',
-      ],
-    },
-    {
-      key: 'student-visa',
-      words: [
-        'student visa','student','study','study abroad','padha','porashona',
-        'university','college','admission','পড়াশোনা','স্টুডেন্ট ভিসা',
-        'বিদেশে পড়তে','study visa','education visa',
-      ],
-    },
-    {
-      key: 'medical-visa',
-      words: [
-        'medical visa','medical','hospital','treatment','doctor','chikitsha',
-        'haspatale','india treatment','bangkok hospital','apollo','fortis',
-        'মেডিকেল ভিসা','চিকিৎসা','হাসপাতাল','treatment visa',
-      ],
-    },
-    {
-      key: 'group-visa',
-      words: [
-        'group visa','group','family tour','corporate','company tour',
-        'group package','group travel','multiple persons','multiple people',
-        'গ্রুপ ভিসা','গ্রুপ','পারিবারিক ট্যুর','family trip',
-      ],
-    },
-    {
-      key: 'couple-package',
-      words: [
-        'couple','honeymoon','anniversary','romantic','couple package',
-        'husband wife','newly wed','bou niye','wife niye',
-        'কাপল প্যাকেজ','হানিমুন','রোমান্টিক','দুজন','couple trip',
-      ],
-    },
-    {
-      key: 'passport',
-      words: [
-        'passport','passport copy','passport nai','passport ache','passport validity',
-        'পাসপোর্ট','passport lagbe','new passport','passport expire',
-        'passport renew','passport problem',
-      ],
-    },
-    {
-      key: 'bank-statement',
-      words: [
-        'bank statement','bank','statement','bank er kagoj','ব্যাংক স্টেটমেন্ট',
-        'ব্যাংক','account statement','bank document','bank balance',
-        'how much balance','koto balance lagbe','balance',
-      ],
-    },
-    {
-      key: 'refund',
-      words: [
-        'refund','cancel','cancellation','money back','taka ferat',
-        'ফেরত','টাকা ফেরত','ক্যান্সেল','cancel korte chai','refund policy',
-      ],
-    },
-    {
-      key: 'payment',
-      words: [
-        'payment','pay','bkash','nagad','rocket','bank transfer','how to pay',
-        'payment method','ki diye pay','পেমেন্ট','কিভাবে পেমেন্ট',
-        'পেমেন্ট করবো','bkash dibo','nagad dibo',
-      ],
-    },
-    {
-      key: 'office-location',
-      words: [
-        'office','location','address','kothay','where','office koi',
-        'office address','office kothay ache','kothay office',
-        'ঠিকানা','অফিস','কোথায়','office thikana','find office',
-      ],
-    },
-    {
-      key: 'whatsapp',
-      words: [
-        'whatsapp','whatsapp number','number','contact number','phone number',
-        'call','phone','kon number','kono number','wa number',
-        'হোয়াটসঅ্যাপ','নম্বর','ফোন নম্বর','contact','reach you',
-      ],
-    },
-    {
-      key: 'appointment',
-      words: [
-        'appointment','meeting','visit','office visit','come to office',
-        'আসতে চাই','দেখা করতে চাই','appointment nite chai','book appointment',
-      ],
-    },
-    {
-      key: 'contact-agent',
-      words: [
-        'agent','consultant','human','speak to','talk to','help',
-        'support','customer care','agent er sathe','কথা বলতে চাই',
-        'সাহায্য','help lagbe','kotha bolbo',
-      ],
-    },
-  ];
-
-  /* ══════════════════════════════════════
-     SMART MATCH FUNCTION
-  ══════════════════════════════════════ */
-  function findMatch(lower) {
-    for (const entry of KEYWORD_MAP) {
-      if (entry.words.some(kw => lower.includes(kw))) {
-        return entry.key;
-      }
+  function findDestination(lower) {
+    for (const entry of DEST_KEYWORDS) {
+      if (entry.words.some(kw => lower.includes(kw))) return entry.key;
     }
     return null;
+  }
+
+  function findIntent(lower) {
+    for (const entry of INTENT_KEYWORDS) {
+      if (entry.words.some(kw => lower.includes(kw))) return entry.key;
+    }
+    return null;
+  }
+
+  /* ══════════════════════════════════════
+     BUILD CTA BUTTONS
+  ══════════════════════════════════════ */
+  function buildCTA(waText, destSlug) {
+    const encoded = encodeURIComponent(waText);
+    const destLink = destSlug ? `${DEST_PAGE}?dest=${destSlug}` : DEST_PAGE;
+
+    return `<div class="cb-cta-row">
+      ${destSlug ? `<a href="${destLink}" class="cb-cta-btn pkg" target="_blank">
+        <i class="fas fa-compass"></i> View Package
+      </a>` : ''}
+      ${destSlug ? `<a href="${DEST_PAGE}?visa=${destSlug}" class="cb-cta-btn visa-chk" target="_blank">
+        <i class="fas fa-passport"></i> Visa Checklist
+      </a>` : ''}
+      <a href="${WA_URL}${encoded}" target="_blank" rel="noopener" class="cb-cta-btn wa">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="${CONTACT}" class="cb-cta-btn expert">
+        <i class="fas fa-headset"></i> Talk to Expert
+      </a>
+    </div>`;
+  }
+
+  /* ══════════════════════════════════════
+     BUILD DESTINATION RESPONSE
+  ══════════════════════════════════════ */
+  function buildDestResponse(destKey, intentKey) {
+    const d = DESTINATIONS[destKey];
+    if (!d) return null;
+
+    let contextNote = '';
+    if (intentKey === 'visa-cost') {
+      contextNote = `<br>💰 <strong>Visa Type:</strong> ${d.visa}`;
+    } else if (intentKey === 'honeymoon') {
+      contextNote = `<br>💑 Perfect for honeymoon & couple trips!`;
+    } else if (intentKey === 'processing-time') {
+      contextNote = `<br>⏱ Processing কত দিন লাগবে — WhatsApp করলে exact বলতে পারবো।`;
+    } else if (intentKey === 'hotel') {
+      contextNote = `<br>🏨 Hotel package এ included আছে।`;
+    }
+
+    const html = `${d.intro}${contextNote}
+
+<div class="cb-dest-card">
+  <div class="cb-dest-row"><span class="cb-dest-lbl">🛂 Visa</span><span class="cb-dest-val">${d.visa}</span></div>
+  <div class="cb-dest-row"><span class="cb-dest-lbl">💰 Starting</span><span class="cb-dest-val highlight">${d.price} / person</span></div>
+  <div class="cb-dest-row"><span class="cb-dest-lbl">📅 Duration</span><span class="cb-dest-val">${d.duration}</span></div>
+  <div class="cb-dest-row"><span class="cb-dest-lbl">✈️ Includes</span><span class="cb-dest-val">${d.includes}</span></div>
+  <div class="cb-dest-row"><span class="cb-dest-lbl">🌟 Highlights</span><span class="cb-dest-val">${d.highlight}</span></div>
+  <div class="cb-dest-row"><span class="cb-dest-lbl">🎯 Best for</span><span class="cb-dest-val">${d.type}</span></div>
+</div>`;
+
+    return { html, cta: buildCTA(d.waText, d.slug) };
+  }
+
+  /* ══════════════════════════════════════
+     BUILD GENERAL RESPONSE
+  ══════════════════════════════════════ */
+  function buildRespResponse(intentKey) {
+    const r = RESPONSES[intentKey];
+    if (!r) return null;
+    return {
+      html: r.reply,
+      cta: buildCTA(r.waMsg, null),
+    };
+  }
+
+  /* ══════════════════════════════════════
+     TIME HELPER
+  ══════════════════════════════════════ */
+  function getTime() {
+    return new Date().toLocaleTimeString('en-BD', { hour: '2-digit', minute: '2-digit', hour12: true });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   /* ══════════════════════════════════════
@@ -510,27 +584,37 @@
     const win = document.createElement('div');
     win.id = 'chatbotWindow';
     win.setAttribute('role', 'dialog');
-    win.setAttribute('aria-label', 'Trip Fly Assistant');
+    win.setAttribute('aria-label', 'Trip Fly Travel Assistant');
 
     win.innerHTML = `
       <div class="cb-header">
-        <div class="cb-avatar"><i class="fas fa-robot"></i></div>
+        <div class="cb-avatar">
+          <i class="fas fa-globe-asia"></i>
+        </div>
         <div class="cb-header-text">
           <div class="cb-name">Trip Fly Assistant</div>
           <div class="cb-status">
-            <span class="cb-status-dot"></span> Online &nbsp;·&nbsp; Trip Fly BD
+            <span class="cb-status-dot"></span>
+            <span class="cb-status-label">Online &bull; Replies within minutes</span>
           </div>
         </div>
-        <button class="cb-header-close" id="cbHeaderClose" aria-label="Close chatbot"><i class="fas fa-times"></i></button>
+        <button class="cb-header-close" id="cbHeaderClose" aria-label="Close chatbot">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
+
       <div class="cb-messages" id="cbMessages" role="log" aria-live="polite"></div>
-      <div class="cb-quick-wrap" id="cbQuickWrap" aria-label="Quick replies"></div>
+
+      <div class="cb-quick-section" id="cbQuickSection">
+        <div class="cb-quick-label">Quick replies</div>
+        <div class="cb-quick-wrap" id="cbQuickRow1" aria-label="Quick chatbot suggestions"></div>
+      </div>
+
       <div class="cb-input-row">
         <input class="cb-input" id="cbInput" type="text"
-          placeholder="Bangla / Banglish / English — যেকোনো ভাষায় লিখুন…"
-          autocomplete="off" maxlength="300"/>
-        <button class="cb-send-btn" id="cbSendBtn" aria-label="Send">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          placeholder="Ask about visa, tickets or packages..." autocomplete="off" maxlength="300"/>
+        <button class="cb-send-btn" id="cbSendBtn" aria-label="Send message">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </div>`;
 
@@ -539,10 +623,12 @@
     launcher.setAttribute('aria-label', 'Open Trip Fly Assistant');
     launcher.setAttribute('aria-expanded', 'false');
     launcher.innerHTML = `
-      <i class="fas fa-robot cb-icon-open"></i>
-      <i class="fas fa-times cb-icon-close"></i>
-      <span id="chatbotDot" aria-label="New message"></span>
-      <span class="cb-tooltip">Trip Fly Assistant</span>`;
+      <div class="cb-launcher-inner">
+        <i class="fas fa-comments cb-icon-open"></i>
+        <i class="fas fa-times cb-icon-close"></i>
+      </div>
+      <span id="chatbotDot" class="hidden" aria-label="New message"></span>
+      <span class="cb-tooltip">Travel assistant</span>`;
 
     document.body.appendChild(backdrop);
     document.body.appendChild(win);
@@ -553,55 +639,32 @@
      BUILD QUICK BUTTONS
   ══════════════════════════════════════ */
   function buildQuickButtons() {
-    const wrap = document.getElementById('cbQuickWrap');
-    if (!wrap) return;
-    wrap.innerHTML = '';
-    QUICK_BUTTONS.forEach(btn => {
+    const row = document.getElementById('cbQuickRow1');
+    if (!row || row.dataset.quickBuilt === 'true') return;
+
+    row.dataset.quickBuilt = 'true';
+    QUICK_BUTTONS_ROW1.forEach(btn => {
       const el = document.createElement('button');
-      el.className = 'cb-quick-btn';
+      el.className = `cb-quick-btn ${btn.type === 'dest' ? 'dest-btn' : 'service-btn'}`;
       el.textContent = btn.label;
+      el.dataset.type = btn.type;
       el.dataset.key = btn.key;
-      el.setAttribute('aria-label', btn.label);
-      wrap.appendChild(el);
+      row.appendChild(el);
     });
   }
-
-  /* ══════════════════════════════════════
-     CTA BUTTONS HTML
-  ══════════════════════════════════════ */
-  function ctaHTML(waText) {
-    const encoded = encodeURIComponent(waText);
-    return `<div class="cb-cta-row">
-      <a href="${WA_URL}${encoded}" target="_blank" rel="noopener" class="cb-cta-btn wa">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp করুন
-      </a>
-      <a href="${CONTACT}" class="cb-cta-btn contact">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Contact Page
-      </a>
-    </div>`;
-  }
-
-  /* ══════════════════════════════════════
-     TIME STRING
-  ══════════════════════════════════════ */
-  function getTime() {
-    return new Date().toLocaleTimeString('en-BD', { hour: '2-digit', minute: '2-digit', hour12: true });
-  }
-
   /* ══════════════════════════════════════
      ADD MESSAGES
   ══════════════════════════════════════ */
-  function addBotMsg(htmlContent) {
+  function addBotMsg(htmlContent, ctaHTML) {
     const msgs = document.getElementById('cbMessages');
     if (!msgs) return;
+
     const wrap = document.createElement('div');
     wrap.className = 'cb-msg bot';
     wrap.innerHTML = `
-      <div class="cb-avatar-sm"><i class="fas fa-robot"></i></div>
+      <div class="cb-avatar-sm"><i class="fas fa-globe-asia"></i></div>
       <div class="cb-msg-body">
-        <div class="cb-bubble">${htmlContent}</div>
+        <div class="cb-bubble">${htmlContent}${ctaHTML ? ctaHTML : ''}</div>
         <span class="cb-time">${getTime()}</span>
       </div>`;
     msgs.appendChild(wrap);
@@ -632,7 +695,7 @@
     el.id = 'cbTyping';
     el.className = 'cb-typing-wrap';
     el.innerHTML = `
-      <div class="cb-avatar-sm"><i class="fas fa-robot"></i></div>
+      <div class="cb-avatar-sm"><i class="fas fa-globe-asia"></i></div>
       <div class="cb-typing-bubble">
         <span class="cb-dot"></span>
         <span class="cb-dot"></span>
@@ -646,70 +709,82 @@
     document.getElementById('cbTyping')?.remove();
   }
 
-  /* ══════════════════════════════════════
-     SCROLL TO BOTTOM
-  ══════════════════════════════════════ */
   function scrollMessages() {
     const msgs = document.getElementById('cbMessages');
     if (msgs) msgs.scrollTop = msgs.scrollHeight;
   }
 
   /* ══════════════════════════════════════
-     BUILD RESPONSE HTML
-  ══════════════════════════════════════ */
-  function buildResponse(key) {
-    const r = RESPONSES[key];
-    if (!r) return null;
-
-    const listHTML = r.list.map(item => `<li>${item}</li>`).join('');
-    const waMsg = `Hello Trip Fly BD! I need information about ${r.label.replace(/[^\w\s]/gi, '').trim()}.`;
-
-    return `${r.text}
-<ul class="cb-list">${listHTML}</ul>
-${r.extra || ''}
-${ctaHTML(waMsg)}`;
-  }
-
-  /* ══════════════════════════════════════
      PROCESS INPUT
   ══════════════════════════════════════ */
   function processInput(rawText) {
-    const text  = rawText.trim();
+    const text = rawText.trim();
     const lower = text.toLowerCase();
     if (!text) return;
 
     addUserMsg(text);
 
-    const matchedKey = findMatch(lower);
+    const destKey = findDestination(lower);
+    const intentKey = findIntent(lower);
+    const delay = 650 + Math.random() * 450;
 
     showTyping();
-    const delay = 800 + Math.random() * 500;
 
     setTimeout(() => {
       hideTyping();
-      if (matchedKey) {
-        addBotMsg(buildResponse(matchedKey));
-      } else {
-        // Natural fallback
-        addBotMsg(`আপনার প্রশ্নটি বুঝতে পারিনি — কিন্তু আমাদের expert team সাহায্য করতে প্রস্তুত! 😊<br/><br/>
-নিচে <strong>Quick Reply</strong> বাটন থেকে বেছে নিন, অথবা সরাসরি WhatsApp করুন:<br/>
-${ctaHTML(`Hello Trip Fly BD! I have a question: ${text}`)}`);
+
+      if (destKey && intentKey) {
+        const result = buildDestResponse(destKey, intentKey);
+        if (result) { addBotMsg(result.html, result.cta); return; }
       }
-      scrollMessages();
+
+      if (destKey) {
+        const result = buildDestResponse(destKey, null);
+        if (result) { addBotMsg(result.html, result.cta); return; }
+      }
+
+      if (intentKey) {
+        const result = buildRespResponse(intentKey);
+        if (result) { addBotMsg(result.html, result.cta); return; }
+      }
+
+      if (/^(hi|hello|assalam|salam|hy|hey|hei)\b/.test(lower)) {
+        addBotMsg(`&#128075; Welcome to <strong>Trip Fly BD!</strong><br><br>
+Ask about:<br>
+&bull; Visa<br>
+&bull; Packages<br>
+&bull; Air Tickets<br>
+&bull; Honeymoon Tours`);
+        return;
+      }
+
+      addBotMsg(`I can help with <strong>visa, packages, air tickets</strong> or honeymoon tours.<br><br>Choose a quick reply or type your destination.`, buildCTA(`Hello Trip Fly BD! I have a question: ${text}`, null));
     }, delay);
   }
 
-  /* ══════════════════════════════════════
-     OPEN / CLOSE
-  ══════════════════════════════════════ */
-  let isOpen   = false;
+  function handleQuickBtn(type, key) {
+    const d = DESTINATIONS[key];
+    const label = d ? (type === 'dest' && key === 'maldives' ? 'Maldives Package' : d.name) : (RESPONSES[key]?.label || key);
+
+    addUserMsg(label);
+    showTyping();
+
+    setTimeout(() => {
+      hideTyping();
+      const result = type === 'dest' ? buildDestResponse(key, null) : buildRespResponse(key);
+      if (result) addBotMsg(result.html, result.cta);
+      scrollMessages();
+    }, 600 + Math.random() * 350);
+  }
+
+  let isOpen = false;
   let welcomed = false;
 
   function openChat() {
-    const win      = document.getElementById('chatbotWindow');
+    const win = document.getElementById('chatbotWindow');
     const launcher = document.getElementById('chatbotLauncher');
     const backdrop = document.getElementById('chatbotBackdrop');
-    const dot      = document.getElementById('chatbotDot');
+    const dot = document.getElementById('chatbotDot');
 
     isOpen = true;
     win?.classList.add('open');
@@ -724,18 +799,20 @@ ${ctaHTML(`Hello Trip Fly BD! I have a question: ${text}`)}`);
       showTyping();
       setTimeout(() => {
         hideTyping();
-        addBotMsg(`আস্সালামু আলাইকুম! 👋 <strong>Trip Fly BD</strong> তে স্বাগতম!<br/><br/>
-আমি আপনার <strong>Personal Travel Assistant</strong> — Visa, Air Ticket, Tour Package সহ যেকোনো travel বিষয়ে সাহায্য করতে পারবো।<br/><br/>
-🌍 Bangla, Banglish বা English — <strong>যেকোনো ভাষায়</strong> প্রশ্ন করুন।<br/><br/>
-<strong>নিচের Quick Reply বাটন থেকে বেছে নিন বা সরাসরি টাইপ করুন:</strong>`);
-      }, 900);
+        addBotMsg(`&#128075; Welcome to <strong>Trip Fly BD!</strong><br><br>
+Ask about:<br>
+&bull; Visa<br>
+&bull; Packages<br>
+&bull; Air Tickets<br>
+&bull; Honeymoon Tours`);
+      }, 650);
     }
 
-    setTimeout(() => { document.getElementById('cbInput')?.focus(); }, 450);
+    setTimeout(() => document.getElementById('cbInput')?.focus(), 450);
   }
 
   function closeChat() {
-    const win      = document.getElementById('chatbotWindow');
+    const win = document.getElementById('chatbotWindow');
     const launcher = document.getElementById('chatbotLauncher');
     const backdrop = document.getElementById('chatbotBackdrop');
 
@@ -746,19 +823,7 @@ ${ctaHTML(`Hello Trip Fly BD! I have a question: ${text}`)}`);
     launcher?.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
-
-  /* ══════════════════════════════════════
-     UTILITY
-  ══════════════════════════════════════ */
-  function escapeHtml(str) {
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  /* ══════════════════════════════════════
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      INIT
   ══════════════════════════════════════ */
   function init() {
@@ -769,9 +834,8 @@ ${ctaHTML(`Hello Trip Fly BD! I have a question: ${text}`)}`);
     const backdrop  = document.getElementById('chatbotBackdrop');
     const sendBtn   = document.getElementById('cbSendBtn');
     const input     = document.getElementById('cbInput');
-    const quickWrap = document.getElementById('cbQuickWrap');
 
-    launcher?.addEventListener('click', () => { isOpen ? closeChat() : openChat(); });
+    launcher?.addEventListener('click', () => isOpen ? closeChat() : openChat());
     closeBtn?.addEventListener('click', closeChat);
     backdrop?.addEventListener('click', closeChat);
 
@@ -788,30 +852,22 @@ ${ctaHTML(`Hello Trip Fly BD! I have a question: ${text}`)}`);
       }
     });
 
-    quickWrap?.addEventListener('click', e => {
+    // Event delegation for quick buttons (both rows)
+    document.getElementById('chatbotWindow')?.addEventListener('click', e => {
       const btn = e.target.closest('.cb-quick-btn');
       if (!btn) return;
-      const key   = btn.dataset.key;
-      const label = btn.textContent.trim();
-      addUserMsg(label);
-      showTyping();
-      setTimeout(() => {
-        hideTyping();
-        const html = buildResponse(key);
-        if (html) addBotMsg(html);
-        scrollMessages();
-      }, 800 + Math.random() * 400);
+      handleQuickBtn(btn.dataset.type, btn.dataset.key);
     });
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && isOpen) closeChat();
     });
 
-    // Show notification dot after 3s
+    // Notification dot after delay
     setTimeout(() => {
       const dot = document.getElementById('chatbotDot');
       if (dot && !isOpen) dot.classList.remove('hidden');
-    }, 3000);
+    }, 3500);
   }
 
   if (document.readyState === 'loading') {
