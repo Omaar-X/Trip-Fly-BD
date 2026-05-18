@@ -34,6 +34,7 @@
     initMarqueePause();
     initExpertConsultationForm();
     initPackageInquiryModal();
+    initPackageDetailsModal();
   });
 
   function initTypingEffect() {
@@ -713,6 +714,271 @@
       );
       showFollowup(followup, whatsappUrl);
     });
+  }
+
+  const PACKAGE_DETAILS = {
+    thailand: {
+      title: 'Bangkok + Pattaya Tour',
+      destination: 'Thailand',
+      duration: '4N/5D',
+      priceHtml: '&#2547;16,500',
+      airTicketHtml: 'Dhaka to Bangkok return approx &#2547;40,000',
+      minPax: 'Minimum 8 Pax / group pricing available',
+      highlights: [
+        'Coral Island Tour',
+        'Chao Phraya Dinner Cruise',
+        'Bangkok + Pattaya Transfer',
+        'Hotel with Breakfast',
+        'Airport Pick & Drop'
+      ],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival + Pattaya Transfer', items: ['Airport pick-up', 'Transfer to Pattaya', 'Hotel check-in and leisure time'] },
+        { day: 'Day 2', title: 'Coral Island Tour', items: ['Coral Island experience', 'Beach time and water activities by choice', 'Return to Pattaya hotel'] },
+        { day: 'Day 3', title: 'Bangkok Transfer + Dinner Cruise', items: ['Transfer from Pattaya to Bangkok', 'Evening Chao Phraya Dinner Cruise', 'Overnight in Bangkok'] },
+        { day: 'Day 4', title: 'Bangkok Leisure', items: ['Breakfast at hotel', 'Free time for shopping or optional city experience', 'Overnight in Bangkok'] },
+        { day: 'Day 5', title: 'Departure', items: ['Breakfast', 'Airport drop-off', 'Return flight support'] }
+      ],
+      includes: ['Hotel with breakfast', 'Coral Island Tour', 'Dinner Cruise', 'Airport Pick & Drop', 'Bangkok + Pattaya Transfer'],
+      exclusions: ['Air ticket unless added separately', 'Personal expenses', 'Optional activities', 'Any item not mentioned in inclusions'],
+      whatsappText: 'I need details for Thailand 4N/5D Bangkok + Pattaya Tour.'
+    },
+    malaysia: {
+      title: 'Malaysia 5N/6D Tour',
+      destination: 'Malaysia',
+      duration: '5N/6D',
+      priceHtml: '&#2547;24,300',
+      airTicketHtml: 'Air ticket approx &#2547;45,300',
+      minPax: '',
+      highlights: [
+        '2 Nights Langkawi + 2 Nights Kuala Lumpur',
+        'Island Hopping Tour',
+        'Genting Highlands + Batu Caves with Cable Car',
+        'Hotel with Breakfast',
+        'Airport Pick & Drop'
+      ],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival in Langkawi', items: ['Airport pick-up', 'Hotel check-in', 'Leisure time'] },
+        { day: 'Day 2', title: 'Langkawi Island Hopping', items: ['Breakfast', 'Island Hopping Tour', 'Return to hotel'] },
+        { day: 'Day 3', title: 'Langkawi to Kuala Lumpur', items: ['Breakfast', 'Transfer support', 'Kuala Lumpur hotel check-in'] },
+        { day: 'Day 4', title: 'Genting Highlands + Batu Caves', items: ['Breakfast', 'Batu Caves visit', 'Genting Highlands with Cable Car'] },
+        { day: 'Day 5', title: 'Kuala Lumpur Leisure', items: ['Breakfast', 'Free day for shopping or optional city tour', 'Overnight in Kuala Lumpur'] },
+        { day: 'Day 6', title: 'Departure', items: ['Breakfast', 'Airport drop-off', 'Return flight support'] }
+      ],
+      includes: ['Hotel with breakfast', 'Island Hopping Tour', 'Genting Highlands + Batu Caves with Cable Car', 'Airport Pick & Drop'],
+      exclusions: ['Visa fee excluded', 'Entry fees excluded', 'Personal expenses excluded', 'Air ticket unless added separately'],
+      whatsappText: 'I need details for Malaysia 5N/6D Tour.'
+    },
+    maldives: {
+      title: 'Maldives Couple Paradise',
+      destination: 'Maldives',
+      duration: 'Couple Package',
+      priceHtml: '&#2547;99,600',
+      airTicketHtml: 'Air ticket approx &#2547;50,000 per pax',
+      minPax: '',
+      highlights: [
+        'Private Island + Maafushi + Hulhumale',
+        'Beach Villa',
+        'Shared Speedboat Transfer',
+        'Full Board / BB meal plan depending on hotel',
+        'Luxury honeymoon support'
+      ],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival in Maldives', items: ['Airport meet and greet', 'Transfer to Hulhumale or Maafushi', 'Hotel check-in'] },
+        { day: 'Day 2', title: 'Island Experience', items: ['Breakfast or meal plan as per hotel', 'Beach time', 'Optional couple activities'] },
+        { day: 'Day 3', title: 'Private Island / Beach Villa Stay', items: ['Shared speedboat transfer', 'Private island or beach villa experience', 'Honeymoon support by request'] },
+        { day: 'Day 4', title: 'Leisure + Departure Support', items: ['Breakfast', 'Free time', 'Transfer support for departure'] }
+      ],
+      includes: ['Private Island + Maafushi + Hulhumale plan', 'Beach Villa option', 'Shared Speedboat Transfer', 'Meal plan depending on hotel', 'Luxury honeymoon support'],
+      exclusions: ['Air ticket unless added separately', 'Personal expenses excluded', 'Optional activities', 'Any item not mentioned in inclusions'],
+      whatsappText: 'I need details for Maldives Couple Paradise package.'
+    },
+    singapore: {
+      title: 'Singapore 2N/3D Tour',
+      destination: 'Singapore',
+      duration: '2N/3D',
+      priceHtml: '&#2547;16,000',
+      airTicketHtml: 'Air ticket approx &#2547;40,000',
+      minPax: '',
+      highlights: [
+        '2 Nights Singapore',
+        'Breakfast',
+        'Singapore City Tour',
+        'Private Airport Transfer',
+        'English speaking driver/guide',
+        'Merlion, Sentosa, Chinatown'
+      ],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival + Private Transfer', items: ['Airport pick-up', 'Private transfer to hotel', 'Check-in and leisure time'] },
+        { day: 'Day 2', title: 'Singapore City Tour', items: ['Breakfast', 'Merlion visit', 'Sentosa and Chinatown experience', 'English speaking driver/guide support'] },
+        { day: 'Day 3', title: 'Departure', items: ['Breakfast', 'Check-out', 'Private airport transfer'] }
+      ],
+      includes: ['2 Nights Singapore hotel', 'Breakfast', 'Singapore City Tour', 'Private Airport Transfer', 'English speaking driver/guide'],
+      exclusions: ['Air ticket unless added separately', 'Visa fee if applicable', 'Entry fees not mentioned', 'Personal expenses'],
+      whatsappText: 'I need details for Singapore 2N/3D Tour.'
+    }
+  };
+
+  function initPackageDetailsModal() {
+    const overlay = ensurePackageDetailsModal();
+    if (!overlay || overlay.dataset.detailsBound === 'true') return;
+
+    overlay.dataset.detailsBound = 'true';
+
+    const modal = $('.pkg-details-modal', overlay);
+    const closeBtn = $('#pkgDetailsClose', overlay);
+    const body = $('#pkgDetailsBody', overlay);
+
+    if (!modal || !body) return;
+
+    let lastFocused = null;
+    let previousOverflow = '';
+
+    const closeDetails = () => {
+      if (!overlay.classList.contains('show')) return;
+
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = previousOverflow;
+
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    };
+
+    const openDetails = key => {
+      const detail = PACKAGE_DETAILS[key];
+      if (!detail) return;
+
+      lastFocused = document.activeElement;
+      previousOverflow = document.body.style.overflow;
+
+      body.innerHTML = getPackageDetailsHTML(key, detail);
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      window.setTimeout(() => closeBtn?.focus(), 80);
+    };
+
+    document.addEventListener('click', event => {
+      const button = event.target.closest('.pkg-details-btn');
+      if (!button) return;
+
+      event.preventDefault();
+      openDetails(button.dataset.pkgKey || '');
+    });
+
+    closeBtn?.addEventListener('click', closeDetails);
+
+    overlay.addEventListener('click', event => {
+      if (event.target === overlay) closeDetails();
+      if (event.target.closest('.pkg-detail-inquiry')) closeDetails();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!overlay.classList.contains('show')) return;
+
+      if (event.key === 'Escape') {
+        closeDetails();
+        return;
+      }
+
+      if (event.key === 'Tab') trapFocus(event, modal);
+    });
+  }
+
+  function ensurePackageDetailsModal() {
+    const overlays = $$("#pkgDetailsOverlay");
+
+    if (overlays.length > 1) {
+      overlays.slice(1).forEach(overlay => overlay.remove());
+    }
+
+    if (overlays[0]) return overlays[0];
+
+    document.body.insertAdjacentHTML('beforeend', getPackageDetailsModalHTML());
+    return $('#pkgDetailsOverlay');
+  }
+
+  function getPackageDetailsModalHTML() {
+    return `
+      <div class="pkg-details-overlay" id="pkgDetailsOverlay" aria-hidden="true">
+        <div class="pkg-details-modal" role="dialog" aria-modal="true" aria-labelledby="pkgDetailsTitle">
+          <button class="pkg-details-close" id="pkgDetailsClose" aria-label="Close package details" type="button">
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+          <div class="pkg-details-body" id="pkgDetailsBody"></div>
+        </div>
+      </div>`;
+  }
+
+  function getPackageDetailsHTML(key, detail) {
+    const highlights = renderDetailList(detail.highlights);
+    const itinerary = detail.itinerary
+      .map(day => `
+        <article class="pkg-day">
+          <span>${escapeHtml(day.day)}</span>
+          <h4>${escapeHtml(day.title)}</h4>
+          ${renderDetailList(day.items)}
+        </article>`)
+      .join('');
+    const includes = renderDetailList(detail.includes);
+    const exclusions = renderDetailList(detail.exclusions);
+    const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(detail.whatsappText)}`;
+
+    return `
+      <div class="pkg-details-head">
+        <span class="pkg-details-kicker"><i class="fas fa-suitcase-rolling" aria-hidden="true"></i> Package Details</span>
+        <h3 id="pkgDetailsTitle">${escapeHtml(detail.title)}</h3>
+        <p>${escapeHtml(detail.destination)} &bull; ${escapeHtml(detail.duration)} &bull; Starting From <strong>${detail.priceHtml}</strong></p>
+      </div>
+
+      <div class="pkg-details-meta">
+        <div><i class="fas fa-location-dot" aria-hidden="true"></i><span>Destination</span><strong>${escapeHtml(detail.destination)}</strong></div>
+        <div><i class="fas fa-calendar-days" aria-hidden="true"></i><span>Duration</span><strong>${escapeHtml(detail.duration)}</strong></div>
+        <div><i class="fas fa-tag" aria-hidden="true"></i><span>Starting Price</span><strong>${detail.priceHtml}</strong></div>
+        <div><i class="fas fa-plane" aria-hidden="true"></i><span>Air Ticket</span><strong>${detail.airTicketHtml}</strong></div>
+        ${detail.minPax ? `<div><i class="fas fa-users" aria-hidden="true"></i><span>Minimum Pax</span><strong>${escapeHtml(detail.minPax)}</strong></div>` : ''}
+      </div>
+
+      <div class="pkg-details-section">
+        <h4><i class="fas fa-star" aria-hidden="true"></i> Highlights</h4>
+        ${highlights}
+      </div>
+
+      <div class="pkg-details-section">
+        <h4><i class="fas fa-route" aria-hidden="true"></i> Day-wise Itinerary</h4>
+        <div class="pkg-itinerary">${itinerary}</div>
+      </div>
+
+      <div class="pkg-details-split">
+        <div class="pkg-details-section">
+          <h4><i class="fas fa-circle-check" aria-hidden="true"></i> Tour Includes</h4>
+          ${includes}
+        </div>
+        <div class="pkg-details-section">
+          <h4><i class="fas fa-circle-xmark" aria-hidden="true"></i> Exclusions</h4>
+          ${exclusions}
+        </div>
+      </div>
+
+      <div class="pkg-details-actions">
+        <button type="button" class="btn btn-gold pkg-inquiry-btn pkg-detail-inquiry"
+                data-package="${escapeHtml(detail.title)}"
+                data-destination="${escapeHtml(detail.destination)}">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Inquiry
+        </button>
+        <a href="${whatsappHref}" target="_blank" rel="noopener" class="btn btn-outline">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Expert
+        </a>
+      </div>`;
+  }
+
+  function renderDetailList(items = []) {
+    return `
+      <ul class="pkg-detail-list">
+        ${items.map(item => `<li><i class="fas fa-check" aria-hidden="true"></i><span>${escapeHtml(item)}</span></li>`).join('')}
+      </ul>`;
   }
 
   function ensurePackageModal() {

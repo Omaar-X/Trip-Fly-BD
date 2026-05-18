@@ -77,7 +77,7 @@ const TEAM = [
     id:       'omar',
     name:     'Omar Farque',
     role:     'Web Developer & Digital Marketer',
-    badge:    'Digital',
+    badge:    'Developer',
     img:      'images/web.png',
     icon:     'fas fa-laptop-code',
     bio:      'Omar Farque manages Trip Fly BD\'s complete digital presence — website development, performance advertising, social media branding and digital marketing strategy for maximum online growth and lead generation.',
