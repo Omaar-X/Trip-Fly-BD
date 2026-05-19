@@ -117,21 +117,79 @@
   });
 })();
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FLOATING WHATSAPP BUTTON
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-(function initWAFloat() {
-  if (document.querySelector('.wa-float')) return;
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   FLOATING MULTI-CONTACT MENU
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+(function initFloatingContactMenu() {
+  if (document.querySelector('.floating-contact')) return;
 
-  const wa = document.createElement('a');
-  wa.className = 'wa-float';
-  wa.href = 'https://wa.me/8801898801939?text=Hello%20Trip%20Fly%20BD!%20I%20want%20to%20enquire%20about%20a%20trip.';
-  wa.target = '_blank';
-  wa.rel = 'noopener noreferrer';
-  wa.setAttribute('aria-label', 'Chat on WhatsApp');
-  wa.innerHTML = '<i class="fab fa-whatsapp"></i><span class="wa-float-tooltip">Chat with us!</span>';
+  const contact = document.createElement('div');
+  contact.className = 'floating-contact';
+  contact.setAttribute('aria-label', 'Trip Fly BD contact options');
 
-  document.body.appendChild(wa);
+  contact.innerHTML = `
+    <div class="floating-contact-actions" aria-hidden="true">
+      <a href="tel:+8801898801939" class="fc-action fc-call" aria-label="Call Trip Fly BD">
+        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+        <span class="fc-tooltip">Call</span>
+      </a>
+      <a href="https://m.me/tripflybdofficial" target="_blank" rel="noopener" class="fc-action fc-messenger" aria-label="Message Trip Fly BD on Messenger">
+        <i class="fab fa-facebook-messenger" aria-hidden="true"></i>
+        <span class="fc-tooltip">Messenger</span>
+      </a>
+      <a href="https://wa.me/8801898801939" target="_blank" rel="noopener" class="fc-action fc-whatsapp" aria-label="Chat with Trip Fly BD on WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        <span class="fc-tooltip">WhatsApp</span>
+      </a>
+      <button type="button" class="fc-action fc-close" aria-label="Close contact menu">
+        <i class="fas fa-times" aria-hidden="true"></i>
+        <span class="fc-tooltip">Close</span>
+      </button>
+    </div>
+    <button type="button" class="fc-main" aria-label="Open contact menu" aria-expanded="false">
+      <i class="fas fa-headset" aria-hidden="true"></i>
+      <span class="fc-main-dot" aria-hidden="true"></span>
+    </button>
+  `;
+
+  document.body.appendChild(contact);
+
+  const main = contact.querySelector('.fc-main');
+  const closeButton = contact.querySelector('.fc-close');
+  const actions = contact.querySelector('.floating-contact-actions');
+
+  const setOpen = isOpen => {
+    contact.classList.toggle('open', isOpen);
+    main.setAttribute('aria-expanded', String(isOpen));
+    main.setAttribute('aria-label', isOpen ? 'Close contact menu' : 'Open contact menu');
+    if (actions) actions.setAttribute('aria-hidden', String(!isOpen));
+  };
+
+  main.addEventListener('click', event => {
+    event.stopPropagation();
+    setOpen(!contact.classList.contains('open'));
+  });
+
+  if (closeButton) {
+    closeButton.addEventListener('click', event => {
+      event.stopPropagation();
+      setOpen(false);
+      main.focus();
+    });
+  }
+
+  document.addEventListener('click', event => {
+    if (contact.classList.contains('open') && !contact.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && contact.classList.contains('open')) {
+      setOpen(false);
+      main.focus();
+    }
+  });
 })();
 
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•

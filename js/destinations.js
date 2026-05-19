@@ -34,6 +34,7 @@ onReady(() => {
 
   addPremiumCardBadges();
   normalizeDestinationCtas();
+  initDestinationPackageModals();
 });
 
 /* ── Helpers ── */
@@ -772,9 +773,464 @@ const VISA_DATA = {
       link('South Africa Department of Home Affairs', 'https://www.dha.gov.za', 'Official South Africa immigration and visa information.'),
       link('South Africa High Commission', 'https://www.dirco.gov.za', 'Official South Africa Department of International Relations.')
     ]
+  },
+  spain: {
+    country: 'Spain',
+    flag: '',
+    region: 'Europe',
+    processingTime: '15-30 business days',
+    validity: 'Schengen short stay',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity and blank pages.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo as per Schengen specification.'),
+      req('fas fa-university', 'Bank Statement', 'Personal bank statement and solvency proof.'),
+      req('fas fa-briefcase', 'Job / Business Proof', 'NOC, salary certificate, trade license or business documents.'),
+      req('fas fa-plane', 'Travel Booking', 'Tentative flight booking and travel itinerary.'),
+      req('fas fa-shield-alt', 'Travel Insurance', 'Schengen travel insurance covering the full stay.')
+    ],
+    tips: ['Spain is best planned with a clear day-wise itinerary.', 'Previous Schengen/UK/US travel history helps strengthen the profile.', 'Visa rules can change, so final document checking is recommended.'],
+    officialLinks: []
+  },
+
+  france: {
+    country: 'France',
+    flag: '',
+    region: 'Europe',
+    processingTime: '15-30 business days',
+    validity: 'Schengen short stay',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity and blank pages.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo as per Schengen specification.'),
+      req('fas fa-university', 'Bank Statement', 'Personal bank statement and solvency proof.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents according to profile.'),
+      req('fas fa-hotel', 'Hotel Booking', 'Hotel booking matching the travel plan.'),
+      req('fas fa-shield-alt', 'Travel Insurance', 'Schengen travel insurance covering the full stay.')
+    ],
+    tips: ['Paris and nearby Europe routes need a strong itinerary.', 'Financial consistency is important for Schengen applications.', 'Trip Fly BD reviews documents before submission guidance.'],
+    officialLinks: []
+  },
+
+  italy: {
+    country: 'Italy',
+    flag: '',
+    region: 'Europe',
+    processingTime: '15-30 business days',
+    validity: 'Schengen short stay',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity and blank pages.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Bank statement and solvency certificate.'),
+      req('fas fa-file-invoice', 'Tax / Income Proof', 'TIN, tax return or income documents if applicable.'),
+      req('fas fa-route', 'Travel Itinerary', 'Clear travel itinerary and hotel plan.'),
+      req('fas fa-shield-alt', 'Travel Insurance', 'Schengen travel insurance.')
+    ],
+    tips: ['Italy is ideal for Rome, Venice and Milan routes.', 'Keep hotel and itinerary consistent with the travel dates.', 'Apply early during peak travel season.'],
+    officialLinks: []
+  },
+
+  netherlands: {
+    country: 'Netherlands',
+    flag: '',
+    region: 'Europe',
+    processingTime: '15-30 business days',
+    validity: 'Schengen short stay',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Personal bank statement and solvency proof.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents.'),
+      req('fas fa-plane', 'Flight Booking', 'Tentative return flight booking.'),
+      req('fas fa-shield-alt', 'Travel Insurance', 'Schengen travel insurance.')
+    ],
+    tips: ['Amsterdam trips should include a clean itinerary and accommodation plan.', 'Sponsor documents may be needed if someone is hosting you.', 'Document consistency is very important.'],
+    officialLinks: []
+  },
+
+  switzerland: {
+    country: 'Switzerland',
+    flag: '',
+    region: 'Europe',
+    processingTime: '15-30 business days',
+    validity: 'Schengen short stay',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Strong bank statement and solvency proof.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents.'),
+      req('fas fa-hotel', 'Hotel Booking', 'Hotel booking matching travel itinerary.'),
+      req('fas fa-shield-alt', 'Travel Insurance', 'Schengen travel insurance.')
+    ],
+    tips: ['Switzerland requires a premium, well-budgeted travel plan.', 'Zurich, Interlaken and Lucerne are popular routes.', 'Strong financial documents improve application quality.'],
+    officialLinks: []
+  },
+
+  hongkong: {
+    country: 'Hong Kong',
+    flag: '',
+    region: 'East Asia',
+    processingTime: 'Contact for latest timeline',
+    validity: 'Tourist entry depends on profile',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Bank statement showing travel affordability.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents.'),
+      req('fas fa-plane', 'Return Air Ticket', 'Return air ticket booking or itinerary.'),
+      req('fas fa-hotel', 'Hotel Booking', 'Hotel or accommodation details.')
+    ],
+    tips: ['Hong Kong is a strong short city-trip option.', 'Requirements can depend on passport/profile, so consult before booking.', 'Combine with Macau if travel plan allows.'],
+    officialLinks: []
+  },
+
+  macau: {
+    country: 'Macau',
+    flag: '',
+    region: 'East Asia',
+    processingTime: 'Contact for latest timeline',
+    validity: 'Tourist entry depends on profile',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Bank statement showing travel affordability.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents.'),
+      req('fas fa-plane', 'Return Air Ticket', 'Return air ticket booking or itinerary.'),
+      req('fas fa-hotel', 'Hotel Booking', 'Hotel or accommodation details.')
+    ],
+    tips: ['Macau works well as a short premium city break.', 'Combine with Hong Kong for a compact route.', 'Carry hotel and return ticket details.'],
+    officialLinks: []
+  },
+
+  egypt: {
+    country: 'Egypt',
+    flag: '',
+    region: 'Africa',
+    processingTime: 'Contact for latest timeline',
+    validity: 'Tourist visa',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Bank statement and solvency proof.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents.'),
+      req('fas fa-plane', 'Return Air Ticket', 'Return ticket booking or itinerary.'),
+      req('fas fa-hotel', 'Hotel Booking', 'Hotel or tour booking details.')
+    ],
+    tips: ['Cairo, Giza and Nile route plans should be documented clearly.', 'Travel insurance is recommended.', 'Book with enough processing time.'],
+    officialLinks: []
+  },
+
+  cyprus: {
+    country: 'Cyprus',
+    flag: '',
+    region: 'Europe',
+    processingTime: 'Contact for latest timeline',
+    validity: 'Tourist visa',
+    price: 'Contact for Package',
+    requirements: [
+      req('fas fa-passport', 'Valid Passport', 'Passport with at least 6 months validity.'),
+      req('fas fa-camera', 'Recent Photo', 'Recent passport-size photo.'),
+      req('fas fa-university', 'Bank Statement', 'Bank statement and solvency proof.'),
+      req('fas fa-briefcase', 'Occupation Proof', 'Job, business or student documents.'),
+      req('fas fa-plane', 'Return Air Ticket', 'Return ticket booking or itinerary.'),
+      req('fas fa-shield-alt', 'Travel Insurance', 'Travel insurance is recommended.')
+    ],
+    tips: ['Cyprus is good for island holidays and student routes.', 'Profile-based document checking is recommended.', 'Keep accommodation and travel dates consistent.'],
+    officialLinks: []
   }
 };
 
+const DESTINATION_PACKAGE_DETAILS = {
+  thailand: {
+    title: 'Bangkok + Pattaya Tour', destination: 'Thailand', duration: '4N/5D', priceHtml: '&#2547;16,490 / &#2547;16,500', airTicketHtml: 'Dhaka to Bangkok return approx &#2547;40,000', minPax: 'Minimum 8 Pax / group pricing available',
+    highlights: ['Coral Island Tour', 'Chao Phraya Dinner Cruise', 'Bangkok + Pattaya', 'Hotel with Breakfast', 'Airport Pick & Drop'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival + Pattaya Transfer', items: ['Airport pick-up', 'Transfer to Pattaya', 'Hotel check-in'] }, { day: 'Day 2', title: 'Coral Island Tour', items: ['Coral Island experience', 'Beach time', 'Return to Pattaya'] }, { day: 'Day 3', title: 'Bangkok + Dinner Cruise', items: ['Bangkok transfer', 'Chao Phraya Dinner Cruise', 'Overnight in Bangkok'] }, { day: 'Day 4', title: 'Bangkok Leisure', items: ['Breakfast', 'Shopping or optional city experience', 'Overnight in Bangkok'] }, { day: 'Day 5', title: 'Departure', items: ['Breakfast', 'Airport drop-off', 'Return support'] }],
+    includes: ['Hotel with breakfast', 'Coral Island Tour', 'Dinner Cruise', 'Airport Pick & Drop', 'Bangkok + Pattaya transfer'], exclusions: ['Air ticket unless added separately', 'Personal expenses', 'Optional activities', 'Any item not mentioned'], whatsappText: 'I need details for Thailand Bangkok + Pattaya Tour.'
+  },
+  malaysia: {
+    title: 'Malaysia Mid Premium Package', destination: 'Malaysia', duration: '5N/6D', priceHtml: '&#2547;24,300', airTicketHtml: 'Air ticket approx &#2547;45,300', minPax: '',
+    highlights: ['Langkawi', 'Kuala Lumpur', 'Island Hopping', 'Genting Highlands', 'Batu Caves', 'Cable Car'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival in Langkawi', items: ['Airport pick-up', 'Hotel check-in', 'Leisure time'] }, { day: 'Day 2', title: 'Island Hopping', items: ['Breakfast', 'Island Hopping Tour', 'Return to hotel'] }, { day: 'Day 3', title: 'Kuala Lumpur Transfer', items: ['Breakfast', 'Transfer support', 'KL hotel check-in'] }, { day: 'Day 4', title: 'Genting + Batu Caves', items: ['Batu Caves', 'Genting Highlands', 'Cable Car'] }, { day: 'Day 5', title: 'KL Leisure', items: ['Breakfast', 'Shopping or optional city tour', 'Overnight'] }, { day: 'Day 6', title: 'Departure', items: ['Breakfast', 'Airport drop-off', 'Return support'] }],
+    includes: ['Hotel with breakfast', 'Island Hopping Tour', 'Genting Highlands + Batu Caves with Cable Car', 'Airport Pick & Drop'], exclusions: ['Visa fee excluded', 'Entry fees excluded', 'Personal expenses excluded', 'Air ticket unless added separately'], whatsappText: 'I need details for Malaysia Mid Premium Package.'
+  },
+  indonesia: {
+    title: 'Indonesia Bali Package', destination: 'Indonesia', duration: 'Bali Full Package', priceHtml: '&#2547;55,000', airTicketHtml: 'Air ticket approx &#2547;80,000', minPax: '',
+    highlights: ['Nusa Penida', 'Nusa Dua', 'Uluwatu Temple', 'Visa fee approx &#2547;12,000 including insurance'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival in Bali', items: ['Airport meet and transfer', 'Hotel check-in', 'Leisure evening'] }, { day: 'Day 2', title: 'Nusa Penida', items: ['Breakfast', 'Nusa Penida tour support', 'Beach/photo stops'] }, { day: 'Day 3', title: 'Nusa Dua + Uluwatu', items: ['Breakfast', 'Nusa Dua visit', 'Uluwatu Temple'] }, { day: 'Day 4', title: 'Leisure + Departure', items: ['Breakfast', 'Shopping or optional activity', 'Airport transfer support'] }],
+    includes: ['Bali land package support', 'Nusa Penida plan', 'Nusa Dua visit', 'Uluwatu Temple plan', 'Travel consultation'], exclusions: ['Air ticket approx &#2547;80,000', 'Visa fee approx &#2547;12,000 including insurance', 'Entry fees if not mentioned', 'Personal expenses'], whatsappText: 'I need details for Indonesia Bali Package.'
+  },
+  maldives: {
+    title: 'Maldives Package', destination: 'Maldives', duration: 'Island + Honeymoon Support', priceHtml: '&#2547;99,600', airTicketHtml: 'Air ticket approx &#2547;50,000 per pax', minPax: '',
+    highlights: ['Private Island', 'Beach Villa', 'Maafushi', 'Hulhumale', 'Shared Speedboat Transfer'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival in Maldives', items: ['Airport meet and greet', 'Transfer to Hulhumale or Maafushi', 'Hotel check-in'] }, { day: 'Day 2', title: 'Island Experience', items: ['Meal plan as per hotel', 'Beach time', 'Optional couple activities'] }, { day: 'Day 3', title: 'Private Island / Beach Villa', items: ['Shared speedboat transfer', 'Private island or beach villa', 'Honeymoon support'] }, { day: 'Day 4', title: 'Departure', items: ['Breakfast', 'Free time', 'Transfer support'] }],
+    includes: ['Private Island + Maafushi + Hulhumale plan', 'Beach Villa option', 'Shared Speedboat Transfer', 'Meal plan depending on hotel', 'Luxury honeymoon support'], exclusions: ['Air ticket unless added separately', 'Personal expenses excluded', 'Optional activities', 'Any item not mentioned'], whatsappText: 'I need details for Maldives Package.'
+  },
+  singapore: {
+    title: 'Singapore Tour', destination: 'Singapore', duration: '2N/3D', priceHtml: '&#2547;16,000', airTicketHtml: 'Air ticket approx &#2547;40,000', minPax: '',
+    highlights: ['Singapore City Tour', 'Merlion', 'Sentosa', 'Chinatown', 'Private Airport Transfer'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival + Private Transfer', items: ['Airport pick-up', 'Private transfer to hotel', 'Check-in'] }, { day: 'Day 2', title: 'Singapore City Tour', items: ['Breakfast', 'Merlion visit', 'Sentosa and Chinatown', 'Driver/guide support'] }, { day: 'Day 3', title: 'Departure', items: ['Breakfast', 'Check-out', 'Private airport transfer'] }],
+    includes: ['2 Nights Singapore hotel', 'Breakfast', 'Singapore City Tour', 'Private Airport Transfer', 'English speaking driver/guide'], exclusions: ['Air ticket unless added separately', 'Visa fee if applicable', 'Entry fees not mentioned', 'Personal expenses'], whatsappText: 'I need details for Singapore Tour.'
+  },
+  china: {
+    title: 'China Group Tour', destination: 'China', duration: 'Shenzhen 2N + Guangzhou 2N', priceHtml: 'Air ticket approx &#2547;46,300', airTicketHtml: 'Air ticket approx &#2547;46,300', minPax: 'Group tour pricing available',
+    highlights: ['Window of the World', 'Splendid China Folk Village', 'Shenzhen Bay Park', 'Canton Tower', 'Pearl River Night Cruise optional'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival in Shenzhen', items: ['Airport support', 'Hotel check-in', 'Evening leisure'] }, { day: 'Day 2', title: 'Shenzhen Highlights', items: ['Window of the World', 'Splendid China Folk Village', 'Shenzhen Bay Park'] }, { day: 'Day 3', title: 'Transfer to Guangzhou', items: ['Transfer support', 'City orientation', 'Overnight in Guangzhou'] }, { day: 'Day 4', title: 'Guangzhou Experience', items: ['Canton Tower', 'Optional Pearl River Night Cruise', 'Group leisure time'] }, { day: 'Day 5', title: 'Departure', items: ['Breakfast', 'Airport transfer support', 'Return flight assistance'] }],
+    includes: ['Shenzhen 2N + Guangzhou 2N route planning', 'City tour coordination', 'Group support', 'Travel consultation'], exclusions: ['Air ticket unless added separately', 'China visa fee', 'Optional Pearl River Night Cruise', 'Entry fees and personal expenses'], whatsappText: 'I need details for China Group Tour.'
+  },
+  srilanka: {
+    title: 'Sri Lanka Land Package', destination: 'Sri Lanka', duration: 'Land Package', priceHtml: '&#2547;13,500', airTicketHtml: 'Air ticket approx &#2547;71,865', minPax: '',
+    highlights: ['Colombo', 'Lotus Tower', 'Bentota', 'Mirissa', 'Galle Fort', 'Visa fee approx &#2547;3,000'],
+    itinerary: [{ day: 'Day 1', title: 'Arrival + Colombo', items: ['Airport transfer support', 'Colombo city experience', 'Lotus Tower visit by plan'] }, { day: 'Day 2', title: 'Bentota + Mirissa', items: ['Breakfast', 'Bentota beach time', 'Mirissa coastal experience'] }, { day: 'Day 3', title: 'Galle Fort + Departure', items: ['Galle Fort visit', 'Shopping/leisure time', 'Airport transfer support'] }],
+    includes: ['Sri Lanka land package support', 'Colombo plan', 'Bentota + Mirissa route', 'Galle Fort visit plan', 'Travel consultation'], exclusions: ['Air ticket approx &#2547;71,865', 'Visa fee approx &#2547;3,000', 'Entry fees if not mentioned', 'Personal expenses'], whatsappText: 'I need details for Sri Lanka Land Package.'
+  }
+};
+function initDestinationPackageModals() {
+  const detailOverlay = ensureDestPackageDetailsModal();
+  const inquiryOverlay = ensureDestPackageInquiryModal();
+  if (!detailOverlay || !inquiryOverlay) return;
+
+  const detailBody = document.getElementById('destPkgDetailsBody');
+  const inquiryForm = document.getElementById('destPkgInquiryForm');
+  const inquiryTitle = document.getElementById('destPkgInquiryTitle');
+  const packageInput = document.getElementById('destPkgInquiryPackage');
+  const destinationInput = document.getElementById('destPkgInquiryDestination');
+  const status = document.getElementById('destPkgInquiryStatus');
+  const waFollow = document.getElementById('destPkgInquiryWA');
+  let previousOverflow = '';
+
+  const openOverlay = overlay => {
+    previousOverflow = document.body.style.overflow || '';
+    overlay.classList.add('show');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeOverlay = overlay => {
+    if (!overlay.classList.contains('show')) return;
+    overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = previousOverflow;
+  };
+
+  const openInquiry = key => {
+    const detail = DESTINATION_PACKAGE_DETAILS[key];
+    if (!detail) return;
+    closeOverlay(detailOverlay);
+    if (inquiryTitle) inquiryTitle.textContent = `${detail.title} Inquiry`;
+    if (packageInput) packageInput.value = detail.title;
+    if (destinationInput) destinationInput.value = detail.destination;
+    if (status) {
+      status.className = 'dest-pkg-status';
+      status.textContent = '';
+    }
+    if (waFollow) {
+      waFollow.style.display = 'none';
+      waFollow.href = buildWhatsAppUrl(`Hello Trip Fly BD! I need ${detail.title} package support.`);
+    }
+    openOverlay(inquiryOverlay);
+    document.getElementById('destPkgName')?.focus();
+  };
+
+  document.addEventListener('click', event => {
+    const detailsBtn = event.target.closest('.dest-pkg-details-btn');
+    if (detailsBtn) {
+      event.preventDefault();
+      const key = detailsBtn.dataset.pkgKey;
+      const detail = DESTINATION_PACKAGE_DETAILS[key];
+      if (!detail || !detailBody) return;
+      detailBody.innerHTML = renderDestPackageDetails(key, detail);
+      openOverlay(detailOverlay);
+      document.getElementById('destPkgDetailsClose')?.focus();
+      return;
+    }
+
+    const inquiryBtn = event.target.closest('.dest-pkg-inquiry-btn');
+    if (inquiryBtn) {
+      event.preventDefault();
+      openInquiry(inquiryBtn.dataset.pkgKey);
+    }
+  });
+
+  document.querySelectorAll('[data-dest-pkg-close]').forEach(btn => {
+    if (btn.dataset.bound === 'true') return;
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', () => {
+      closeOverlay(detailOverlay);
+      closeOverlay(inquiryOverlay);
+    });
+  });
+
+  [detailOverlay, inquiryOverlay].forEach(overlay => {
+    overlay.addEventListener('click', event => {
+      if (event.target === overlay) closeOverlay(overlay);
+    });
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    closeOverlay(detailOverlay);
+    closeOverlay(inquiryOverlay);
+  });
+
+  inquiryForm?.addEventListener('submit', async event => {
+    event.preventDefault();
+    const name = document.getElementById('destPkgName')?.value.trim();
+    const phone = document.getElementById('destPkgPhone')?.value.trim();
+    const email = document.getElementById('destPkgEmail')?.value.trim();
+    const message = document.getElementById('destPkgMessage')?.value.trim();
+    const packageName = packageInput?.value || 'Travel Package';
+    const destination = destinationInput?.value || '';
+
+    if (!name || !phone) {
+      setDestPkgStatus(status, 'error', 'Please enter your name and phone number.');
+      return;
+    }
+
+    const submitBtn = inquiryForm.querySelector('[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="btn-spinner"></span> Sending...';
+    }
+
+    const followUrl = buildWhatsAppUrl(`Hello Trip Fly BD! I submitted an inquiry for ${packageName}.\nName: ${name}\nPhone: ${phone}`);
+    const payload = {
+      sheet: 'Package Inquiries',
+      timestamp: new Date().toLocaleString('en-BD', { timeZone: 'Asia/Dhaka' }),
+      name,
+      phone,
+      email,
+      package: packageName,
+      destination,
+      message,
+      source: 'Destinations Package Section'
+    };
+
+    try {
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
+      });
+      const text = await response.text();
+      const result = safeJsonParse(text);
+      if (!response.ok || (result && result.status && result.status !== 'success')) {
+        throw new Error(result?.message || 'Submission failed');
+      }
+      setDestPkgStatus(status, 'success', 'Inquiry saved. Our package team will contact you soon.');
+      if (waFollow) {
+        waFollow.href = followUrl;
+        waFollow.style.display = 'inline-flex';
+      }
+      inquiryForm.reset();
+      if (packageInput) packageInput.value = packageName;
+      if (destinationInput) destinationInput.value = destination;
+    } catch (error) {
+      console.error('Package inquiry error:', error);
+      setDestPkgStatus(status, 'error', 'Could not save right now. You can continue on WhatsApp.');
+      if (waFollow) {
+        waFollow.href = followUrl;
+        waFollow.style.display = 'inline-flex';
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Inquiry';
+      }
+    }
+  });
+}
+
+function ensureDestPackageDetailsModal() {
+  let overlay = document.getElementById('destPkgDetailsOverlay');
+  if (overlay) return overlay;
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="dest-pkg-modal-overlay" id="destPkgDetailsOverlay" aria-hidden="true">
+      <div class="dest-pkg-modal" role="dialog" aria-modal="true" aria-labelledby="destPkgDetailsTitle">
+        <button type="button" class="dest-pkg-modal-close" data-dest-pkg-close aria-label="Close package details"><i class="fas fa-times"></i></button>
+        <div class="dest-pkg-modal-body" id="destPkgDetailsBody"></div>
+      </div>
+    </div>`);
+  return document.getElementById('destPkgDetailsOverlay');
+}
+
+function ensureDestPackageInquiryModal() {
+  let overlay = document.getElementById('destPkgInquiryOverlay');
+  if (overlay) return overlay;
+  document.body.insertAdjacentHTML('beforeend', `
+    <div class="dest-pkg-modal-overlay" id="destPkgInquiryOverlay" aria-hidden="true">
+      <div class="dest-pkg-modal" role="dialog" aria-modal="true" aria-labelledby="destPkgInquiryTitle">
+        <button type="button" class="dest-pkg-modal-close" data-dest-pkg-close aria-label="Close package inquiry"><i class="fas fa-times"></i></button>
+        <div class="dest-pkg-modal-body">
+          <div class="dest-pkg-detail-head">
+            <span>Package Inquiry</span>
+            <h3 id="destPkgInquiryTitle">Package Inquiry</h3>
+            <p>Share your details and Trip Fly BD will follow up with package guidance.</p>
+          </div>
+          <form class="dest-pkg-inquiry-form" id="destPkgInquiryForm" novalidate>
+            <input type="hidden" id="destPkgInquiryPackage"/>
+            <input type="hidden" id="destPkgInquiryDestination"/>
+            <label for="destPkgName">Your Name *</label>
+            <input type="text" id="destPkgName" required placeholder="Full name"/>
+            <label for="destPkgPhone">Phone / WhatsApp *</label>
+            <input type="tel" id="destPkgPhone" required placeholder="+880..."/>
+            <label for="destPkgEmail">Email</label>
+            <input type="email" id="destPkgEmail" placeholder="you@example.com"/>
+            <label for="destPkgMessage">Message</label>
+            <textarea id="destPkgMessage" rows="4" placeholder="Preferred date, travelers, budget or special request"></textarea>
+            <div class="dest-pkg-status" id="destPkgInquiryStatus"></div>
+            <div class="dest-pkg-inquiry-actions">
+              <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Submit Inquiry</button>
+              <a href="#" target="_blank" rel="noopener" class="btn btn-outline" id="destPkgInquiryWA" style="display:none;"><i class="fab fa-whatsapp"></i> WhatsApp Follow-up</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>`);
+  return document.getElementById('destPkgInquiryOverlay');
+}
+
+function renderDestPackageDetails(key, detail) {
+  const whatsappHref = buildWhatsAppUrl(detail.whatsappText || `I need ${detail.title} package details.`);
+  return `
+    <div class="dest-pkg-detail-head">
+      <span>Package Details</span>
+      <h3 id="destPkgDetailsTitle">${escapeHtml(detail.title)}</h3>
+      <p>${escapeHtml(detail.destination)} - ${escapeHtml(detail.duration)} - Starting from <strong>${detail.priceHtml}</strong></p>
+    </div>
+    <div class="dest-pkg-detail-meta">
+      <div><span>Destination</span><strong>${escapeHtml(detail.destination)}</strong></div>
+      <div><span>Duration</span><strong>${escapeHtml(detail.duration)}</strong></div>
+      <div><span>Price</span><strong>${detail.priceHtml}</strong></div>
+      <div><span>Air Ticket</span><strong>${detail.airTicketHtml}</strong></div>
+      ${detail.minPax ? `<div><span>Minimum Pax</span><strong>${escapeHtml(detail.minPax)}</strong></div>` : ''}
+    </div>
+    <div class="dest-pkg-detail-section"><h4>Highlights</h4>${renderDestPkgList(detail.highlights)}</div>
+    <div class="dest-pkg-detail-section"><h4>Day-wise Itinerary</h4><div class="dest-pkg-itinerary">${detail.itinerary.map(day => `<article class="dest-pkg-day"><span>${escapeHtml(day.day)}</span><h4>${escapeHtml(day.title)}</h4>${renderDestPkgList(day.items)}</article>`).join('')}</div></div>
+    <div class="dest-pkg-detail-split">
+      <div class="dest-pkg-detail-section"><h4>Tour Includes</h4>${renderDestPkgList(detail.includes)}</div>
+      <div class="dest-pkg-detail-section"><h4>Exclusions</h4>${renderDestPkgList(detail.exclusions)}</div>
+    </div>
+    <div class="dest-pkg-detail-actions">
+      <button type="button" class="btn btn-gold dest-pkg-inquiry-btn" data-pkg-key="${escapeHtml(key)}"><i class="fas fa-paper-plane"></i> Submit Inquiry</button>
+      <a href="${whatsappHref}" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Expert</a>
+    </div>`;
+}
+
+function renderDestPkgList(items = []) {
+  return `<ul class="dest-pkg-detail-list">${items.map(item => `<li><i class="fas fa-check"></i><span>${escapeHtml(item)}</span></li>`).join('')}</ul>`;
+}
+
+function setDestPkgStatus(status, type, message) {
+  if (!status) return;
+  status.className = `dest-pkg-status ${type} show`;
+  status.textContent = message;
+}
 /* ── Filter System ── */
 (function initFilter() {
   const btns = $$('.filter-btn');

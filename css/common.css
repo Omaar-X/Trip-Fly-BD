@@ -838,52 +838,186 @@ ul  { list-style: none; }
 .delay-3 { transition-delay: .32s !important; }
 .delay-4 { transition-delay: .44s !important; }
 
-/* ── FLOATING WHATSAPP BUTTON ── */
-.wa-float {
+/* â”€â”€ FLOATING MULTI-CONTACT MENU â”€â”€ */
+.floating-contact {
   position: fixed;
-  bottom: clamp(1.2rem, 4vw, 2rem);
-  right: clamp(1.2rem, 4vw, 2rem);
-  z-index: 900;
-  width: clamp(52px, 8vw, 62px);
-  height: clamp(52px, 8vw, 62px);
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  border-radius: 50%;
+  right: clamp(1rem, 3.2vw, 1.75rem);
+  bottom: clamp(1rem, 3.2vw, 1.75rem);
+  z-index: 940;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .72rem;
+  isolation: isolate;
+}
+
+.fc-main,
+.fc-action {
+  width: clamp(48px, 7.4vw, 56px);
+  height: clamp(48px, 7.4vw, 56px);
+  border-radius: 50%;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1.4rem, 4vw, 1.7rem);
-  color: #fff;
-  box-shadow: 0 6px 28px rgba(37,211,102,.55);
-  animation: waPulse 2.5s ease-in-out infinite;
   text-decoration: none;
-  transition: transform .3s ease, box-shadow .3s ease;
+  border: 1px solid rgba(212,175,55,.35);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .25s ease;
 }
-.wa-float:hover {
-  transform: scale(1.12);
-  box-shadow: 0 10px 40px rgba(37,211,102,.75);
+
+.fc-main {
+  position: relative;
+  border: 1px solid rgba(245,215,110,.55);
+  background: radial-gradient(circle at 32% 24%, #F5D76E 0%, #D4AF37 44%, #8A6A00 100%);
+  color: #07111C;
+  font-size: clamp(1.08rem, 3vw, 1.32rem);
+  box-shadow: 0 12px 32px rgba(0,0,0,.36), 0 0 24px rgba(212,175,55,.36);
+  animation: contactPulse 3.1s ease-in-out infinite;
 }
-@keyframes waPulse {
-  0%,100% { box-shadow: 0 6px 28px rgba(37,211,102,.55), 0 0 0 0 rgba(37,211,102,.4); }
-  50%      { box-shadow: 0 6px 28px rgba(37,211,102,.55), 0 0 0 14px rgba(37,211,102,0); }
+
+.fc-main:hover,
+.floating-contact.open .fc-main {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 16px 42px rgba(0,0,0,.44), 0 0 32px rgba(212,175,55,.45);
 }
-.wa-float-tooltip {
+
+.fc-main-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #25D366;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 4px rgba(37,211,102,.12);
+}
+
+.floating-contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .58rem;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.fc-action {
+  position: relative;
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  font-size: clamp(1rem, 2.8vw, 1.22rem);
+  opacity: 0;
+  transform: translateY(12px) scale(.82);
+  pointer-events: none;
+  box-shadow: 0 12px 30px rgba(0,0,0,.34);
+  backdrop-filter: blur(14px);
+}
+
+.floating-contact.open .fc-action {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.floating-contact.open .fc-action:nth-child(1) { transition-delay: .03s; }
+.floating-contact.open .fc-action:nth-child(2) { transition-delay: .07s; }
+.floating-contact.open .fc-action:nth-child(3) { transition-delay: .11s; }
+.floating-contact.open .fc-action:nth-child(4) { transition-delay: .15s; }
+
+.fc-action:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.fc-call {
+  background: linear-gradient(135deg, #0EA5E9, #047857);
+  box-shadow: 0 12px 30px rgba(14,165,233,.28);
+}
+
+.fc-messenger {
+  background: linear-gradient(135deg, #00B2FF, #006AFF);
+  box-shadow: 0 12px 30px rgba(0,106,255,.32);
+}
+
+.fc-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  box-shadow: 0 12px 30px rgba(37,211,102,.32);
+}
+
+.fc-close {
+  background: linear-gradient(135deg, #F97316, #DC2626);
+  box-shadow: 0 12px 30px rgba(220,38,38,.28);
+}
+
+.fc-tooltip {
   position: absolute;
   right: calc(100% + 12px);
   top: 50%;
-  transform: translateY(-50%);
-  background: #000;
-  color: #fff;
-  font-size: .75rem;
-  font-weight: 700;
+  transform: translateY(-50%) translateX(6px);
+  background: rgba(6,10,14,.94);
+  color: #F5D76E;
+  border: 1px solid rgba(212,175,55,.28);
+  border-radius: 999px;
+  padding: .42rem .78rem;
+  font-size: .72rem;
+  font-weight: 800;
+  line-height: 1;
   white-space: nowrap;
-  padding: .4rem .85rem;
-  border-radius: 8px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s ease;
-  border: 1px solid rgba(37,211,102,.3);
+  box-shadow: 0 8px 22px rgba(0,0,0,.32);
+  transition: opacity .22s ease, transform .22s ease;
 }
-.wa-float:hover .wa-float-tooltip { opacity: 1; }
+
+.fc-action:hover .fc-tooltip,
+.fc-action:focus-visible .fc-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.fc-main:focus-visible,
+.fc-action:focus-visible {
+  outline: 2px solid #F5D76E;
+  outline-offset: 4px;
+}
+
+@keyframes contactPulse {
+  0%, 100% {
+    box-shadow: 0 12px 32px rgba(0,0,0,.36), 0 0 0 0 rgba(212,175,55,.26);
+  }
+  50% {
+    box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 11px rgba(212,175,55,0);
+  }
+}
+
+body[data-theme="light"] .floating-contact .fc-main {
+  box-shadow: 0 12px 30px rgba(54,42,15,.18), 0 0 20px rgba(168,134,10,.22);
+}
+
+body[data-theme="light"] .fc-tooltip {
+  background: rgba(255,252,244,.96);
+  color: #8A6A00;
+  border-color: rgba(168,134,10,.26);
+  box-shadow: 0 8px 22px rgba(54,42,15,.14);
+}
+
+@media (max-width: 520px) {
+  .floating-contact {
+    right: 1rem;
+    bottom: 1rem;
+    gap: .58rem;
+  }
+
+  .fc-main,
+  .fc-action {
+    width: 50px;
+    height: 50px;
+  }
+
+  .fc-tooltip {
+    display: none;
+  }
+}
 
 /* ── FOOTER RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -961,9 +1095,9 @@ footer,
   z-index:1000 !important;
 }
 
-.wa-float{
+.floating-contact{
   position:fixed !important;
-  z-index:900 !important;
+  z-index:940 !important;
 }
 
 .footer{
@@ -1137,10 +1271,6 @@ body[data-theme="light"] .footer-bottom {
   color: var(--txt-mid);
 }
 
-body[data-theme="light"] .wa-float-tooltip {
-  background: #102033;
-  color: #fff;
-}
 
 body[data-theme="light"] input,
 body[data-theme="light"] select,

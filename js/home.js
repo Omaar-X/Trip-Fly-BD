@@ -721,41 +721,29 @@
       title: 'Bangkok + Pattaya Tour',
       destination: 'Thailand',
       duration: '4N/5D',
-      priceHtml: '&#2547;16,500',
+      priceHtml: '&#2547;16,490 / &#2547;16,500',
       airTicketHtml: 'Dhaka to Bangkok return approx &#2547;40,000',
       minPax: 'Minimum 8 Pax / group pricing available',
-      highlights: [
-        'Coral Island Tour',
-        'Chao Phraya Dinner Cruise',
-        'Bangkok + Pattaya Transfer',
-        'Hotel with Breakfast',
-        'Airport Pick & Drop'
-      ],
+      highlights: ['Coral Island Tour', 'Chao Phraya Dinner Cruise', 'Bangkok + Pattaya', 'Hotel with Breakfast', 'Airport Pick & Drop'],
       itinerary: [
         { day: 'Day 1', title: 'Arrival + Pattaya Transfer', items: ['Airport pick-up', 'Transfer to Pattaya', 'Hotel check-in and leisure time'] },
-        { day: 'Day 2', title: 'Coral Island Tour', items: ['Coral Island experience', 'Beach time and water activities by choice', 'Return to Pattaya hotel'] },
-        { day: 'Day 3', title: 'Bangkok Transfer + Dinner Cruise', items: ['Transfer from Pattaya to Bangkok', 'Evening Chao Phraya Dinner Cruise', 'Overnight in Bangkok'] },
+        { day: 'Day 2', title: 'Coral Island Tour', items: ['Coral Island experience', 'Beach time and optional water activities', 'Return to Pattaya hotel'] },
+        { day: 'Day 3', title: 'Bangkok Transfer + Dinner Cruise', items: ['Transfer from Pattaya to Bangkok', 'Chao Phraya Dinner Cruise', 'Overnight in Bangkok'] },
         { day: 'Day 4', title: 'Bangkok Leisure', items: ['Breakfast at hotel', 'Free time for shopping or optional city experience', 'Overnight in Bangkok'] },
         { day: 'Day 5', title: 'Departure', items: ['Breakfast', 'Airport drop-off', 'Return flight support'] }
       ],
-      includes: ['Hotel with breakfast', 'Coral Island Tour', 'Dinner Cruise', 'Airport Pick & Drop', 'Bangkok + Pattaya Transfer'],
+      includes: ['Hotel with breakfast', 'Coral Island Tour', 'Chao Phraya Dinner Cruise', 'Airport Pick & Drop', 'Bangkok + Pattaya transfer support'],
       exclusions: ['Air ticket unless added separately', 'Personal expenses', 'Optional activities', 'Any item not mentioned in inclusions'],
-      whatsappText: 'I need details for Thailand 4N/5D Bangkok + Pattaya Tour.'
+      whatsappText: 'I need details for Thailand Bangkok + Pattaya Tour.'
     },
     malaysia: {
-      title: 'Malaysia 5N/6D Tour',
+      title: 'Malaysia Mid Premium Package',
       destination: 'Malaysia',
       duration: '5N/6D',
       priceHtml: '&#2547;24,300',
       airTicketHtml: 'Air ticket approx &#2547;45,300',
       minPax: '',
-      highlights: [
-        '2 Nights Langkawi + 2 Nights Kuala Lumpur',
-        'Island Hopping Tour',
-        'Genting Highlands + Batu Caves with Cable Car',
-        'Hotel with Breakfast',
-        'Airport Pick & Drop'
-      ],
+      highlights: ['Langkawi', 'Kuala Lumpur', 'Island Hopping', 'Genting Highlands', 'Batu Caves', 'Cable Car'],
       itinerary: [
         { day: 'Day 1', title: 'Arrival in Langkawi', items: ['Airport pick-up', 'Hotel check-in', 'Leisure time'] },
         { day: 'Day 2', title: 'Langkawi Island Hopping', items: ['Breakfast', 'Island Hopping Tour', 'Return to hotel'] },
@@ -766,47 +754,52 @@
       ],
       includes: ['Hotel with breakfast', 'Island Hopping Tour', 'Genting Highlands + Batu Caves with Cable Car', 'Airport Pick & Drop'],
       exclusions: ['Visa fee excluded', 'Entry fees excluded', 'Personal expenses excluded', 'Air ticket unless added separately'],
-      whatsappText: 'I need details for Malaysia 5N/6D Tour.'
+      whatsappText: 'I need details for Malaysia Mid Premium Package.'
+    },
+    indonesia: {
+      title: 'Indonesia Bali Package',
+      destination: 'Indonesia',
+      duration: 'Bali Full Package',
+      priceHtml: '&#2547;55,000',
+      airTicketHtml: 'Air ticket approx &#2547;80,000',
+      minPax: '',
+      highlights: ['Nusa Penida', 'Nusa Dua', 'Uluwatu Temple', 'Visa fee approx &#2547;12,000 including insurance'],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival in Bali', items: ['Airport meet and transfer', 'Hotel check-in', 'Leisure evening'] },
+        { day: 'Day 2', title: 'Nusa Penida Experience', items: ['Breakfast', 'Nusa Penida tour support', 'Photo stops and beach time'] },
+        { day: 'Day 3', title: 'Nusa Dua + Uluwatu', items: ['Breakfast', 'Nusa Dua visit', 'Uluwatu Temple experience'] },
+        { day: 'Day 4', title: 'Leisure + Departure Support', items: ['Breakfast', 'Free time for shopping or optional activity', 'Airport transfer support'] }
+      ],
+      includes: ['Bali land package support', 'Nusa Penida plan', 'Nusa Dua visit', 'Uluwatu Temple plan', 'Travel consultation'],
+      exclusions: ['Air ticket approx &#2547;80,000', 'Visa fee approx &#2547;12,000 including insurance', 'Entry fees if not mentioned', 'Personal expenses'],
+      whatsappText: 'I need details for Indonesia Bali Package.'
     },
     maldives: {
-      title: 'Maldives Couple Paradise',
+      title: 'Maldives Package',
       destination: 'Maldives',
-      duration: 'Couple Package',
+      duration: 'Island + Honeymoon Support',
       priceHtml: '&#2547;99,600',
       airTicketHtml: 'Air ticket approx &#2547;50,000 per pax',
       minPax: '',
-      highlights: [
-        'Private Island + Maafushi + Hulhumale',
-        'Beach Villa',
-        'Shared Speedboat Transfer',
-        'Full Board / BB meal plan depending on hotel',
-        'Luxury honeymoon support'
-      ],
+      highlights: ['Private Island', 'Beach Villa', 'Maafushi', 'Hulhumale', 'Shared Speedboat Transfer'],
       itinerary: [
         { day: 'Day 1', title: 'Arrival in Maldives', items: ['Airport meet and greet', 'Transfer to Hulhumale or Maafushi', 'Hotel check-in'] },
         { day: 'Day 2', title: 'Island Experience', items: ['Breakfast or meal plan as per hotel', 'Beach time', 'Optional couple activities'] },
-        { day: 'Day 3', title: 'Private Island / Beach Villa Stay', items: ['Shared speedboat transfer', 'Private island or beach villa experience', 'Honeymoon support by request'] },
-        { day: 'Day 4', title: 'Leisure + Departure Support', items: ['Breakfast', 'Free time', 'Transfer support for departure'] }
+        { day: 'Day 3', title: 'Private Island / Beach Villa', items: ['Shared speedboat transfer', 'Private island or beach villa experience', 'Honeymoon support by request'] },
+        { day: 'Day 4', title: 'Departure Support', items: ['Breakfast', 'Free time', 'Transfer support for departure'] }
       ],
       includes: ['Private Island + Maafushi + Hulhumale plan', 'Beach Villa option', 'Shared Speedboat Transfer', 'Meal plan depending on hotel', 'Luxury honeymoon support'],
       exclusions: ['Air ticket unless added separately', 'Personal expenses excluded', 'Optional activities', 'Any item not mentioned in inclusions'],
-      whatsappText: 'I need details for Maldives Couple Paradise package.'
+      whatsappText: 'I need details for Maldives Package.'
     },
     singapore: {
-      title: 'Singapore 2N/3D Tour',
+      title: 'Singapore Tour',
       destination: 'Singapore',
       duration: '2N/3D',
       priceHtml: '&#2547;16,000',
       airTicketHtml: 'Air ticket approx &#2547;40,000',
       minPax: '',
-      highlights: [
-        '2 Nights Singapore',
-        'Breakfast',
-        'Singapore City Tour',
-        'Private Airport Transfer',
-        'English speaking driver/guide',
-        'Merlion, Sentosa, Chinatown'
-      ],
+      highlights: ['Singapore City Tour', 'Merlion', 'Sentosa', 'Chinatown', 'Private Airport Transfer'],
       itinerary: [
         { day: 'Day 1', title: 'Arrival + Private Transfer', items: ['Airport pick-up', 'Private transfer to hotel', 'Check-in and leisure time'] },
         { day: 'Day 2', title: 'Singapore City Tour', items: ['Breakfast', 'Merlion visit', 'Sentosa and Chinatown experience', 'English speaking driver/guide support'] },
@@ -814,7 +807,43 @@
       ],
       includes: ['2 Nights Singapore hotel', 'Breakfast', 'Singapore City Tour', 'Private Airport Transfer', 'English speaking driver/guide'],
       exclusions: ['Air ticket unless added separately', 'Visa fee if applicable', 'Entry fees not mentioned', 'Personal expenses'],
-      whatsappText: 'I need details for Singapore 2N/3D Tour.'
+      whatsappText: 'I need details for Singapore Tour.'
+    },
+    china: {
+      title: 'China Group Tour',
+      destination: 'China',
+      duration: 'Shenzhen 2N + Guangzhou 2N',
+      priceHtml: 'Air ticket approx &#2547;46,300',
+      airTicketHtml: 'Air ticket approx &#2547;46,300',
+      minPax: 'Group tour pricing available',
+      highlights: ['Window of the World', 'Splendid China Folk Village', 'Shenzhen Bay Park', 'Canton Tower', 'Pearl River Night Cruise optional'],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival in Shenzhen', items: ['Airport support', 'Hotel check-in', 'Evening leisure'] },
+        { day: 'Day 2', title: 'Shenzhen Highlights', items: ['Window of the World', 'Splendid China Folk Village', 'Shenzhen Bay Park'] },
+        { day: 'Day 3', title: 'Transfer to Guangzhou', items: ['Transfer support', 'Guangzhou city orientation', 'Overnight in Guangzhou'] },
+        { day: 'Day 4', title: 'Guangzhou Experience', items: ['Canton Tower', 'Optional Pearl River Night Cruise', 'Group shopping/leisure time'] },
+        { day: 'Day 5', title: 'Departure', items: ['Breakfast', 'Airport transfer support', 'Return flight assistance'] }
+      ],
+      includes: ['Shenzhen 2N + Guangzhou 2N route planning', 'City tour coordination', 'Group support', 'Travel consultation'],
+      exclusions: ['Air ticket unless added separately', 'China visa fee', 'Optional Pearl River Night Cruise', 'Entry fees and personal expenses'],
+      whatsappText: 'I need details for China Group Tour.'
+    },
+    srilanka: {
+      title: 'Sri Lanka Land Package',
+      destination: 'Sri Lanka',
+      duration: 'Land Package',
+      priceHtml: '&#2547;13,500',
+      airTicketHtml: 'Air ticket approx &#2547;71,865',
+      minPax: '',
+      highlights: ['Colombo', 'Lotus Tower', 'Bentota', 'Mirissa', 'Galle Fort', 'Visa fee approx &#2547;3,000'],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival + Colombo', items: ['Airport transfer support', 'Colombo city experience', 'Lotus Tower visit by plan'] },
+        { day: 'Day 2', title: 'Bentota + Mirissa', items: ['Breakfast', 'Bentota beach time', 'Mirissa coastal experience'] },
+        { day: 'Day 3', title: 'Galle Fort + Departure Support', items: ['Galle Fort visit', 'Shopping/leisure time', 'Airport transfer support'] }
+      ],
+      includes: ['Sri Lanka land package support', 'Colombo plan', 'Bentota + Mirissa route', 'Galle Fort visit plan', 'Travel consultation'],
+      exclusions: ['Air ticket approx &#2547;71,865', 'Visa fee approx &#2547;3,000', 'Entry fees if not mentioned', 'Personal expenses'],
+      whatsappText: 'I need details for Sri Lanka Land Package.'
     }
   };
 
