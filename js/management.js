@@ -16,8 +16,8 @@ const TEAM = [
     img:      'images/Propiter.png',
     icon:     'fas fa-crown',
     bio:      'Founder and Proprietor of Trip Fly BD. Tahmina Bashar Nishat leads the agency with unwavering vision since February 2023. Her dedication to client trust, transparent pricing and service excellence has made Trip Fly BD one of Bangladesh\'s most reliable travel partners.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    phone:    '+880 1630-840405',
+    wa:       'https://wa.me/8801630840405',
     facebook: 'https://www.facebook.com/tahmina.bashar.nishat',
     linkedin: '#',
   },
@@ -29,21 +29,21 @@ const TEAM = [
     img:      'images/Dept.png',
     icon:     'fas fa-user-tie',
     bio:      'Samsuddin Razib oversees all operational activities at Trip Fly BD — visa applications, air ticketing, client coordination and team management. His deep industry expertise ensures every service is delivered with speed, precision and genuine professionalism.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    phone:    '+880 1672-710556',
+    wa:       'https://wa.me/8801672710556',
     facebook: 'https://www.facebook.com/sam.razib.5',
     linkedin: '#',
   },
   {
     id:       'nijhu',
     name:     'Nijhu Dey',
-    role:     'Coordinator',
-    badge:    'Coordinator',
+    role:     'Head of Accounts',
+    badge:    'Head of Accounts',
     img:      'images/Act.png',
     icon:     'fas fa-tasks',
-    bio:      'Nijhu Dey coordinates operational activities, client follow-ups and team communication at Trip Fly BD. Her organised approach ensures smooth service delivery and exceptional client satisfaction at every stage.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    bio:      'Nijhu Dey manages account records, payment follow-ups, billing coordination and internal financial documentation at Trip Fly BD. Her organised approach keeps client transactions transparent, traceable and professionally handled.',
+    phone:    '+880 1898-801949',
+    wa:       'https://wa.me/8801898801949',
     facebook: 'https://www.facebook.com/abhijit.nijhu',
     linkedin: '#',
   },
@@ -55,8 +55,8 @@ const TEAM = [
     img:      'images/Mkt.png',
     icon:     'fas fa-calendar-check',
     bio:      'Nazmul Hasan leads the reservation division at Trip Fly BD — managing flight bookings, hotel reservations and travel package arrangements for all clients with efficiency and professional care.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    phone:    '+880 1898-801943',
+    wa:       'https://wa.me/8801898801943',
     facebook: 'https://www.facebook.com/nazmul.hasan.92560281',
     linkedin: '#',
   },
@@ -68,8 +68,8 @@ const TEAM = [
     img:      'images/DM.png',
     icon:     'fas fa-ticket-alt',
     bio:      'Shahriar Mahmud Shifat handles flight reservations, ticket issuance and client booking support under the Head of Reservation team — ensuring fast, accurate and stress-free travel bookings every time.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    phone:    '+880 1886-734968',
+    wa:       'https://wa.me/8801886734968',
     facebook: 'https://www.facebook.com/shifat.shahrir',
     linkedin: '#',
   },
@@ -81,8 +81,8 @@ const TEAM = [
     img:      'images/web.png',
     icon:     'fas fa-laptop-code',
     bio:      'Omar Farque manages Trip Fly BD\'s complete digital presence — website development, performance advertising, social media branding and digital marketing strategy for maximum online growth and lead generation.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    phone:    '01705182933',
+    wa:       'https://wa.me/8801705182933',
     facebook: 'https://www.facebook.com/tas.rif.3386',
     linkedin: '#',
   },
@@ -94,12 +94,63 @@ const TEAM = [
     img:      'images/con.png',
     icon:     'fas fa-passport',
     bio:      'Md Borhan Uddin provides expert visa consultation to Trip Fly BD clients — guiding travelers through document requirements, embassy procedures and destination-specific application processes with accuracy and professionalism.',
-    phone:    '+880 18 9880 1939',
-    wa:       'https://wa.me/8801898801939',
+    phone:    '+880 1613-156805',
+    wa:       'https://wa.me/8801613156805',
     facebook: 'https://www.facebook.com/share/1FrwTGgXfA/',
     linkedin: '#',
   },
 ];
+
+function isUsableContact(value) {
+  return typeof value === 'string' && value.trim() !== '' && value.trim() !== '#';
+}
+
+function memberTelHref(phone) {
+  if (!isUsableContact(phone)) return '';
+  const clean = phone.replace(/[^\d+]/g, '');
+  return clean ? `tel:${clean}` : '';
+}
+
+function setContactLink(el, href, label, ariaLabel, unavailableTitle) {
+  if (!el) return;
+
+  if (!isUsableContact(href)) {
+    el.hidden = true;
+    el.href = '#';
+    el.setAttribute('aria-hidden', 'true');
+    el.setAttribute('tabindex', '-1');
+    if (unavailableTitle) el.title = unavailableTitle;
+    return;
+  }
+
+  el.hidden = false;
+  el.href = href;
+  el.removeAttribute('aria-hidden');
+  el.removeAttribute('tabindex');
+  el.setAttribute('aria-label', ariaLabel);
+  el.title = ariaLabel;
+
+  const span = el.querySelector('span');
+  if (span && label) span.textContent = label;
+}
+
+function updateContactRow(row) {
+  if (!row) return;
+  const links = Array.from(row.querySelectorAll('a'));
+  row.hidden = links.length > 0 && links.every(link => link.hidden);
+}
+
+function syncMemberContactButtons() {
+  document.querySelectorAll('[data-member-id]').forEach(card => {
+    const member = TEAM.find(item => item.id === card.dataset.memberId);
+    if (!member) return;
+
+    setContactLink(card.querySelector('.soc-btn.call'), memberTelHref(member.phone), 'Call', `Call ${member.name}`, 'Personal phone not added yet');
+    setContactLink(card.querySelector('.soc-btn.wa'), member.wa, 'WhatsApp', `WhatsApp ${member.name}`, 'Personal WhatsApp not added yet');
+    setContactLink(card.querySelector('.soc-btn.fb'), member.facebook, 'Facebook', `Facebook ${member.name}`, 'Facebook profile not added yet');
+    setContactLink(card.querySelector('.soc-btn.li'), member.linkedin, 'LinkedIn', `LinkedIn ${member.name}`, 'LinkedIn profile not added yet');
+  });
+}
 
 /* ══════════════════════════════════════
    FLOATING HERO PARTICLES
@@ -134,6 +185,7 @@ function applyFallback(imgEl, fallbackEl) {
   if (imgEl.complete && imgEl.naturalHeight === 0) show();
 }
 document.addEventListener('DOMContentLoaded', () => {
+  syncMemberContactButtons();
   document.querySelectorAll('[data-member-id]').forEach(card => {
     applyFallback(
       card.querySelector('[data-member-img]'),
@@ -223,14 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (elBio)  elBio.textContent  = m.bio;
 
     // Contacts
-    if (elCall) {
-      const clean = m.phone.replace(/[\s\-]/g, '');
-      elCall.href = 'tel:' + clean;
-      elCall.querySelector('span').textContent = m.phone;
-    }
-    if (elWA)   elWA.href   = m.wa;
-    if (elFB) { elFB.href = m.facebook; elFB.style.opacity = m.facebook === '#' ? '.4' : '1'; }
-    if (elLI) { elLI.href = m.linkedin; elLI.style.opacity = m.linkedin === '#' ? '.4' : '1'; }
+    setContactLink(elCall, memberTelHref(m.phone), m.phone || 'Call', `Call ${m.name}`, 'Personal phone not added yet');
+    setContactLink(elWA, m.wa, 'WhatsApp', `WhatsApp ${m.name}`, 'Personal WhatsApp not added yet');
+    setContactLink(elFB, m.facebook, 'Facebook', `Facebook ${m.name}`, 'Facebook profile not added yet');
+    setContactLink(elLI, m.linkedin, 'LinkedIn', `LinkedIn ${m.name}`, 'LinkedIn profile not added yet');
+    updateContactRow(elCall?.closest('.pm-contact-row'));
+    updateContactRow(elFB?.closest('.pm-contact-row'));
 
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';

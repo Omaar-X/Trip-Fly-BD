@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    TRIP FLY BD â€” MANAGEMENT.CSS  (Ultra Premium Edition v2)
    Corporate Luxury | Dark Gold | Glassmorphism | Cinematic
    Mobile-first | 320px â†’ 4K
@@ -931,3 +931,13 @@ html[data-theme="light"] .pm-footer {
   border-top-color: rgba(168,134,10,.16);
 }
 
+/* Personal contact availability */
+.soc-btn[hidden],
+.pm-social-btn[hidden],
+.pm-contact-row[hidden] {
+  display: none !important;
+}
+
+.member-socials {
+  align-items: center;
+}
