@@ -1934,6 +1934,7 @@ html[data-theme="light"] .vm-flag {
 .dest-package-badge.city { background: linear-gradient(135deg, #2563EB, #0EA5E9); color: #fff; }
 .dest-package-badge.group { background: linear-gradient(135deg, #111827, #D4AF37); color: #fff; }
 .dest-package-badge.land { background: linear-gradient(135deg, #7C2D12, #F59E0B); color: #fff; }
+.dest-package-badge.nepal { background: linear-gradient(135deg, #0F766E, #D4AF37); color: #fff; }
 .dest-package-body {
   flex: 1;
   display: flex;

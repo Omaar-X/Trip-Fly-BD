@@ -1400,3 +1400,37 @@ body[data-theme="light"] .svc-field select option {
 body[data-theme="light"] .svc-modal-overlay {
   background: rgba(16,32,51,.42);
 }
+
+/* Light mode fix: Free Visa Eligibility checklist card */
+html[data-theme="light"] .checklist-preview,
+body[data-theme="light"] .checklist-preview {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(212,175,55,.13), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,235,.78)) !important;
+  border-color: rgba(168,134,10,.22) !important;
+  box-shadow: 0 22px 56px rgba(54,42,15,.13) !important;
+  color: #102033;
+}
+
+html[data-theme="light"] .checklist-preview h3,
+body[data-theme="light"] .checklist-preview h3 {
+  color: #102033;
+}
+
+html[data-theme="light"] .checklist-preview li,
+body[data-theme="light"] .checklist-preview li {
+  color: #52657a;
+}
+
+html[data-theme="light"] .checklist-preview i,
+body[data-theme="light"] .checklist-preview i,
+html[data-theme="light"] .checklist-link,
+body[data-theme="light"] .checklist-link {
+  color: var(--gold-dk);
+}
+
+html[data-theme="light"] .checklist-preview:hover,
+body[data-theme="light"] .checklist-preview:hover {
+  border-color: rgba(168,134,10,.34) !important;
+  box-shadow: 0 28px 66px rgba(54,42,15,.16) !important;
+}

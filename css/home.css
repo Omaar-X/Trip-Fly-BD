@@ -1293,6 +1293,7 @@ body[data-theme="light"] .pkg-details-actions {
 .pkg-badge.value { background: linear-gradient(135deg, #0EA5E9, #047857); color: #fff; }
 .pkg-badge.group { background: linear-gradient(135deg, #111827, #D4AF37); color: #fff; }
 .pkg-badge.land { background: linear-gradient(135deg, #7C2D12, #F59E0B); color: #fff; }
+.pkg-badge.nepal { background: linear-gradient(135deg, #0F766E, #D4AF37); color: #fff; }
 .upcoming-packages {
   display: flex;
   justify-content: space-between;

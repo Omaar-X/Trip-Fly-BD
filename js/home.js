@@ -844,6 +844,24 @@
       includes: ['Sri Lanka land package support', 'Colombo plan', 'Bentota + Mirissa route', 'Galle Fort visit plan', 'Travel consultation'],
       exclusions: ['Air ticket approx &#2547;71,865', 'Visa fee approx &#2547;3,000', 'Entry fees if not mentioned', 'Personal expenses'],
       whatsappText: 'I need details for Sri Lanka Land Package.'
+    },
+    nepal: {
+      title: 'Exclusive Nepal Group Tour 2026',
+      destination: 'Nepal',
+      duration: '3N/4D Spectacular Himalayan Getaway',
+      priceHtml: '&#2547;12,000',
+      airTicketHtml: 'Dhaka to Kathmandu return air ticket approx &#2547;35,000',
+      minPax: 'Minimum 4 PAX or 2 couples',
+      highlights: ['Nagarkot sunset and sunrise', 'Rani Jhula Bridge', 'Kathmandu cultural sightseeing', 'Patan Durbar Square', 'Swayambhu Nath Stupa', 'All meals included'],
+      itinerary: [
+        { day: 'Day 1', title: 'Arrival + Nagarkot', items: ['Kathmandu Airport welcome with Nepali Khada', 'Halal lunch near airport', 'Scenic drive to Nagarkot', 'Hotel check-in, Himalayan sunset view, dinner and overnight stay'] },
+        { day: 'Day 2', title: 'Rani Jhula Bridge + Kathmandu', items: ['Early sunrise view over Annapurna, Langtang and Everest ranges', 'Breakfast and drive to Rani Jhula Bridge', 'Photo time and transfer back to Kathmandu', 'Hotel check-in, lunch, Thamel market leisure, dinner and overnight stay'] },
+        { day: 'Day 3', title: 'Kathmandu Cultural Sightseeing', items: ['Breakfast at hotel', 'Patan Durbar Square visit', 'Swayambhu Nath Stupa / Monkey Temple visit', 'Lunch at hotel, leisure or shopping around Thamel, dinner and overnight stay'] },
+        { day: 'Day 4', title: 'Rest + Departure', items: ['Breakfast at hotel', 'Free time for packing', 'Private airport transfer according to flight schedule', 'Return flight to Dhaka'] }
+      ],
+      includes: ['1 night in Nagarkot at Hotel Himalayan Glacier or similar', '2 nights in Kathmandu at Hotel Nepalaya or similar', 'Room configuration: 1 double room on sharing basis', '3 breakfasts, 3 lunches and 3 dinners', 'Dedicated AC private transport for transfers and sightseeing', 'Professional local English/Hindi-speaking guide', 'Airport meet and greet with welcome drinks', 'Attraction entry fees as per itinerary, parking, tolls and local taxes'],
+      exclusions: ['Personal expenses such as laundry, calls, bar bills, shopping and tips', 'Optional adventure activities such as mountain flight', 'Anything not explicitly mentioned in inclusions'],
+      whatsappText: 'I need details for Exclusive Nepal Group Tour 2026.'
     }
   };
 
